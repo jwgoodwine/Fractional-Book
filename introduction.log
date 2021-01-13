@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=pdflatex 2021.1.11)  12 JAN 2021 17:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=latex 2021.1.11)  13 JAN 2021 15:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1790,17 +1790,13 @@ Type  H <return>  for immediate help.
  ...                                              
                                                   
 l.34 \end{example}
-                  <++>
+                  
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-Missing character: There is no < in font nullfont!
-Missing character: There is no + in font nullfont!
-Missing character: There is no + in font nullfont!
-Missing character: There is no > in font nullfont!
 
-Overfull \hbox (439.0pt too wide) in paragraph at lines 8--35
+Overfull \hbox (344.0pt too wide) in paragraph at lines 8--35
 [][][]
  []
 
@@ -1965,80 +1961,130 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-)
-Overfull \hbox (439.0pt too wide) in paragraph at lines 8--37
-[][][]
- []
+) (./figtry.tex
+\gptboxheight=\skip47
+\gptboxwidth=\skip48
+\gptboxtext=\box47
 
+./figtry.tex:83: Dimension too large.
+<recently read> \unitlength 
+                            
+l.83 \definecolor
+                 {gpBackground}{rgb}{1.000, 1.000, 1.000}%
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+./figtry.tex:83: Undefined control sequence.
+<recently read> \definecolor 
+                             
+l.83 \definecolor
+                 {gpBackground}{rgb}{1.000, 1.000, 1.000}%
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
+Missing character: There is no g in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no B in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no b in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no , in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+./figtry.tex:84: Undefined control sequence.
+<argument> \colorbox 
+                     {gpBackground}{\makebox (349920.00,216000.00)[]{}}
+l.84 ...round}{\makebox(349920.00,216000.00)[]{}}}
+                                                  %
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
+Missing character: There is no g in font nullfont!
+Missing character: There is no p in font nullfont!
+Missing character: There is no B in font nullfont!
+Missing character: There is no a in font nullfont!
+Missing character: There is no c in font nullfont!
+Missing character: There is no k in font nullfont!
+Missing character: There is no g in font nullfont!
+Missing character: There is no r in font nullfont!
+Missing character: There is no o in font nullfont!
+Missing character: There is no u in font nullfont!
+Missing character: There is no n in font nullfont!
+Missing character: There is no d in font nullfont!
+./figtry.tex:84: Dimension too large.
+<recently read> \unitlength 
+                            
+l.84 ...round}{\makebox(349920.00,216000.00)[]{}}}
+                                                  %
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
 
-./introduction.tex:37: LaTeX Error: The font size command \normalsize is not de
-fined:
-               there is probably something wrong with the class file.
+Missing character: There is no - in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no - in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no . in font nullfont!
+Missing character: There is no 5 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 0 in font nullfont!
+Missing character: There is no 1 in font nullfont!
+Missing character: There is no 2 in font nullfont!
+Missing character: There is no 3 in font nullfont!
+Missing character: There is no 4 in font nullfont!
+./figtry.tex:111: Dimension too large.
+<recently read> \unitlength 
+                            
+l.111     \gplbacktext
+                      
+I can't work with sizes bigger than about 19 feet.
+Continue and I'll use the largest value I can.
 
-See the LaTeX manual or LaTeX Companion for explanation.
+Missing character: There is no 5 in font nullfont!
+
+./figtry.tex:112: Package graphicx or graphics not loaded.
+
+See the gnuplot documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.37 
-     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
+l.112 ...17496.00bp},height={10800.00bp}]{figtry}}
+                                                  %
+The gnuplot epslatex terminal needs graphicx.sty or graphics.sty.
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
-./introduction.tex:37: Undefined control sequence.
-<write> \newlabel{eq:derivs}{{}{\thepage 
-                                         }}
-l.37 
-     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{eq:derivs}{{}{}}
-./introduction.tex:37: Undefined control sequence.
-<write> \newlabel{eq:integrals}{{}{\thepage 
-                                            }}
-l.37 
-     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{eq:integrals}{{}{}}
-./introduction.tex:37: Undefined control sequence.
-<write> \newlabel{eq:halfderiv}{{1}{\thepage 
-                                             }}
-l.37 
-     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{eq:halfderiv}{{1}{}}
-./introduction.tex:37: Undefined control sequence.
-<write> \newlabel{eq:limdef}{{2}{\thepage 
-                                          }}
-l.37 
-     
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-\newlabel{eq:limdef}{{2}{}}
-])
+))
 ! Emergency stop.
 <*> introduction.tex
                     
@@ -2046,11 +2092,11 @@ and I'll forget about whatever was undefined.
 
  
 Here is how much of TeX's memory you used:
- 33 strings out of 479383
- 576 string characters out of 5875830
- 275497 words of memory out of 5000000
- 17238 multiletter control sequences out of 15000+600000
+ 54 strings out of 479384
+ 801 string characters out of 5875856
+ 273652 words of memory out of 5000000
+ 17258 multiletter control sequences out of 15000+600000
  403776 words of font info for 28 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  23i,5n,28p,532b,134s stack positions out of 5000i,500n,10000p,200000b,80000s
-!  ==> Fatal error occurred, no output PDF file produced!
+No pages of output.
