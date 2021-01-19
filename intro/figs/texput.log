@@ -1,19 +1,18 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=latex 2021.1.11)  12 JAN 2021 16:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=latex 2021.1.11)  19 JAN 2021 17:09
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
-**introduction.tex
+**main
 
 ! Emergency stop.
-<*> introduction.tex
-                    
-*** (job aborted, file error in nonstop mode)
+<*> main
+        
+End of file on the terminal!
 
  
 Here is how much of TeX's memory you used:
  3 strings out of 479384
- 118 string characters out of 5875856
+ 110 string characters out of 5875856
  267154 words of memory out of 5000000
  17218 multiletter control sequences out of 15000+600000
  403430 words of font info for 27 fonts, out of 8000000 for 9000
