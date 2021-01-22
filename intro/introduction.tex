@@ -1,9 +1,9 @@
 \chapter{Introduction}
 
-Anyone reading this book should be familiar with the notion of the first, second and higher derivatives, \textit{e.g.},for $f(t) = t^3 + 5 t^2 + 2$, 
+Anyone reading this book should be familiar with the notion of the first, second and higher derivatives, \textit{e.g.}, for $f(t) = t^3 + 5 t^2 + 2$, 
 \begin{align}
   \frac{df}{dt}(t) &= 3 t^2 + 10 t \\
-  \frac{d^2f}{dt^2}(t) &= 6t + 10 
+  \frac{d^2f}{dt^2}(t) &= 6t + 10, 
   \label{eq:derivs}
 \end{align}
 \textit{etc.} Also we naturally think of integrals in an antiderivative sense, \textit{e.g.},
@@ -13,9 +13,10 @@ Anyone reading this book should be familiar with the notion of the first, second
 \end{align}
 and we adopt a notation of $f^{(1)}(t)$ as the first derivative, $f^{(2)}(t)$ as the second derivative and $f^{(n)}(t)$ as the $n$th derivative as well as $f^{(-1)}(t)$ as $f$ integrated one time, $f^{(-2)}$ as $f$ integrated two times, \textit{etc.}
 
-A mathematically curious reader may already be wondering if there are any derivatives ``in between'' the integer ones. For example, is the a one-half derivative:
+A mathematically curious reader may already be wondering if there are any derivatives ``in between'' the integer ones.
+For example, is there a one-half derivative:
 \begin{equation}
-  \frac{d^\frac{1}{d} f}{d t^\frac{1}{2}}(t) = f^{\left(\frac{1}{2}\right)} = ?.
+  \frac{d^\frac{1}{2} f}{d t^\frac{1}{2}}(t) = f^{\left(\frac{1}{2}\right)} = ?.
   \label{eq:halfderiv}
 \end{equation}
 There is not an immediate obvious answer to this because of the fact that the integer order derivative (as is the integral) is defined as a limit
@@ -61,6 +62,7 @@ This example motivates our first desirable attribute of a fractional derivative.
 \end{attribute}
 
 \section{Some Basic Cases}
+\subsection{Sine and Cosine Functions}
 As a first step into some real functions, we consider sine and cosine.
 
 \begin{example}
@@ -87,6 +89,8 @@ As a first step into some real functions, we consider sine and cosine.
 
 \end{example}
 
+\subsection{Monomials and Polynomials}
+
 Being able to take the fractional derivative of sine and cosine functions is nice, but we would like to do more. The next easiest class of functions is polynomials. Consider 
 \begin{equation}
   f(t) = t^k
@@ -108,7 +112,7 @@ The factorial function is just a series of values, so it seems we can generalize
   \Gamma\left(z\right) = \int_0^\infty x^{z - 1} e^{-x} dx
   \label{eq:gamma}
 \end{equation}
-which is plotted for positive real values of $z$ in Figure~\ref{eq:gamma}. Clearly, for integer values
+which is plotted for positive real values of $z$ in Figure~\ref{fig:gamma}. Clearly, for integer values
 \begin{equation}
   z! = \Gamma\left( z + 1 \right).
 \end{equation}
@@ -132,7 +136,11 @@ So, returning to Equation~\ref{eq:polyderivs}, it seems that all we need to do t
   \label{def:monomialfracderiv}
 \end{definition}
 
-This definition was used to make the fractional derivative curves in Figures~\ref{fig:fracidea1} through \ref{fig:fracidea3}, so in a sense it has been validated. For fun, we will do a different $k$ and also include negative values for $\alpha$ to see if integral-like ideas appear.
+This definition was used to make the fractional derivative curves in Figures~\ref{fig:fracidea1} through
+\ref{fig:fracidea3}, so in a sense it has been validated. Also, because everything we have done is linear in $t$, we can
+use this definition for monomials and extend it term-by-term to polynomials. 
+
+For fun, we will do and example with a different $k$ and also include negative values for $\alpha$ to see if integral-like ideas appear.
 
 \begin{example}
   Consider $f(t) = t^\frac{1}{2} = \sqrt{t}$. Various fractional order derivatives and integrals are illustrated in Figure~\ref{fig:monex}.
@@ -184,7 +192,7 @@ For negatives values, consider $n$ and $m$ to be positive integers with $n > m$,
   \label{eq:indices3}
 \end{equation}
 
-For fractional values Equation we can use Equation~\ref{eq:indices3} so that
+For fractional values Equation we can use Equation~\ref{eq:indices2} so that
 \begin{equation}
   t^\frac{n}{m} = y \qquad \Longrightarrow \qquad \left( t^\frac{n}{m} \right)^m = y^m \qquad \Longrightarrow \qquad t^n = y^m
 \end{equation}
@@ -207,4 +215,28 @@ By insisting that the same property hold when $n$ and $m$ are fractional, will h
 Even in integer order calculus, integration and differentiation are not exactly inverses because an indefinite integral will have a constant of integration. In other words, if we take $f(t)$ and differentiate it and then integrate it, we get $f(t) + c$, but if we integrate and then differentiate, we get $f(t)$. The idea is clear enough, but it turns out that this complication does affect things.
 
 
-C
+\section{The Frequency Domain}
+
+Multiplication by $s$ in the frequency domain corresponds to differentiation by $t$ in the time domain if we use the
+usual variables in the Laplace transform
+\begin{equation}
+\mathcal{L} \left\{ f(t) \right\} = \int_{0^-}^\infty f(t) e^{-s t} dt = F(s),
+\end{equation}
+\textit{i.e.}, 
+\begin{equation}
+\mathcal L \left\{ \frac{df}{dt}(t) \right\} = s F(s) - f(0)
+\end{equation}
+or assuming zero initial conditions
+\begin{equation}
+\mathcal L \left\{ \frac{df}{dt}(t) \right\} = s F(s).
+\end{equation}
+Higher derivatives are just increased exponents on the $s$, \textit{e.g.}, 
+\begin{equation}
+\mathcal L \left\{ \frac{d^n f}{dt^n}(t) \right\} = s^n F(s)
+\end{equation}
+again assuming zero initial conditions.
+
+Of course, the half derivative then would correspond to $s$ raised to the one-half power:
+\begin{equation}
+  \mathcal L \left\{ \frac{d^\frac{1}{2} f}{d t^\frac{1}{2}}(t) \right\} = s^\frac{1}{2} F(s).
+\end{equation}
