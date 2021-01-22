@@ -83,9 +83,9 @@ As a first step into some real functions, we consider sine and cosine.
   \begin{figure}
     \centering
     \subimport{figs/}{fracidea5}
-    \caption{Reasonable assumption for the half derivative (red) of $\sin9t)$ (blue).}
-    \label{fig:fracidea5}
-  \end{figure}
+  \caption{Reasonable assumption for the half derivative (red) of $\sin9t)$ (blue).}
+  \label{fig:fracidea5}
+\end{figure}
 
 \end{example}
 
@@ -172,12 +172,12 @@ Engineers deal with fractional and negative exponents so often that it is easy t
 An obvious property of this is that for two natural number exponents
 \begin{align}
   \left(t^n\right) \times \left( t^m \right) &=  \left( \underbrace{t \times t \times t \cdots t \times t}_{\mbox{$n$ times}}
-\right) \times \left( \underbrace{t \times t \times t \cdots t \times t}_{\mbox{$m$ times}}
-\right) \\
-&= 
- \underbrace{t \times t \times t \cdots t \times t}_{\mbox{$n + m$ times}} \\
- &= t^{n + m}
- \label{eq:indices}
+  \right) \times \left( \underbrace{t \times t \times t \cdots t \times t}_{\mbox{$m$ times}}
+  \right) \\
+  &= 
+  \underbrace{t \times t \times t \cdots t \times t}_{\mbox{$n + m$ times}} \\
+  &= t^{n + m}
+  \label{eq:indices}
 \end{align}
 which also immediately leads to
 \begin{equation}
@@ -220,19 +220,19 @@ Even in integer order calculus, integration and differentiation are not exactly 
 Multiplication by $s$ in the frequency domain corresponds to differentiation by $t$ in the time domain if we use the
 usual variables in the Laplace transform
 \begin{equation}
-\mathcal{L} \left\{ f(t) \right\} = \int_{0^-}^\infty f(t) e^{-s t} dt = F(s),
+  \mathcal{L} \left\{ f(t) \right\} = \int_{0^-}^\infty f(t) e^{-s t} dt = F(s),
 \end{equation}
 \textit{i.e.}, 
 \begin{equation}
-\mathcal L \left\{ \frac{df}{dt}(t) \right\} = s F(s) - f(0)
+  \mathcal L \left\{ \frac{df}{dt}(t) \right\} = s F(s) - f(0)
 \end{equation}
 or assuming zero initial conditions
 \begin{equation}
-\mathcal L \left\{ \frac{df}{dt}(t) \right\} = s F(s).
+  \mathcal L \left\{ \frac{df}{dt}(t) \right\} = s F(s).
 \end{equation}
 Higher derivatives are just increased exponents on the $s$, \textit{e.g.}, 
 \begin{equation}
-\mathcal L \left\{ \frac{d^n f}{dt^n}(t) \right\} = s^n F(s)
+  \mathcal L \left\{ \frac{d^n f}{dt^n}(t) \right\} = s^n F(s)
 \end{equation}
 again assuming zero initial conditions.
 
@@ -240,3 +240,78 @@ Of course, the half derivative then would correspond to $s$ raised to the one-ha
 \begin{equation}
   \mathcal L \left\{ \frac{d^\frac{1}{2} f}{d t^\frac{1}{2}}(t) \right\} = s^\frac{1}{2} F(s).
 \end{equation}
+
+It turns out that irrational transfer functions can arise rather easily in two types of cases:
+\begin{enumerate}
+  \item systems with an infinite number of components, and
+  \item systems with nonlocal interactions.
+\end{enumerate}
+The following example illustrates the first case. Non-locality will be inherent in the more general definitions of fractional derivatives we develop subsequently, so examples will be deferred until later.
+
+\begin{example}
+  Consider the tree network of springs and dampers illustrated in Figure~\ref{fig:structure}. The position of the left-most node is $x_1(t)$ and the right-most node by $x_{last}(t)$. Note all the nodes on the right are in the same position, so in effect they make one node. The equations of motion for this system can be determined by applying the relatively simple series and parallel rules for the springs and dampers. In order to change the network, a force must be exerted on one end, and an an equal and opposite force on the other, $f(t)$.
+
+  \begin{figure}
+    \centering
+    \psfrag{k}{$k$}
+    \psfrag{b}{$b$}
+    \psfrag{pin}{$p_{in}$}
+    \psfrag{pout}{$p_{out}$}
+    \psfrag{x1}{$x_1$}
+    \psfrag{xl}{$x_{last}$}
+    \psfrag{f(t)}{$f(t)$}
+    \includegraphics[width=3in]{figs/structure}
+    \caption{Infinite tree of springs and dampers.}
+    \label{fig:structure}
+  \end{figure}
+\end{example}
+
+It turns out that if we consider the network to be infinitely large, \textit{i.e.}, an infinite number of bifurcating generations, it is easier to determine the transfer function describing we want, which is
+\begin{equation}
+  G(s) = \frac{X_{last}(s) - X_1(s)}{F(s)}
+  \label{eq:xfer}
+\end{equation}
+and which describes the relationship between the applied force and deflection of the network. The reason it is easier, is that the network is \emph{self-similar}. If there are an infinite number of generations, if we look at any specific node, then the transfer function from that node to the right end, is the same as any other node to the right end. In other words, from any node, there is an infinite tree growing to the right. 
+
+As such, the transfer function from the first node to the end, is equal to the transfer function from one of the nodes in the second generation to the end, as is illustrated in Figure~\ref{fig:selfsimilar}.
+
+\begin{figure}
+  \centering
+  \psfrag{k}{$k$}
+  \psfrag{b}{$b$}
+  \psfrag{pin}{$p_{in}$}
+  \psfrag{pout}{$p_{out}$}
+  \psfrag{x1}{$x_1$}
+  \psfrag{xl}{$x_{last}$}
+  \psfrag{f(t)}{$f(t)$}
+  \includegraphics[width=3in]{figs/structure3}
+  \caption{Self-similar network where the transfer function from the beginning to end of each outlined region must be equal.}
+  \label{fig:selfsimilar}
+\end{figure}
+
+Let $G_\infty(s)$ represent the infinite transfer function from any node to the end, and let the transfer function corresponding to the individual components be
+\begin{equation}
+  G_1(s) = \frac{1}{k} \qquad G_2(s) = \frac{1}{bs}.
+  \label{eq:selfsimilarbuild}
+\end{equation}
+
+If there are an infinite number of generations then
+\[
+  G_\infty(s) = \frac{1}{\frac{1}{G_1(s) + G_\infty(s)} +
+  \frac{1}{G_2(s) + G_\infty(s)}},
+\]
+and solving this for $G_\infty(s)$ gives
+\[
+  G_\infty(s) = \sqrt{G_1(s) G_2(s)} =\sqrt{\frac{1}{k b s }} = \frac{1}{\sqrt{kb}} \frac{1}{\sqrt{s}}.
+\] 
+where the $G_\infty(s)$ on the left hand side is the transfer function for the entire network, and the two $G_\infty(s)$ terms in the denominator are the transfer functions from the two nodes in the second generation to the end. So this system should be characterized by half-order dynamics because $\sqrt{s} = s^{1/2}$.
+
+\begin{figure}
+  \centering
+  \input{figs/bodeelement}
+  \caption{Network stress-strain frequency response.}
+  \label{fig:bodeelement}
+\end{figure}
+
+Consistent with the idea above about fractional order systems ``converging'' to integer order ones, we plot the Bode plot for a network of this type where there are five generations with $k =1$ and The Bode plot for this system is illustrated in Figure~\ref{fig:bodeelement}, which is characterized by two half-order dynamics features. First, the slope of the high frequency portion of the magnitude plot is $-10$dB/decade and the phase is $-45^\circ$. Because first order terms are characterized by a slope of $-20$dB/decade and a phase of $-90^\circ$, these features make sense as half order effects.
+

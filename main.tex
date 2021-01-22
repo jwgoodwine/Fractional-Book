@@ -1,8 +1,10 @@
 \documentclass{book}
 
-\usepackage{amsmath,amsfonts,graphicx,xcolor,import}
+\usepackage{amsmath,amsfonts,amsthm}
+\usepackage{graphicx,xcolor,import,psfrag}
 
 \newtheorem{example}{Example}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
 \newtheorem{definition}{Definition}[chapter]
 \newtheorem{attribute}{Attribute}[chapter]
 
@@ -10,9 +12,10 @@
 \author{Bill Goodwine}
 \begin{document}
 \maketitle
+\tableofcontents
 
 \subimport{intro/}{introduction}
-
+\subimport{defs/}{definitions}
 
 \begin{itemize}
 \item Operator theory?
@@ -20,4 +23,3 @@
 
 
 \end{document}
-
