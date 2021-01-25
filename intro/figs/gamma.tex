@@ -71,44 +71,51 @@
       \expandafter\def\csname LT8\endcsname{\color{black}}%
     \fi
   \fi
-  \setlength{\unitlength}{0.0500bp}%
-  \begin{picture}(4376.00,3064.00)%
+    \setlength{\unitlength}{0.0500bp}%
+    \ifx\gptboxheight\undefined%
+      \newlength{\gptboxheight}%
+      \newlength{\gptboxwidth}%
+      \newsavebox{\gptboxtext}%
+    \fi%
+    \setlength{\fboxrule}{0.5pt}%
+    \setlength{\fboxsep}{1pt}%
+\begin{picture}(5832.00,3600.00)%
+\definecolor{gpBackground}{rgb}{1.000, 1.000, 1.000}%
+\put(0,0){\colorbox{gpBackground}{\makebox(5832.00,3600.00)[]{}}}%
     \gplgaddtomacro\gplbacktext{%
-      \colorrgb{0.00,0.00,0.00}%
+      \colorrgb{0.15,0.15,0.15}%%
       \put(620,640){\makebox(0,0)[r]{\strut{}0}}%
-      \colorrgb{0.00,0.00,0.00}%
-      \put(620,1004){\makebox(0,0)[r]{\strut{}5}}%
-      \colorrgb{0.00,0.00,0.00}%
-      \put(620,1368){\makebox(0,0)[r]{\strut{}10}}%
-      \colorrgb{0.00,0.00,0.00}%
-      \put(620,1732){\makebox(0,0)[r]{\strut{}15}}%
-      \colorrgb{0.00,0.00,0.00}%
-      \put(620,2095){\makebox(0,0)[r]{\strut{}20}}%
-      \colorrgb{0.00,0.00,0.00}%
-      \put(620,2459){\makebox(0,0)[r]{\strut{}25}}%
-      \colorrgb{0.00,0.00,0.00}%
-      \put(620,2823){\makebox(0,0)[r]{\strut{}30}}%
-      \colorrgb{0.00,0.00,0.00}%
+      \colorrgb{0.15,0.15,0.15}%%
+      \put(620,1192){\makebox(0,0)[r]{\strut{}5}}%
+      \colorrgb{0.15,0.15,0.15}%%
+      \put(620,1744){\makebox(0,0)[r]{\strut{}10}}%
+      \colorrgb{0.15,0.15,0.15}%%
+      \put(620,2295){\makebox(0,0)[r]{\strut{}15}}%
+      \colorrgb{0.15,0.15,0.15}%%
+      \put(620,2847){\makebox(0,0)[r]{\strut{}20}}%
+      \colorrgb{0.15,0.15,0.15}%%
+      \put(620,3399){\makebox(0,0)[r]{\strut{}25}}%
+      \colorrgb{0.15,0.15,0.15}%%
       \put(740,440){\makebox(0,0){\strut{}0}}%
-      \colorrgb{0.00,0.00,0.00}%
-      \put(1395,440){\makebox(0,0){\strut{}1}}%
-      \colorrgb{0.00,0.00,0.00}%
-      \put(2050,440){\makebox(0,0){\strut{}2}}%
-      \colorrgb{0.00,0.00,0.00}%
-      \put(2705,440){\makebox(0,0){\strut{}3}}%
-      \colorrgb{0.00,0.00,0.00}%
-      \put(3360,440){\makebox(0,0){\strut{}4}}%
-      \colorrgb{0.00,0.00,0.00}%
-      \put(4015,440){\makebox(0,0){\strut{}5}}%
-      \colorrgb{0.00,0.00,0.00}%
-      \put(160,1731){\rotatebox{90}{\makebox(0,0){\strut{}$\Gamma(\alpha)$}}}%
-      \colorrgb{0.00,0.00,0.00}%
-      \put(2377,140){\makebox(0,0){\strut{}$\alpha$}}%
+      \colorrgb{0.15,0.15,0.15}%%
+      \put(1600,440){\makebox(0,0){\strut{}1}}%
+      \colorrgb{0.15,0.15,0.15}%%
+      \put(2460,440){\makebox(0,0){\strut{}2}}%
+      \colorrgb{0.15,0.15,0.15}%%
+      \put(3321,440){\makebox(0,0){\strut{}3}}%
+      \colorrgb{0.15,0.15,0.15}%%
+      \put(4181,440){\makebox(0,0){\strut{}4}}%
+      \colorrgb{0.15,0.15,0.15}%%
+      \put(5041,440){\makebox(0,0){\strut{}5}}%
     }%
     \gplgaddtomacro\gplfronttext{%
+      \colorrgb{0.15,0.15,0.15}%%
+      \put(190,2019){\rotatebox{90}{\makebox(0,0){\strut{}$\Gamma(z)$}}}%
+      \colorrgb{0.15,0.15,0.15}%%
+      \put(3105,140){\makebox(0,0){\strut{}$z$}}%
     }%
     \gplbacktext
-    \put(0,0){\includegraphics{figs/gamma}}%
+    \put(0,0){\includegraphics[width={291.60bp},height={180.00bp}]{gamma}}%
     \gplfronttext
   \end{picture}%
 \endgroup
