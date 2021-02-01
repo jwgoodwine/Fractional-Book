@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=latex 2021.1.11)  25 JAN 2021 13:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=latex 2021.1.11)  1 FEB 2021 17:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -377,34 +377,34 @@ File: intro/figs//fracidea5.eps Graphic file (type eps)
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [8]
-(./intro/figs/gamma.tex
+[9] (./intro/figs/gamma.tex
 File: intro/figs//gamma.eps Graphic file (type eps)
- <intro/figs//gamma.eps>) [9] (./intro/figs/monex.tex
+ <intro/figs//gamma.eps>) (./intro/figs/monex.tex
 File: intro/figs//monex.eps Graphic file (type eps)
 
-<intro/figs//monex.eps>) [10] [11] [12]
+<intro/figs//monex.eps>) [10] [11] [12] [13]
 File: intro//figs/structure.eps Graphic file (type eps)
- <intro//figs/structure.eps> [13]
+ <intro//figs/structure.eps>
 File: intro//figs/structure3.eps Graphic file (type eps)
 
-<intro//figs/structure3.eps> (./intro//figs/bodeelement.tex
+<intro//figs/structure3.eps> [14] (./intro//figs/bodeelement.tex
 File: intro//figs/bodeelement.eps Graphic file (type eps)
 
-<intro//figs/bodeelement.eps>) [14]) (./defs/definitions.tex [15] [16
-
-]
+<intro//figs/bodeelement.eps>)) (./defs/definitions.tex [15] [16]
 Chapter 2.
-[17]) [18] (./main.aux)
+[17
+
+]) [18] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 9B8A077806184275F8E02AAEC07AAA57;522.
+(rerunfilecheck)             Checksum: A16D931C69D641CC7166972D23B1A181;666.
  ) 
 Here is how much of TeX's memory you used:
- 6269 strings out of 479384
- 92669 string characters out of 5875856
- 417867 words of memory out of 5000000
- 23225 multiletter control sequences out of 15000+600000
+ 6271 strings out of 479384
+ 92695 string characters out of 5875856
+ 422106 words of memory out of 5000000
+ 23227 multiletter control sequences out of 15000+600000
  413539 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  72i,16n,77p,663b,494s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (18 pages, 65972 bytes).
+Output written on main.dvi (18 pages, 69052 bytes).

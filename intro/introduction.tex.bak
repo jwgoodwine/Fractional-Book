@@ -1,7 +1,7 @@
 \chapter{Introduction}
 
 \section{Why Study Fractional Calculus?}
-Some people may study fractional calculus because it is inherently interesting to them. Other people need more or different reasons. A few reasons include:
+Some people may study fractional calculus because it is inheretly interesting to them. Other people need more or different reasons. A few reasons include:
 \begin{itemize}
   \item Fractional calculus expands the descriptive power of calculus beyond the familiar integer order derivatives and the basic concept of rate of change. This will yield more accurate descriptive equations when a system truly is fractional.
   \item Fractional calculus can expand scientific understanding when it models things that are traditionally very difficult to describe mathematically.
@@ -253,7 +253,7 @@ Of course, the half derivative then would correspond to $s$ raised to the one-ha
 It turns out that irrational transfer functions can arise rather easily in two types of cases:
 \begin{enumerate}
   \item systems with an infinite number of components, and
-  \item systems with non-local interactions.
+  \item systems with nonlocal interactions.
 \end{enumerate}
 The following example illustrates the first case. Non-locality will be inherent in the more general definitions of fractional derivatives we develop subsequently, so examples will be deferred until later.
 
