@@ -8,6 +8,8 @@ Some people may study fractional calculus because it is inherently interesting t
   \item Integer order derivatives are \emph{local} needing information only in a neighborhood of a point. As will be seen, fractional derivatives are \emph{non-local} and can describe systems with such a feature. For example, $F=ma$ right \emph{now}. How something accelerates only depends on the forces right now, not the forces at any time in the past. For systems with ``memory'' effects, or analogous non-local spatial effects, the differential equation describing it most accurately may be fractional.
 \end{itemize}
 
+It is not surprising that ``normal'' integer-order calculus works well for most engineering applications over the past few centuries. Newton, who was one of the very early developers of calculus, clearly had a strong interest in mechanics \cite{principia}. However, there are a couple topics of more recent interest in engineering for which fractional calculus may be important. One area is bioengineering, where traditional mechanics and electromagnitism do not fully describe the system and in which non-local time effects may occur. Another is very large scale systems that may be easier to consider as having an infinite number of components, rather than keeping track of every single part. Examples of each type are given in this chapter.  Finally, fractional calculus has been used as a new tool to try to match measured responses to ``generally hard to model'' system, \textit{e.g.}, systems with friction, stiction, etc. 
+
 \section{Introductory Concepts}
 Anyone reading this book should be familiar with the notion of the first, second and higher derivatives, \textit{e.g.}, for $f(t) = t^3 + 5 t^2 + 2$, 
 \begin{align}
@@ -70,7 +72,7 @@ This example motivates our first desirable attribute of a fractional derivative.
   For a fractional derivative, $f^{\left( \alpha \right)}(t)$, if $\alpha$ is near an integer value, we expect the $\alpha$ derivative to be near that integer derivative of $f(t)$. As $\alpha$ varies between integer values, we expect that $f^{\left( \alpha \right)}(t)$ varies in a reasonable manner between those integer values.
 \end{attribute}
 
-\section{Some Basic Cases}
+\section{Fractional Derivatives of some Elementary Functions}
 \subsection{Sine and Cosine Functions}
 As a first step into some real functions, we consider sine and cosine.
 
@@ -170,6 +172,18 @@ At this point we can compute fractional derivatives and integrals of
 \end{itemize}
 
 Before we generalize further, in order to develop a very important property of the fractional derivatives, we need to go a long way back and consider fractional exponents.
+
+
+\subsection{Exponentials}
+Since
+\begin{equation*}
+  \frac{d^n}{dt^n}e^t = e^t
+\end{equation*}
+we would like it to also hold for when $n$ is not an integer.  Similarly, 
+\begin{equation*}
+  \frac{d^n}{dt^n} e^{\alpha t} = \alpha^n e^{\alpha t}
+\end{equation*}
+we can require that the same be true when $n$ is not an integer.
 
 \section{The Law of Indices}
 

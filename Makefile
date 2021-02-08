@@ -4,12 +4,14 @@
 #					22 January 2021
 #
 
-PAPER=main
+MAIN=main
 
 all:
-	latex $(PAPER)
-	latex $(PAPER)
-	dvipdf $(PAPER)
+	latex $(MAIN)
+	bibtex $(MAIN)
+	latex $(MAIN)
+	latex $(MAIN)
+	dvipdf $(MAIN)
 
 clean:
 	rm -f ./*/.bak
