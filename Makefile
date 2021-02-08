@@ -29,7 +29,6 @@ clean:
 	rm -f ./*/*/*.c~
 	rm -f ./*.aux
 	rm -f ./*.tex~
-	rm -f ./${MAIN}.pdf	
 	rm -f ./${MAIN}.dvi
 	rm -f ./${MAIN}.ps
 	rm -f ./${MAIN}.aux

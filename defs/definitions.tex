@@ -75,13 +75,21 @@ While the gamma function provides a nice generalization of the factorial for pos
   Consider $f(t) = t$ and the fractional derivatives computed using Equation~\ref{eq:monomialfrac} that are illustrated in Figure~\ref{fig:singex}. Note that the singularity of the gamma function at $t=0$ can be seen as a way for the fractional derivatives between the zeroth and first derivatives to move between the two.
 \end{example}
 
+The value of the gamma function at some special values should be cataloged:
+\begin{itemize}
+  \item $\Gamma(1) = 1$
+  \item $\Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}$
+  \item $\Gamma\left(\frac{3}{2}\right) = \frac{\sqrt{\pi}}{2}$
+  \item $\Gamma\left(\frac{5}{2}\right) = \frac{3 \sqrt{\pi}}{4}$
+\end{itemize}<++>
+
 \begin{figure}
   \centering
   \subimport{figs/}{singex}
   \caption{Plot of $f(t) = t$ and its $0.1$, $0.9$ and first derivative.}
   \label{fig:singex}
 \end{figure}
-
+zr
 \subsection{The Error Function and Complementary Error Functions}
 These functions will be important as solutions to equations like
 \begin{equation*}
@@ -96,5 +104,9 @@ The error function is defined by
 Evaluating $\erf$ at specific values of $t$:
 \begin{itemize}
   \item $\erf(0) = \frac{2}{\pi} \int_0^0 e^{-u^2} du = 0$.
-  \item $\lim_{t \rightarrow \infty} \erf(t) = \frac{2}{\pi} \lim_{t \rightarrow\infty}\int_0^t e^{-u^2} du = ????$
-\end{itemize}<++>
+  \item $\lim_{t \rightarrow \infty} \erf(t) = \frac{2}{\pi} \lim_{t \rightarrow\infty}\int_0^t e^{-u^2} du = 1$
+  \item $\erf(-\infty) = -1$
+\end{itemize}
+
+\subsection{Mittag-Leffler Functions}
+
