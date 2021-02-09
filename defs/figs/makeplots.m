@@ -32,3 +32,45 @@ xlabel('$t$');
 ylabel('fractional derivatives');
 print('singex.tex','-depslatex');
 
+gh = figure(3,'paperposition',size);
+t = linspace(-3,3,1000);
+plot(t,exp(-t.^2),'linewidth',2);
+axis([-3 3 0 1.5]);
+xlabel('$u$');
+ylabel('$e^{-u^2}$');
+print('gaussianintegral.tex','-depslatex');
+
+gh = figure(4,'paperposition',size);
+t = linspace(-3,3,1000);
+plot(t,erf(t),'linewidth',2);
+hold on;
+plot(t,erfc(t),'linewidth',2);
+axis([-3 3 -1.05 2.05]);
+xlabel('$t$');
+ylabel('erf, erfc');
+legend('erf','erfc');
+legend('boxoff');
+print('erferfc.tex','-depslatex');
+
+gh = figure(5,'paperposition',size);
+t = linspace(-1,4,1000);
+hold on;
+for alpha=0.25:0.25:2
+plot(t,mlf(alpha,1,-t),'linewidth',2);
+end
+axis([-1 4 -1 4])
+xlabel('$t$');
+ylabel('$E_{\alpha,1}(-t)$');
+print('mlfalpha.tex','-depslatex');
+
+gh = figure(6,'paperposition',size);
+t = linspace(-1,4,1000);
+hold on;
+for beta=0.25:0.25:2
+plot(t,mlf(1,beta,-t),'linewidth',2);
+end
+%axis([-1 4 -1 4])
+xlabel('$t$');
+ylabel('$E_{1,\beta}(-t)$');
+print('mlfbeta.tex','-depslatex');
+

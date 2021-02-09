@@ -37,7 +37,27 @@ the only term containing the order of integration, $n$ where $n$ can not be a fr
 
 \section{Summary of Important Functions}
 
-In engineering there is a relatively limited collection of functions that are so useful that their properties become second nature. Fractional calculus adds to that collection, and this section presents some of them along with some of their most important properties.
+In engineering there is a relatively limited collection of functions that are so useful that their properties become second nature. Fractional calculus adds to that collection, and this section presents some of them along with some of their most important properties. First we consider some basic computations.
+
+\subsection{A Collection of Computations}
+
+\subsubsection{Gaussian Integral}
+The Gaussian integral is
+\begin{equation}
+  \int_{-\infty}^\infty e^{-z^2} dz = \sqrt{\pi},
+  \label{eq:gaussianintegral}
+\end{equation}
+and is the area under the curve in Figure~\ref{fig:gaussianintegral}. Clearly, also
+\begin{equation*}
+  \int_0^\infty e^{-z^2} dz = \frac{\sqrt{\pi}}{2}.
+\end{equation*}
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{gaussianintegral}
+  \caption{Gaussian integral.}
+\label{fig:gaussianintegral}
+\end{figure}
 
 \subsection{The Gamma Function}
 The gamma function will appear just about everywhere where we deal with fractional derivatives. We have already seen an example. The integral representation of the gamma function is
@@ -52,7 +72,12 @@ In the case where $t$ is an integer, they way to compute the integral by hand wo
   \int_0^\infty e^{-z} z^{t-1} dz \\ &= \left[ z^{t-1} \left(- e^{-z} \right) \right]^\infty_0 + \left(t-1 \right) \int_0^\infty e^{-z} z^{t-2} dz \\
 &= 0 - 0 + \left( t - 1 \right) \Gamma(t-1).
 \end{align*}
-Comparing the last line to the right hand side of the line above it shows that analogous to $n \left(n - 1 \right)! = n!$, $\boxed{ \left( t - 1 \right) \Gamma(t - 1) = \Gamma(t) }$. Also, continuing to integrate by parts and knowing that the boundary terms will always continue to be zero, we have
+Comparing the last line to the right hand side of the line above it gives a recursion relation analogous to $n \left(n - 1 \right)! = n!$, 
+\begin{equation}
+  \boxed{ \left( t - 1 \right) \Gamma(t - 1) = \Gamma(t). }
+  \label{eq:gammarecursion}
+\end{equation}
+Also, continuing to integrate by parts and knowing that the boundary terms will always continue to be zero, we have
 \begin{align*}
   \Gamma(t) &= \left( t - 1 \right) \Gamma \left( t - 1 \right) \\
   &= \left[ \left( t - 1 \right) \left( t - 2 \right) \right] \Gamma \left( t - 2 \right) \\
@@ -75,21 +100,62 @@ While the gamma function provides a nice generalization of the factorial for pos
   Consider $f(t) = t$ and the fractional derivatives computed using Equation~\ref{eq:monomialfrac} that are illustrated in Figure~\ref{fig:singex}. Note that the singularity of the gamma function at $t=0$ can be seen as a way for the fractional derivatives between the zeroth and first derivatives to move between the two.
 \end{example}
 
-The value of the gamma function at some special values should be cataloged:
-\begin{itemize}
-  \item $\Gamma(1) = 1$
-  \item $\Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}$
-  \item $\Gamma\left(\frac{3}{2}\right) = \frac{\sqrt{\pi}}{2}$
-  \item $\Gamma\left(\frac{5}{2}\right) = \frac{3 \sqrt{\pi}}{4}$
-\end{itemize}<++>
-
 \begin{figure}
   \centering
   \subimport{figs/}{singex}
   \caption{Plot of $f(t) = t$ and its $0.1$, $0.9$ and first derivative.}
   \label{fig:singex}
 \end{figure}
-zr
+
+The value of the gamma function at some special values should be cataloged.
+\begin{itemize}
+  \item $\boxed{ \Gamma(1) = 1. }$ This can be directly computed
+    \begin{equation*}
+      \Gamma(1) = \int_0^\infty e^{-z} z^{1 - 1} dz = \left. -e^{-z} \right|_0^\infty = 1.
+    \end{equation*}
+  \item $ \boxed{ \Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}. }$ This can also be directly computed using the Gaussian integral from Equation~\ref{eq:gaussianintegral} 
+    \begin{align*}
+      \Gamma\left(\frac{1}{2}\right) &= \int_0^\infty e^{-z} z^{\frac{1}{2} - 1} dz 
+      = \int_0^\infty e^{-z} z^{-\frac{1}{2}} dz 
+      = 2 \int_0^\infty e^{-y^2} dy 
+      = \sqrt{\pi}.
+    \end{align*}
+  \item $ \boxed{ \Gamma\left(\frac{3}{2}\right) = \frac{\sqrt{\pi}}{2}. }$  This can be computed using Equation~\ref{eq:gammarecursion}
+    \begin{equation*}
+      \Gamma \left( \frac{3}{2} \right) = \left( \frac{3}{2} -1 \right) \Gamma \left( \frac{3}{2} - 1 \right) = \frac{1}{2} \sqrt{\pi}.
+    \end{equation*}
+  \item $\boxed{ \Gamma\left(\frac{5}{2}\right) = \frac{3 \sqrt{\pi}}{4}. }$ Similar to the previous one
+    \begin{equation*}
+      \Gamma \left( \frac{5}{2} \right) = \left( \frac{5}{2} - 1 \right) \Gamma \left( \frac{5}{2} - 1 \right) = \frac{3}{2} \frac{\sqrt{\pi}}{2} = \frac{3}{4} \sqrt{\pi}.
+    \end{equation*}
+  \item $\boxed { \Gamma \left( -\frac{1}{2} \right) = -2 \sqrt{\pi}.  }$  Similarly, for some negative values, this follows from the recursion relation in Equation~\ref{eq:gammarecursion}
+    \begin{equation*}
+      \Gamma \left( \frac{1}{2} \right) = \left( \frac{1}{2} - 1 \right) \Gamma \left( \frac{1}{2} - 1 \right) \qquad \Longleftrightarrow \qquad \Gamma \left( -\frac{1}{2} \right) = \frac{\Gamma \left( \frac{1}{2} \right)}{-\frac{1}{2}} = -2 \sqrt{\pi}.
+    \end{equation*}
+\end{itemize}
+
+The gamma function also appears in fractional-order inverse Laplace transforms. Similarly to what we did previously, we will start with integer-order computations and then generalize. Consider the usual Laplace transform of $f(t) = t^n$ where $n \in \mathbb Z$
+\begin{align*}
+  \mathcal L \left\{ t^n \right\} &= \int_{0^-}^\infty t^n e^{-s t} dt \\
+  &= \left. \left( - t^n \frac{1}{s} e^{-s t} \right) \right|_0^\infty + \frac{n}{s}  \int_{0^-}^\infty t^{n-1} e^{-st} dt \\
+    &= \frac{n}{s}  \int_{0^-}^\infty t^{n-1} e^{-st} dt  \\
+    & \vdots \\
+    &= \frac{n!}{s^{n+1}} \int_{0^-}^\infty e^{-s t} dt  \\
+    &= \frac{n!}{s^{n+1}}. 
+\end{align*}
+
+A perfectly reasonable, albeit not mathematically rigorous, inference at this point would be 
+\begin{equation*}
+  \mathcal L  \left\{ t^\alpha \right\} =  \frac{\Gamma \left( \alpha + 1 \right)}{s^{\alpha + 1}}.
+\end{equation*}
+In fact, we can compute it directly
+\begin{align*}
+  \mathcal L \left\{ t^\alpha \right\} &= \int_{0^-}^\infty t^\alpha e^{-s t} dt \\
+  &= \int_{0^-}^\infty \left( \frac{u}{s} \right)^\alpha \frac{e^{-u}}{s} du \qquad \left( u = st \right) \\
+  &= \frac{1}{s^{\alpha + 1}} \int_{0^-}^\infty e^{-u} u^\alpha du \\
+  &= \frac{\Gamma \left( \alpha + 1 \right)}{s^{\alpha + 1}}, \quad \alpha > -1.
+\end{align*}
+
 \subsection{The Error Function and Complementary Error Functions}
 These functions will be important as solutions to equations like
 \begin{equation*}
@@ -98,15 +164,80 @@ These functions will be important as solutions to equations like
 
 The error function is defined by
 \begin{equation}
-  \boxed{ \operatorname{erf}(t) = \frac{2}{\pi} \int_0^t e^{-u^2} du. }
+  \boxed{ \erf(t) = \frac{2}{\sqrt{\pi}} \int_0^t e^{-z^2} dz. }
   \label{eq:erf}
 \end{equation}
+Note that it is like the Gaussian integral, but only over a subset of the range of the definite integral. The \emph{complementary error function} is the integral over the remaining part of the domain
+\begin{equation}
+  \boxed{ \erfc(t)  = \frac{2}{\sqrt{\pi}} \int_t^\infty e^{-z^2} dz. }
+  \label{eq:erfc}
+\end{equation}
+Plots of both the error function and the complementary error function appear in Figure~\ref{fig:erferfc}. It is clear from the definitions and the plots that
+\begin{equation}
+  \erfc(t) = 1 - \erf(t).
+  \label{eq:erfs}
+\end{equation}
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{erferfc}
+  \caption{The error function and complementary error function.}
+  \label{fig:erferfc}
+\end{figure}
+
 Evaluating $\erf$ at specific values of $t$:
 \begin{itemize}
-  \item $\erf(0) = \frac{2}{\pi} \int_0^0 e^{-u^2} du = 0$.
-  \item $\lim_{t \rightarrow \infty} \erf(t) = \frac{2}{\pi} \lim_{t \rightarrow\infty}\int_0^t e^{-u^2} du = 1$
-  \item $\erf(-\infty) = -1$
+  \item $ \boxed{ \erf(0) = \frac{2}{\pi} \int_0^0 e^{-u^2} du = 0. }$
+  \item $ \boxed{ \erf(\infty) = \frac{2}{\pi} \int_0^\infty e^{-u^2} du = 1. }$
+  \item $ \boxed{ \erf(-\infty) = -1. }$
 \end{itemize}
 
 \subsection{Mittag-Leffler Functions}
+\emph{Mittag-Leffler Functions} are generalizations of the exponential function, and play a role in solutions to constant-coefficient, homogeneous linear fractional-order ordinary differential equations analogous to the exponential for integer order differential equations. Recall the Taylor series of the exponential function about $t=0$ is
+\begin{equation*}
+  e^{t} = 1 + t + \frac{t^2}{2!} + \frac{t^3}{3!} + \cdots = \sum_{k=0}^\infty \frac{t^k}{k!}.
+\end{equation*}
+
+These days we can not help but replace factorials with gamma functions. However, just doing that in the previous equation does not generalize anything because
+\begin{equation*}
+  \sum_{k=0}^\infty \frac{t^k}{\Gamma \left( k + 1 \right)} = e^t,
+\end{equation*}
+and nothing is really changed. The \emph{one parameter} and \emph{two parameter} Mittag-Leffler functions put a coefficient in front of the $k$ and $1$ in the gamma function
+\begin{equation}
+  \boxed{ E_\alpha(t) = \sum_{k=1}^\infty \frac{t^k}{\Gamma \left( \alpha k + 1 \right)}, \quad \alpha > 0 }
+  \label{eq:mlone}
+\end{equation}
+and
+\begin{equation}
+  \boxed{  E_{\alpha, \beta}(t) = \sum_{k=1}^\infty \frac{t^k}{\Gamma \left( \alpha k + \beta \right)}, \quad \alpha, \beta > 0. }
+  \label{eq:mltwo}
+\end{equation}
+
+There are certain combinations of $\alpha$ and $\beta$ where $E_{\alpha,\beta}(t)$ is equal to a known function. Specifically
+\begin{itemize}
+  \item $\boxed{ E_{1,1}(t) = E_1(t) = e^t. }$
+  \item $\boxed{ E_{\frac{1}{2},1} (t) = E_\frac{1}{2}(t) = x^{t^2} \erfc(-t)  }$
+  \item $\boxed{ E_{1,2}(t) = \frac{e^t - 1}{t}  }$
+  \item $\boxed{ E_{2,1}(t^2) \cosh(t) }$
+  \item $\boxed{ E_{2,2 }(t^2) = \frac{\sinh(t)}{t}. }$
+\end{itemize}
+
+In order to gain some insight into these functions, let us see what the effect of varying the two parameters does. Figure~\ref{fig:mlfalpha} plots $E_{\alpha,t}(-t)$ for various values of $\alpha$. Observe that for negative values, smaller $\alpha$ values are ``stronger'' whereas for positive values of $t$ the opposite is basically the case. All of the curves go through the value of $1$ at $t=0$. The curves are more ``curved'' than the exponential for $\alpha$ values less than one, and less curved for $\alpha$ values greater than one.
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{mlfalpha}
+  \caption{Mittag-Leffler functions, $E_{\alpha,1}(-t)$ for $\alpha = 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75$ and $2$. Looking at the left part of the plot near $t = -1$, $\alpha = 0.25$ is the top curve, and they are in order down to $\alpha = 2$ for the bottom curve.}
+  \label{fig:mlfalpha}
+\end{figure}
+
+Figure~\ref{fig:mlfbeta} illustrates $E_{1,\beta}(-t)$ for various $\beta$ values. The trend to observe is that around time $t=0$, the lowest curve corresponds to the smallest $\beta$ values, and each subsequent curve increased from that one correspond to increasing $\beta$ values. 
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{mlfbeta}
+  \caption{Mittag-Leffler functions, $E_{1, \beta}(-t)$ for $\beta = 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75$ and $2$. Near $t=0$ the lowest curve is for $\beta = 0.25$ and increased values in $\beta$ correspond to the curves above that in order.}
+  \label{fig:mlfbeta}
+\end{figure}
+
 
