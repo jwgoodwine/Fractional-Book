@@ -144,6 +144,57 @@ In fact, we can compute it directly
   &= \frac{\Gamma \left( \alpha + 1 \right)}{s^{\alpha + 1}}, \quad \alpha > -1.
 \end{align*}
 
+\subsection{Binomial Coefficient}
+In the integer case, the binomial coefficient for $n,k \in \mathbb Z$ is
+\begin{equation}
+  \left( \begin{array}{c} n \\ k \end{array} \right) = \frac{n!}{k!\left(n-k\right)!}.
+  \label{eq:binomialint}
+\end{equation}
+Common interpretations include entries in Pascal's triangle and ``n choose k'' because it is the number of different ways to choose $k$ elements from a set with $n$ elements. It will be convenient, but perhaps not so rigourous, to consider the binomial coefficient to be zero ``outside'' of Pascal's triangle. This makes sense for the probability: \eg, there are zero ways to choose $5$ elements from a set of $4$.
+
+We will use it because it naturally arises in finit difference expansions, and we will naturally want to allow the entries to be non-integers. So we will have the generalization
+\begin{equation}
+  \left( \begin{array}{c} \alpha \\ \beta \end{array} \right) = \frac{\Gamma\left(\alpha+1\right)}{\Gamma\left(\beta + 1 \right) \Gamma \left(\alpha - \beta + 1\right)},
+  \label{eq:binomialfrac}
+\end{equation}
+where $\alpha, \beta \in \mathbb R$, \ie, they can be fractional.
+
+The following example illustrates the manner in which this will play a role in a subsequent fractional derivative definition.
+
+\begin{example}
+  Consider the binomial coefficient with $n=4$ for various values of $k$, as shown in the first row of Table~\ref{tab:binomialex}, where we have adopted the convention that the value is zero where the factorials are not defined. These values are also plotted in Figure~\ref{fig:binomialex}. 
+
+  \begin{table}
+    \centering
+    \begin{tabular}{|c||c|c|c|}
+      \hline k & n=4&n=3.95&n=3.5 \\
+\hline \hline
+0& 1& 1& 1\\ \hline
+1& 4& 3.95 &3.5\\ \hline
+2& 6& 5.82625& 4.375\\ \hline
+3& 4& 3.78706& 2.1875\\ \hline
+4& 1& 0.899427& 0.273438\\ \hline 
+5& 0& -0.00899427& -0.0273438\\ \hline
+6& 0& 0.001574& 0.00683594\\ \hline
+7& 0& -0.000460957& -0.00244141\\ \hline
+8& 0&  0.00017574& 0.00106812\\ \hline
+9& 0& -0.00007908& -0.000534058\\ \hline
+10& 0& 0.00003994& 0.000293732 \\ \hline
+    \end{tabular}
+    \caption{Binomial coefficients with $n=4$, $n=3.95$ and $n=3.5$ for various integer values of $k$}
+    \label{tab:binomialex}
+  \end{table}
+
+  \begin{figure}
+    \centering
+    \subimport{figs/}{bincoeffex}
+    \caption{Binomial coefficient values for $n=4, 3.95 and 3.5$ for various $k$ values.}
+    \label{fig:binomialex}
+  \end{figure}
+
+  Note that for a small change in $n$ from $4$ to $3;95$ the values of the binomial coefficient are close to the values for $4$. However, while the values for increasing $\beta$ are tending towards zero in absolute value, they are not equal to zero and the rate of convergence is not all that fast.
+\end{example}
+
 \subsection{The Error Function and Complementary Error Functions}
 These functions will be important as solutions to equations like
 \begin{equation*}
@@ -269,19 +320,29 @@ If we ask how can we integrate a function a fractional number of times, though, 
 \end{equation*}
 the only term containing the order of integration, $n$ where $n$ can not be a fraction is, again, the factorial. So we can just replace it with a gamma function 
 \begin{equation}
-  \boxed{ f^{(-\alpha)}(t) = \frac{1}{\Gamma \left( \alpha \right)} \int_a^t \left( t - z \right)^{\alpha-1} f(z) dz. }
+  \boxed{ _a\D^{(-\alpha)}_t(t) = \frac{1}{\Gamma \left( \alpha \right)} \int_a^t \left( t - z \right)^{\alpha-1} f(z) dz }
   \label{eq:fracint}
 \end{equation}
+where the new notation for the operator $\D$ will be used going forward. 
 
 \subsection{Fractional Derivative Definitions}
 
 We will consider two basic approaches to generalizing the derivative to fractional orders. The first will use the fractional integration idea above along with the fundamental theorem of calculus. The second is an extension of the usual limit definition of the derivative that has a nice extension to the finite difference method in numerical methods.
 
-At this point we have the ability to integrate a function by a fractional amount, \eg, $f^{\left( -1/2 \right)}$ is the one-half integral of $f$. The basic idea is that we can use the fact that integrals and derivatives are inverse oprations and, for example, integrate a function by, say, $2/3$ and then differentiate once to get the $1/3$ derivative. The difference between the first two definitions we will consider is simply whether we differentiate first and then fractionally integrate, or vice versa. That seemingly small difference actually has large consequences.
+At this point we have the ability to integrate a function by a fractional amount, \eg, $\D^{\left( -1/2 \right)f(t)}$ is the one-half integral of $f$. The basic idea is that we can use the fact that integrals and derivatives are inverse oprations and, for example, integrate a function by, say, $2/3$ and then differentiate once to get the $1/3$ derivative. The difference between the first two definitions we will consider is simply whether we differentiate first and then fractionally integrate, or vice versa. That seemingly small difference actually has large consequences.
 
 \subsubsection{Riemann-Liouville Fractional Derivative}
 
-For the Riemann-Liouville derivative definition, we integrate first and then differentiate. $\sideset{^{RL}_0}{^\alpha_t}\D$
+For the Riemann-Liouville derivative definition, we integrate first and then differentiate, specifically 
+\begin{align}
+%  \boxed{ 
+    \sideset{^{RL}_0}{^\alpha_t}\D f(t) &= \frac{d^{\lc \alpha \rc}}{dt^{\lc \alpha \rc}} \sideset{_a}{_t^{-\left( \lc \alpha \rc - \alpha \right)}}\D f(t) \\ 
+    &= 
+    \frac{d^{\lc \alpha \rc}}{dt^{\lc \alpha \rc}} \left( \frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)} \int_a^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1} f(z) dz \right). 
+%}
+  \label{eq:rldef}
+\end{align}
+
 
 \subsubsection{Caputo Fractional Derivative}
 $^C_0D^\alpha_t$

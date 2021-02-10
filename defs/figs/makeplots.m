@@ -74,3 +74,14 @@ xlabel('$t$');
 ylabel('$E_{1,\beta}(-t)$');
 print('mlfbeta.tex','-depslatex');
 
+gh = figure(7,'paperposition',size);
+data = [];
+for k=0:10
+	data = vertcat(data,[bincoeff(4,k) bincoeff(3.95, k) bincoeff(3.5,k)]);
+end
+plot(data,'o','linewidth',2,'markersize',4);
+legend('$n=4$','$n=3.95$','$n=3.5$');
+xlabel('$k$');
+ylabel('binomial coefficient');
+print('bincoeffex.tex','-depslatex');
+
