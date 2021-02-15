@@ -309,7 +309,7 @@ It turns out we will more easily find a general formula for a fractional number 
  \label{th:cauchy}
 \end{theorem}
 \begin{proof}
-add the proof.
+  This is fairly apparent. In the case where $n$ is an integer, integrate the right hand side by parts $n-1$ times to obtain the left hand side. 
 \end{proof}
 
 This theorem should make some intuitive sense. If you had to evaluate the single integral, the way to to it would be to integrate by parts $n$ times to eliminate the $(x - z)$ term, which would give the multiple integral form of it.
@@ -320,31 +320,119 @@ If we ask how can we integrate a function a fractional number of times, though, 
 \end{equation*}
 the only term containing the order of integration, $n$ where $n$ can not be a fraction is, again, the factorial. So we can just replace it with a gamma function 
 \begin{equation}
-  \boxed{ _a\D^{(-\alpha)}_t(t) = \frac{1}{\Gamma \left( \alpha \right)} \int_a^t \left( t - z \right)^{\alpha-1} f(z) dz }
+  \boxed{ \tensor*[_a]{\D}{^{(-\alpha)}_t}(t) = \frac{1}{\Gamma \left( \alpha \right)} \int_a^t \left( t - z \right)^{\alpha-1} f(z) dz }
   \label{eq:fracint}
 \end{equation}
-where the new notation for the operator $\D$ will be used going forward. 
+where the new notation for the operator $\D$ will be used going forward.
+
+Because it is so common to have initial conditions specified at time $t=0$, we will adopt the notation 
+\begin{equation*}
+ \boxed{
+ \tensor*[]{\D}{^{(-\alpha)}}(t) =   \tensor*[_0]{\D}{^{(-\alpha)}_t}(t) 
+} 
+\end{equation*}
+\ie, we will not bother with adding to the notation when the limits of integration are from $0$ to $t$. 
+
+Let us compute some fractional-order integrals of some common functions.
+
+\begin{example}
+  Consider $f(t) = t$. We know that $\tensor*[]{\D}{^{(-1)}}t = 1/2 t^2$. The half integral should be something ``in between'' $t$ and $t^2$. In detail
+  \begin{align*}
+    \tensor*[]{\D}{^{\frac{1}{2}}} t &= \frac{1}{\Gamma \left( \frac{1}{2} \right)} \int_0^t \left( t - z \right)^{\left( 1/2 - 1 \right)} z \d z \\
+    &= -\frac{1}{\sqrt{\pi}} \int_t^0 \frac{t - u}{\sqrt{u}} \d u \qquad \left(u = t - z \right)\\
+    &= \frac{1}{\sqrt{\pi}} \int_0^t \frac{t}{\sqrt{u}} - \sqrt{u} \d u \\
+    &= \frac{1}{\sqrt{\pi}} \left[ 2 t u^\frac{1}{2} - \frac{2}{3} u^\frac{3}{2} \right]_0^t \\
+    &= \frac{4}{3 \sqrt{\pi}} t^\frac{3}{2}.
+    \label{ex:fracint1}
+  \end{align*}
+  Figure~\ref{fig:fracint1} illustrates $t$, $\tensor*[_0]{\D}{^{\left( -1/2 \right)}_t} t$ and $\tensor*[_0]{\D}{^{(-1)}_t} t$.
+\end{example}
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{fracint1}
+  \caption{The function $f(t) = t$ (blue), $\tensor*[_0]{\D}{^{(-1)}_t}t$ (red) and $\tensor*[_0]{\D}{^{(-1/2)}_t} t$ (yellow).}
+  \label{fig:fracint1}
+\end{figure}
+
+\begin{example}
+  Consider $f(t) = \e^{ 2 t }$. Then
+  \begin{align*}
+    \tensor*[]{\D}{^{\left(-1/2\right)}} \e^{2 t} &= \frac{1}{\Gamma \left( \frac{1}{2} \right)} \int_0^t \left( t - z \right)^{(-1/2)} \e^{2 z} \d z \\
+    &= \frac{2}{\sqrt{\pi}} \int_0^{\sqrt{t}} \e^{ 2 \left( t - u^2 \right) } \d u \qquad \left( u = \sqrt{t - z} \right) \\
+    &= \e^{2 t} \frac{1}{\sqrt{\pi}} \int_0^{\sqrt{t}} \e^{\left( \sqrt{2} u \right)^2} \d u \\
+    &= \e^{2 t} \frac{\sqrt{2}}{\sqrt{\pi}} \int_0^{\sqrt{2 t}} \e^{-v^2} \d v \qquad \left( v = \sqrt{2} u \right) \\
+    &= \frac{1}{\sqrt{2}} \e^{2 t} \erf{\sqrt{2 t}}
+  \end{align*}
+  Figures~\ref{fig:fracint2a} and \ref{fig:fracint2b} illustrate $\e^{2 t}$, $\tensor*[_0]{\D}{^{\left( -1/2 \right)}_t} \e^{2 t}$ and $\tensor*[_0]{\D}{^{(-1)}_t} \e^{2 t}$.
+\end{example}
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{fracint2a}
+\caption{The function $f(t) = \e^{2 t}$ and $\tensor*[_0]{\D}{^{(-1)}_t} \e^{2t}$ (red) and $\tensor*[_0]{\D}{^{(-1/2)}_t} \e^{2t}$ (yellow).}
+  \label{fig:fracint2a}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{fracint2b}
+\caption{The function $f(t) = \e^{2 t}$ and $\tensor*[_0]{\D}{^{(-1)}_t} \e^{2t}$ (red) and $\tensor*[_0]{\D}{^{(-1/2)}_t} \e^{2t}$ (yellow).}
+  \label{fig:fracint2b}
+\end{figure}
+
+\begin{example}
+  Consider $f(t) = \cos 3 t$. We have
+  \begin{equation*}
+    \tensor*[]{\D}{^{-1/2}} \cos 3 t = \frac{1}{\Gamma \left( \frac{1}{2} \right) } \int_0^t \left( t - z \right)^{\left( -1/2 \right)} \cos(3z) \d{z}.
+  \end{equation*}
+  There is a closed-form solution to this integral in terms of the Fresnel integrals, but an easier check in this case is probably a numerical approach. Numerical methods are considered in detail subsequently. For now, not that the plot of this integral is illustrated in Figure~\ref{fig:fracint3} and displays the characterisitics one would expect of the half integral of the cosine function. 
+\end{example}
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{fracint3}
+\caption{The function $f(t) = \cos 3 t$ and $\tensor*[_0]{\D}{^{(-1)}_t} \cos 3 t$ (red) and $\tensor*[_0]{\D}{^{(-1/2)}_t} \cos 3t$ (yellow).}
+  \label{fig:fracint3}
+\end{figure}
 
 \subsection{Fractional Derivative Definitions}
 
 We will consider two basic approaches to generalizing the derivative to fractional orders. The first will use the fractional integration idea above along with the fundamental theorem of calculus. The second is an extension of the usual limit definition of the derivative that has a nice extension to the finite difference method in numerical methods.
 
-At this point we have the ability to integrate a function by a fractional amount, \eg, $\D^{\left( -1/2 \right)f(t)}$ is the one-half integral of $f$. The basic idea is that we can use the fact that integrals and derivatives are inverse oprations and, for example, integrate a function by, say, $2/3$ and then differentiate once to get the $1/3$ derivative. The difference between the first two definitions we will consider is simply whether we differentiate first and then fractionally integrate, or vice versa. That seemingly small difference actually has large consequences.
+At this point we have the ability to integrate a function by a fractional amount, \eg, $\tensor*{\D}{^{\left( -1/2 \right)}}f(t)$ is the one-half integral of $f$. The basic idea is that we can use the fact that integrals and derivatives are inverse oprations and, for example, integrate a function by, say, $2/3$ and then differentiate once to get the $1/3$ derivative. The difference between the first two definitions we will consider is simply whether we differentiate first and then fractionally integrate, or vice versa. That seemingly small difference actually has large consequences.
 
 \subsubsection{Riemann-Liouville Fractional Derivative}
 
 For the Riemann-Liouville derivative definition, we integrate first and then differentiate, specifically 
-\begin{align}
+\begin{equation}
+  \begin{aligned}
 %  \boxed{ 
-    \sideset{^{RL}_0}{^\alpha_t}\D f(t) &= \frac{d^{\lc \alpha \rc}}{dt^{\lc \alpha \rc}} \sideset{_a}{_t^{-\left( \lc \alpha \rc - \alpha \right)}}\D f(t) \\ 
+  \tensor*[^{RL}_0]{\D}{^\alpha_t}  f(t) &= \tensor*[^{RL}]{\D}{^\alpha} f(t) \\
+  &= \frac{\d^{\lc \alpha \rc}}{\d t^{\lc \alpha \rc}} \tensor*[]{\D}{^{-\left( \lc \alpha \rc - \alpha \right)}} f(t) \\ 
     &= 
-    \frac{d^{\lc \alpha \rc}}{dt^{\lc \alpha \rc}} \left( \frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)} \int_a^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1} f(z) dz \right). 
+    \frac{\d^{\lc \alpha \rc}}{\d t^{\lc \alpha \rc}} \left( \frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)} \int_a^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1} f(z) \d z \right). 
 %}
+  \end{aligned}
   \label{eq:rldef}
-\end{align}
+\end{equation}
 
 
 \subsubsection{Caputo Fractional Derivative}
-$^C_0D^\alpha_t$
+The Caputo definition simply switches the order of fractional-order integration and integer-order differentiation
+\begin{equation}
+  \begin{aligned}
+%  \boxed{ 
+  \tensor*[^{C}_0]{\D}{^\alpha_t}  f(t) &= \tensor*[^{C}]{\D}{^\alpha} f(t) \\
+  &= \tensor*[]{\D}{^{-\left( \lc \alpha \rc - \alpha \right)}} \left( \frac{\d^{\lc \alpha \rc} f}{\d t^{\lc \alpha \rc}}(t) \right) \\ 
+    &= 
+    \frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)} \int_a^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1}  \frac{\d^{\lc \alpha \rc}f}{\d t^{\lc \alpha \rc}} (z) \d z. 
+%}
+  \end{aligned}
+  \label{eq:caputodef}
+\end{equation}
+
+
+
 
 \subsubsection{Gr\"unwald-Letnikov Fractional Derivative}

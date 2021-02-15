@@ -52,28 +52,29 @@ legend('erf','erfc');
 legend('boxoff');
 print('erferfc.tex','-depslatex');
 
-gh = figure(5,'paperposition',size);
-t = linspace(-1,4,1000);
-hold on;
-for alpha=0.25:0.25:2
-plot(t,mlf(alpha,1,-t),'linewidth',2);
-end
-axis([-1 4 -1 4])
-xlabel('$t$');
-ylabel('$E_{\alpha,1}(-t)$');
-print('mlfalpha.tex','-depslatex');
 
-gh = figure(6,'paperposition',size);
-t = linspace(-1,4,1000);
-hold on;
-for beta=0.25:0.25:2
-plot(t,mlf(1,beta,-t),'linewidth',2);
-end
+%gh = figure(5,'paperposition',size);
+%t = linspace(-1,4,1000);
+%hold on;
+%for alpha=0.25:0.25:2
+%plot(t,mlf(alpha,1,-t),'linewidth',2);
+%end
 %axis([-1 4 -1 4])
-xlabel('$t$');
-ylabel('$E_{1,\beta}(-t)$');
-print('mlfbeta.tex','-depslatex');
+%xlabel('$t$');
+%ylabel('$E_{\alpha,1}(-t)$');
+%print('mlfalpha.tex','-depslatex');
 
+%gh = figure(6,'paperposition',size);
+%t = linspace(-1,4,1000);
+%hold on;
+%for beta=0.25:0.25:2
+%plot(t,mlf(1,beta,-t),'linewidth',2);
+%end
+%%axis([-1 4 -1 4])
+%xlabel('$t$');
+%ylabel('$E_{1,\beta}(-t)$');
+%print('mlfbeta.tex','-depslatex');
+%
 gh = figure(7,'paperposition',size);
 data = [];
 for k=0:10
@@ -84,4 +85,47 @@ legend('$n=4$','$n=3.95$','$n=3.5$');
 xlabel('$k$');
 ylabel('binomial coefficient');
 print('bincoeffex.tex','-depslatex');
+
+gh = figure(8,'paperposition',size);
+t = linspace(0,5,1000);
+plot(t,t,'linewidth',2);
+hold on;
+plot(t,0.5*t.^2,'linewidth',2);
+plot(t,4/(3*sqrt(pi))*t.^(3/2),'linewidth',2);
+xlabel('$t$');
+ylabel('$t$, its integral and its half integral');
+print('fracint1.tex','-depslatex');
+
+gh = figure(9,'paperposition',size);
+t = linspace(0,3,1000);
+plot(t,exp(2*t),'linewidth',2);
+hold on
+plot(t,exp(2*t)/2,'linewidth',2);
+plot(t,1/sqrt(2)*exp(2*t).*erf(sqrt(2*t)),'linewidth',2);
+xlabel('$t$');
+ylabel('$\e^{2 t}$, its integral and half integral');
+print('fracint2a.tex','-depslatex');
+
+axis([0 1 0 5])
+print('fracint2b.tex','-depslatex');
+
+gh = figure(10,'paperposition',size);
+t = linspace(0,10,1000);
+soln = zeros(1,sizeof(t));
+for i=1:length(t)
+	function y = f(z,t)
+		y = (t - z)^(-1/2)*cos(3*z);
+	end
+	integral = quad(@(z) f(z,t(i)),0,t(i));
+	soln(i) = 1/gamma(1/2)*integral;
+end
+plot(t,cos(3*t),'linewidth',2);
+hold on;
+plot(t,1/3*sin(3*t),'linewidth',2);
+xlabel('$t$');
+ylabel('$\cos 3 t$ and its integral and half integral');
+print('fracint3.tex','-depslatex');
+
+plot(t,soln(1:length(soln)/8),'linewidth',2);
+
 
