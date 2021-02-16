@@ -346,6 +346,7 @@ Let us compute some fractional-order integrals of some common functions.
     \label{ex:fracint1}
   \end{align*}
   Figure~\ref{fig:fracint1} illustrates $t$, $\tensor*[_0]{\D}{^{\left( -1/2 \right)}_t} t$ and $\tensor*[_0]{\D}{^{(-1)}_t} t$.
+  \label{ex:fracint1}
 \end{example}
 
 \begin{figure}
@@ -386,7 +387,25 @@ Let us compute some fractional-order integrals of some common functions.
   \begin{equation*}
     \tensor*[]{\D}{^{-1/2}} \cos 3 t = \frac{1}{\Gamma \left( \frac{1}{2} \right) } \int_0^t \left( t - z \right)^{\left( -1/2 \right)} \cos(3z) \d{z}.
   \end{equation*}
-  There is a closed-form solution to this integral in terms of the Fresnel integrals, but an easier check in this case is probably a numerical approach. Numerical methods are considered in detail subsequently. For now, not that the plot of this integral is illustrated in Figure~\ref{fig:fracint3} and displays the characterisitics one would expect of the half integral of the cosine function. 
+  There is a closed-form solution to this integral in terms of the Fresnel integrals, but an easier check in this case
+  is probably a numerical approach. Numerical methods are considered in greater detail subsequently. For now, we can
+  simply evaluate the integral using the \texttt{integrate()} function in octave or Matlab. The plot of this integral is
+  illustrated in Figure~\ref{fig:fracint3} and displays the characterisitics one would expect of the half integral of
+  the cosine function, including both the magnitude and the phase shift.  
+
+  The octave code that generated this figure is:
+  \begin{verbatim}
+  1  t = linspace(0,10,1000);
+  2  soln = zeros(1,length(t));
+  3  f = @(z,t) ((t - z).^(-1/2)).*cos(3*z);
+  4  for i=1:length(t)
+  5    soln(i) = 1/gamma(1/2)*integral(@(z) f(z,t(i)),0,t(i));
+  6  end
+  7  plot(t,cos(3*t),'linewidth',2);
+  8  hold on;
+  9  plot(t,1/3*sin(3*t),'linewidth',2);
+  10 plot(t,soln,'linewidth',2);
+  \end{verbatim}
 \end{example}
 
 \begin{figure}
@@ -411,11 +430,44 @@ For the Riemann-Liouville derivative definition, we integrate first and then dif
   \tensor*[^{RL}_0]{\D}{^\alpha_t}  f(t) &= \tensor*[^{RL}]{\D}{^\alpha} f(t) \\
   &= \frac{\d^{\lc \alpha \rc}}{\d t^{\lc \alpha \rc}} \tensor*[]{\D}{^{-\left( \lc \alpha \rc - \alpha \right)}} f(t) \\ 
     &= 
-    \frac{\d^{\lc \alpha \rc}}{\d t^{\lc \alpha \rc}} \left( \frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)} \int_a^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1} f(z) \d z \right). 
+    \frac{\d^{\lc \alpha \rc}}{\d t^{\lc \alpha \rc}} \left( \frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)}
+    \int_0^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1} f(z) \d z \right). 
 %}
   \end{aligned}
   \label{eq:rldef}
 \end{equation}
+
+\begin{example}
+Consider $f(t) = t$ and assume we want to compute $\tensor*[^{RL}]{\D}{^{1/2}}t$. So for this problem, $\alpha = 1/2$
+and $\lc \alpha \rc = 1$.  In Example~\ref{ex:fracint1} we computed $\tensor*[]{\D}{^{(-1/2)}}t=4/\left(3 \sqrt{\pi}\right)
+t^{3/2}$. So we have from Equation~\ref{eq:rldef}
+\begin{align*}
+\tensor*[^{RL}]{\D}{^{1/2}} t &= \frac{\d}{\d t} \left( \frac{1}{\Gamma \left( 1/2 \right)} \tensor*[]{\D}{^{-(1-1/2)}}
+ t\right)
+\\
+&=  \frac{4}{3 \sqrt{\pi}} \frac{\d}{\d t} t^\frac{3}{2} \\
+&= \frac{2}{\sqrt{\pi}} t^\frac{1}{2}.
+\end{align*}
+Note that this is not the same as the $1/2$ derivative that we could compute from Definition~\ref{def:monomialfracderiv}
+because, while both would have $t^{1/2}$, the coefficients are not the same.
+\label{ex:fracderiv1}
+\end{example}
+
+We will do a slightly different example, because its fractional derivative will be different from what we will get with
+the next definition.
+
+\begin{example}
+Add one to the function from the previous example
+\begin{align*}
+\tensor*[^{RL}]{\D}{^{1/2}} \left( t + 1 \right) &= \frac{\d}{\d t} \left( \frac{1}{\Gamma \left( 1/2 \right)}
+\tensor*[]{\D}{^{-(1-1/2)}} \left( t + 1 \right) \right)
+\\
+&=  \frac{\d}{\d t} \left( \frac{4}{3 \sqrt{\pi}} t^\frac{3}{2} +  \frac{2}{\sqrt{\pi}} t^\frac{1}{2} \right)\\
+&= \frac{2}{\sqrt{\pi}} \sqrt{t} + \frac{1}{\sqrt{\pi} \sqrt{t}}. 
+\end{align*}
+See Example~\ref{ex:caputo1} for the substitution to integrate the second term in the integral.
+\label{ex:fracderiv2}
+\end{example}
 
 
 \subsubsection{Caputo Fractional Derivative}
@@ -426,13 +478,37 @@ The Caputo definition simply switches the order of fractional-order integration 
   \tensor*[^{C}_0]{\D}{^\alpha_t}  f(t) &= \tensor*[^{C}]{\D}{^\alpha} f(t) \\
   &= \tensor*[]{\D}{^{-\left( \lc \alpha \rc - \alpha \right)}} \left( \frac{\d^{\lc \alpha \rc} f}{\d t^{\lc \alpha \rc}}(t) \right) \\ 
     &= 
-    \frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)} \int_a^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1}  \frac{\d^{\lc \alpha \rc}f}{\d t^{\lc \alpha \rc}} (z) \d z. 
+    \frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)} \int_0^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1}  \frac{\d^{\lc \alpha \rc}f}{\d t^{\lc \alpha \rc}} (z) \d z. 
 %}
   \end{aligned}
   \label{eq:caputodef}
 \end{equation}
 
+\begin{example}
+Let us repeat Example~\ref{ex:fracderiv1} using the Caputo definition:
+\begin{align*}
+\tensor*[^C]{\D}{^{1/2}} t &= \frac{1}{\Gamma \left( \frac{1}{2} \right) } \int_0^t \left( t - z \right)^{-\frac{1}{2}}
+\frac{\d z}{\d z} \d z \\
+&= \frac{1}{\sqrt{\pi}} \int_0^t \frac{1}{\sqrt{t - z}} \d z \\
+&= \frac{1}{\sqrt{\pi}} \int_t^0 -\frac{1}{\sqrt{u}} \d u \qquad (u = t - z) \\
+&= \frac{1}{\sqrt{\pi}} \int_0^t \frac{1}{\sqrt{u}} \d u \\
+&= \frac{1}{\sqrt{\pi}} \left[ 2 \sqrt{u} \right]_0^t \\
+&= \frac{2}{\sqrt{\pi}} t^\frac{1}{2}.
+\end{align*}
+This is the same as the Riemann-Liouville definition. 
+\label{ex:caputo1}
+\end{example}
 
-
-
+\begin{example}
+Let us repeate Example~\ref{ex:fracderiv2} using the Caputo definition:
+\begin{align*}
+\tensor*[^C]{\D}{^{1/2}} t &= \frac{1}{\Gamma \left( \frac{1}{2} \right) } \int_0^t \left( t - z \right)^{-\frac{1}{2}}
+\frac{\d }{\d z} \left( z + 1 \right) \d z \\
+&= \frac{1}{\sqrt{\pi}} \int_0^t \frac{1}{\sqrt{t - z}} \d z \\
+&= \frac{2}{\sqrt{\pi}} t^\frac{1}{2}.
+\end{align*}
+This is \emph{not} the same as the Riemann-Liouville definition! It is due to the fact that the constant term in the
+function was eliminated by differentiating first using the Caputo definition, but was retained when it was integrated
+first using the Riemann-Liouville definition. 
+\end{example}
 \subsubsection{Gr\"unwald-Letnikov Fractional Derivative}

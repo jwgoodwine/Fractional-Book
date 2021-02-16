@@ -111,21 +111,18 @@ print('fracint2b.tex','-depslatex');
 
 gh = figure(10,'paperposition',size);
 t = linspace(0,10,1000);
-soln = zeros(1,sizeof(t));
+soln = zeros(1,length(t));
+f = @(z,t) ((t - z).^(-1/2)).*cos(3*z);
 for i=1:length(t)
-	function y = f(z,t)
-		y = (t - z)^(-1/2)*cos(3*z);
-	end
-	integral = quad(@(z) f(z,t(i)),0,t(i));
-	soln(i) = 1/gamma(1/2)*integral;
+	soln(i) = 1/gamma(1/2)*integral(@(z) f(z,t(i)),0,t(i));
 end
 plot(t,cos(3*t),'linewidth',2);
 hold on;
 plot(t,1/3*sin(3*t),'linewidth',2);
+plot(t,soln,'linewidth',2);
 xlabel('$t$');
 ylabel('$\cos 3 t$ and its integral and half integral');
 print('fracint3.tex','-depslatex');
 
-plot(t,soln(1:length(soln)/8),'linewidth',2);
 
 
