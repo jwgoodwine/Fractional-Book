@@ -124,5 +124,14 @@ xlabel('$t$');
 ylabel('$\cos 3 t$ and its integral and half integral');
 print('fracint3.tex','-depslatex');
 
-
+gh = figure(11,'paperposition',size)
+t = linspace(0.001,5,1000);
+plot(t,t+1,'linewidth',2);
+hold on;
+plot(t,2./sqrt(pi)*sqrt(t)+1./(sqrt(pi*t)),'linewidth',2);
+plot(t,2./sqrt(pi)*sqrt(t),'linewidth',2);
+axis([0 5 0 10]);
+xlabel('$t$');
+ylabel('$t + 1$ and its half derivative');
+print('fracderivex1.tex','-depslatex');
 

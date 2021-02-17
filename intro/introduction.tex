@@ -8,18 +8,18 @@ Some people may study fractional calculus because it is inherently interesting t
   \item Integer order derivatives are \emph{local} needing information only in a neighborhood of a point. As will be seen, fractional derivatives are \emph{non-local} and can describe systems with such a feature. For example, $F=ma$ right \emph{now}. How something accelerates only depends on the forces right now, not the forces at any time in the past. For systems with ``memory'' effects, or analogous non-local spatial effects, the differential equation describing it most accurately may be fractional.
 \end{itemize}
 
-It is not surprising that ``normal'' integer-order calculus works well for most engineering applications over the past few centuries. Newton, who was one of the very early developers of calculus, clearly had a strong interest in mechanics \cite{principia}. However, there are a couple topics of more recent interest in engineering for which fractional calculus may be important. One area is bioengineering, where traditional mechanics and electromagnitism do not fully describe the system and in which non-local time effects may occur. Another is very large scale systems that may be easier to consider as having an infinite number of components, rather than keeping track of every single part. Examples of each type are given in this chapter.  Finally, fractional calculus has been used as a new tool to try to match measured responses to ``generally hard to model'' system, \textit{e.g.}, systems with friction, stiction, etc. 
+It is not surprising that ``normal'' integer-order calculus works well for most engineering applications over the past few centuries. Newton, who was one of the very early developers of calculus, clearly had a strong interest in mechanics \cite{principia}. However, there are a couple topics of more recent interest in engineering for which fractional calculus may be important. One area is bioengineering, where traditional mechanics and electromagnetism do not fully describe the system and in which non-local time effects may occur. Another is very large scale systems that may be easier to consider as having an infinite number of components, rather than keeping track of every single part. Examples of each type are given in this chapter.  Finally, fractional calculus has been used as a new tool to try to match measured responses to ``generally hard to model'' system, \textit{e.g.}, systems with friction, stiction, etc. 
 
 \section{Introductory Concepts}
 Anyone reading this book should be familiar with the notion of the first, second and higher derivatives, \textit{e.g.}, for $f(t) = t^3 + 5 t^2 + 2$, 
 \begin{align}
-  \frac{df}{dt}(t) &= 3 t^2 + 10 t \\
-  \frac{d^2f}{dt^2}(t) &= 6t + 10, 
+  \frac{\d f}{\d t}(t) &= 3 t^2 + 10 t \\
+  \frac{\d^2 f}{\d t^2}(t) &= 6t + 10, 
   \label{eq:derivs}
 \end{align}
 \textit{etc.} Also we naturally think of integrals in an antiderivative sense, \textit{e.g.},
 \begin{align}
-  \int f(t) dt &= \frac{1}{4} t^4 + \frac{5}{3} t^3 + 5 t^2 + c 
+  \int f(t) \d t &= \frac{1}{4} t^4 + \frac{5}{3} t^3 + 5 t^2 + c 
   \label{eq:integrals}
 \end{align}
 and we adopt a notation of $f^{(1)}(t)$ as the first derivative, $f^{(2)}(t)$ as the second derivative and $f^{(n)}(t)$ as the $n$th derivative as well as $f^{(-1)}(t)$ as $f$ integrated one time, $f^{(-2)}$ as $f$ integrated two times, \textit{etc.}
@@ -27,12 +27,12 @@ and we adopt a notation of $f^{(1)}(t)$ as the first derivative, $f^{(2)}(t)$ as
 A mathematically curious reader may already be wondering if there are any derivatives ``in between'' the integer ones.
 For example, is there a one-half derivative:
 \begin{equation}
-  \frac{d^\frac{1}{2} f}{d t^\frac{1}{2}}(t) = f^{\left(\frac{1}{2}\right)} = ?.
+  \frac{\d^\frac{1}{2} f}{\d t^\frac{1}{2}}(t) = f^{\left(\frac{1}{2}\right)} = ?.
   \label{eq:halfderiv}
 \end{equation}
 There is not an immediate obvious answer to this because of the fact that the integer order derivative (as is the integral) is defined as a limit
 \begin{equation}
-  \frac{df}{dt}(t) = \lim_{\Delta t \rightarrow 0} = \frac{f\left(t + \Delta t \right) - f\left(t\right)}{\Delta t}
+  \frac{\d f}{\d t}(t) = \lim_{\Delta t \rightarrow 0} = \frac{f\left(t + \Delta t \right) - f\left(t\right)}{\Delta t}
   \label{eq:limdef}
 \end{equation}
 and that is a discrete operation. There is not a natural half way to do it.
@@ -79,8 +79,8 @@ As a first step into some real functions, we consider sine and cosine.
 \begin{example}
   Consider $f(t) = \sin(t)$. The nice thing about sines and cosines are their relatively simple derivatives. In fact, from the pattern
   \begin{align*}
-    \frac{d}{dt} \sin(t) &= \cos(t) \\
-    \frac{d^2}{dt^2} \sin(t) &= -\sin(t)
+    \frac{\d}{\d t} \sin(t) &= \cos(t) \\
+    \frac{\d^2}{\d t^2} \sin(t) &= -\sin(t)
   \end{align*}
   as illustrated in Figure~\ref{fig:fracidea4}, it is clear that the derivative for this function just shifts it to the left by $\pi/2$. So clearly we would expect that the $1/2$ derivative just shifts it to the left by $\pi/4$, or the $1/2$ integral shifts it right by $\pi/3$, \textit{etc}. Therefore, a reasonable guess for the half derivative would be as illustrated in Figure~\ref{fig:fracidea5}.
 
@@ -109,18 +109,18 @@ Being able to take the fractional derivative of sine and cosine functions is nic
 \end{equation}
 which is easy to differentiate a few times and figure out the pattern:
 \begin{align}
-  \frac{df}{dt}(t) &= k t^{k-1} \\
-  \frac{d^2f}{dt^2}(t) &= k \left( k-1 \right) t^{k-2} \\
-  \frac{d^3f}{dt^3}(t) &= k \left( k-1 \right) \left( k - 2 \right) t^{k-3} \\
+  \frac{\d f}{\d t}(t) &= k t^{k-1} \\
+  \frac{\d^2 f}{\d t^2}(t) &= k \left( k-1 \right) t^{k-2} \\
+  \frac{\d^3 f}{\d t^3}(t) &= k \left( k-1 \right) \left( k - 2 \right) t^{k-3} \\
   \vdots &= \vdots \\
-  \frac{d^nf}{dt^n}(t) &= \frac{k!}{\left( k - n \right)!} t^{k-n}, \qquad n \leq k.
+  \frac{\d^n f}{\d t^n}(t) &= \frac{k!}{\left( k - n \right)!} t^{k-n}, \qquad n \leq k.
   \label{eq:polyderivs}
 \end{align}
 Since we are looking to define a fractional derivative of $t^k$, we need to see what is allowed and not allowed for $n$ to take on fractional values in Equation~\ref{eq:polyderivs}. The exponent of $t$ can be a fraction (more about that later, but engineers are so used to it they may not remember where it came from). What is definitely a problem, though, is the factorial in the denominator: if $k$ is a natural number and $n$ is not an integer, then the factorial is not defined.
 
 The factorial function is just a series of values, so it seems we can generalize the derivative of $t^k$ if we can find a curve through the factorial values. In fact, of course, it has been done and it is the gamma function defined by
 \begin{equation}
-  \Gamma\left(z\right) = \int_0^\infty x^{z - 1} e^{-x} dx
+  \Gamma\left(z\right) = \int_0^\infty x^{z - 1} e^{-x} \d x
   \label{eq:gamma}
 \end{equation}
 which is plotted for positive real values of $z$ in Figure~\ref{fig:gamma}. Clearly, for integer values
@@ -138,9 +138,10 @@ which is plotted for positive real values of $z$ in Figure~\ref{fig:gamma}. Clea
 So, returning to Equation~\ref{eq:polyderivs}, it seems that all we need to do to define a fractional derivative is to replace the factorial in the denominator with the gamma function shifted by one. Purely for aesthetics, we might as well use a gamma function in the numerator as well, which also then would allow for a fractional $k$. So, we have the following seemingly legitimate definition of a fractional derivative for a monomial.
 
 \begin{definition}
-  For the monomial, $t^k$, $k \in \mathbb R$, define the fractional derivative 
+  For the monomial, $t^k$, $k \in \mathbb R$, define a\footnote{This is \emph{a} fractional derivative, rather than \emph{the} fractional derivative because there are many definitions. } proposed fractional derivative 
   \begin{equation}
-    \frac{d^\alpha}{dt^\alpha} t^k = \frac{\Gamma\left( k + 1 \right)}{\Gamma \left( k + 1 - \alpha \right)} t^{k - \alpha}
+    \boxed{
+    \frac{\d^\alpha}{\d t^\alpha} t^k = \frac{\Gamma\left( k + 1 \right)}{\Gamma \left( k + 1 - \alpha \right)} t^{k - \alpha} }
     \label{eq:monomialfrac}
   \end{equation}
   for real values of $\alpha$, \textit{i.e.}, $\alpha \in \mathbb R$.
@@ -154,7 +155,7 @@ use this definition for monomials and extend it term-by-term to polynomials.
 For fun, we will do and example with a different $k$ and also include negative values for $\alpha$ to see if integral-like ideas appear.
 
 \begin{example}
-  Consider $f(t) = t^\frac{1}{2} = \sqrt{t}$. Various fractional order derivatives and integrals are illustrated in Figure~\ref{fig:monex}.
+  Consider $f(t) = t^\frac{1}{2} = \sqrt{t}$. Various fractional order derivatives and integrals computed using Equation~\ref{eq:monomialfrac} in Definition~\ref{def:monomialfracderiv} are illustrated in Figure~\ref{fig:monex}.
 
   \begin{figure}
     \centering
@@ -164,26 +165,21 @@ For fun, we will do and example with a different $k$ and also include negative v
   \end{figure}
 \end{example}
 
-At this point we can compute fractional derivatives and integrals of
-\begin{itemize}
-  \item sines and cosines
-  \item monomials
-  \item by extension from monomials, polynomials if we do them term-by-term.
-\end{itemize}
-
-Before we generalize further, in order to develop a very important property of the fractional derivatives, we need to go a long way back and consider fractional exponents.
-
 
 \subsection{Exponentials}
 Since
 \begin{equation*}
-  \frac{d^n}{dt^n}e^t = e^t
+  \frac{\d^n}{\d t^n}e^t = e^t
 \end{equation*}
 we would like it to also hold for when $n$ is not an integer.  Similarly, 
 \begin{equation*}
-  \frac{d^n}{dt^n} e^{\alpha t} = \alpha^n e^{\alpha t}
+  \frac{\d^n}{\d t^n} e^{\alpha t} = \alpha^n e^{\alpha t}
 \end{equation*}
-we can require that the same be true when $n$ is not an integer.
+we can require that the same, or something close to this, be true when $n$ is not an integer.
+
+At this point we can compute things we consider to be fractional derivatives and integrals of sines and cosines, monomials, by extension from monomials, polynomials if we do them term-by-term and exponentials.  Before we generalize further, in order to develop a very important property of the fractional derivatives, we need to go a long way back and consider fractional exponents.
+
+
 
 \section{The Law of Indices}
 
@@ -223,14 +219,14 @@ which gives the meaning that $y$ is the number that if you raise it to the $m$th
 
 These exercises in indices are important, because they hold for integer order derivatives
 \begin{equation}
-  \frac{d^n}{dt^n} \left( \frac{d^m}{dt^m} f(t) \right) = \frac{d^{n+m}f}{dt^{n+m}}(t).
+  \frac{\d^n}{\d t^n} \left( \frac{\d^m}{\d t^m} f(t) \right) = \frac{\d^{n+m} f}{\d t^{n+m}}(t).
 \end{equation}
 By insisting that the same property hold when $n$ and $m$ are fractional, will help in generalizing the derivative to non-integer values for a larger class of functions that simple sines, cosines and polynomials. In fact, we may as well call it an attribute.
 
 \begin{attribute}
   For real values of $\alpha$ and $\beta$
   \begin{equation}
-    \frac{d^\alpha}{dt^\alpha} \left( \frac{d^\beta}{dt^\beta} f(t) \right) = \frac{d^{\alpha + \beta}f}{dt^{\alpha + \beta}}(t).
+    \frac{\d^\alpha}{\d t^\alpha} \left( \frac{\d^\beta}{\d t^\beta} f(t) \right) = \frac{\d^{\alpha + \beta} f}{\d t^{\alpha + \beta}}(t).
     \label{eq:derivindices}
   \end{equation}
 \end{attribute}
@@ -245,25 +241,25 @@ Even in integer order calculus, integration and differentiation are not exactly 
 Multiplication by $s$ in the frequency domain corresponds to differentiation by $t$ in the time domain if we use the
 usual variables in the Laplace transform
 \begin{equation}
-  \mathcal{L} \left\{ f(t) \right\} = \int_{0^-}^\infty f(t) e^{-s t} dt = F(s),
+  \mathcal{L} \left\{ f(t) \right\} = \int_{0^-}^\infty f(t) e^{-s t} \d t = F(s),
 \end{equation}
 \textit{i.e.}, 
 \begin{equation}
-  \mathcal L \left\{ \frac{df}{dt}(t) \right\} = s F(s) - f(0)
+  \mathcal L \left\{ \frac{\d f}{\d t}(t) \right\} = s F(s) - f(0)
 \end{equation}
 or assuming zero initial conditions
 \begin{equation}
-  \mathcal L \left\{ \frac{df}{dt}(t) \right\} = s F(s).
+  \mathcal L \left\{ \frac{\d f}{\d t}(t) \right\} = s F(s).
 \end{equation}
 Higher derivatives are just increased exponents on the $s$, \textit{e.g.}, 
 \begin{equation}
-  \mathcal L \left\{ \frac{d^n f}{dt^n}(t) \right\} = s^n F(s)
+  \mathcal L \left\{ \frac{\d^n f}{\d t^n}(t) \right\} = s^n F(s)
 \end{equation}
 again assuming zero initial conditions.
 
 Of course, the half derivative then would correspond to $s$ raised to the one-half power:
 \begin{equation}
-  \mathcal L \left\{ \frac{d^\frac{1}{2} f}{d t^\frac{1}{2}}(t) \right\} = s^\frac{1}{2} F(s).
+  \mathcal L \left\{ \frac{\d^\frac{1}{2} f}{\d t^\frac{1}{2}}(t) \right\} = s^\frac{1}{2} F(s).
 \end{equation}
 
 It turns out that irrational transfer functions can arise rather easily in two types of cases:

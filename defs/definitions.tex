@@ -12,33 +12,33 @@ A few computations are needed before we study the functions.
 \subsubsection{Gaussian Integral}
 The Gaussian integral is
 \begin{equation}
-  \boxed {\int_{-\infty}^\infty e^{-z^2} dz = \sqrt{\pi}, }
+  \boxed {\int_{-\infty}^\infty e^{-z^2} \d z = \sqrt{\pi}, }
   \label{eq:gaussianintegral}
 \end{equation}
 and is the area under the curve in Figure~\ref{fig:gaussianintegral}. Clearly, also
 \begin{equation*}
-  \int_0^\infty e^{-z^2} dz = \frac{\sqrt{\pi}}{2}.
+  \int_0^\infty e^{-z^2} \d z = \frac{\sqrt{\pi}}{2}.
 \end{equation*}
 
 To see this, consider the square of the integral and switch to polar coordinates
 \begin{align*}
-  \left( \int_{-\infty}^\infty e^{-z^2} dz \right)^2 &= \left( \int_{-\infty}^\infty e^{-z_1^2} dz_1 \right) \left( \int_{-\infty}^\infty e^{-z_2^2} dz_2 \right) \\
-  &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-z_1^2 - z_2^2} dz_1 dz_2 \\
-  &= \int_0^{2 \pi} \int_0^\infty r e^{-r^2} dr d\theta \\
-  &= 2 \pi \int_0^\infty r e^{-r^2} dr \\
-  &= \pi \int_{-\infty}^0 e^u du \qquad (u = -r^2) \\
+  \left( \int_{-\infty}^\infty e^{-z^2} \d z \right)^2 &= \left( \int_{-\infty}^\infty e^{-z_1^2} \d z_1 \right) \left( \int_{-\infty}^\infty e^{-z_2^2} \d z_2 \right) \\
+  &= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} e^{-z_1^2 - z_2^2} \d z_1 \d z_2 \\
+  &= \int_0^{2 \pi} \int_0^\infty r e^{-r^2} \d r \d \theta \\
+  &= 2 \pi \int_0^\infty r e^{-r^2} \d r \\
+  &= \pi \int_{-\infty}^0 e^u \d u \qquad (u = -r^2) \\
   &= \pi,
 \end{align*}
 which shows
 \begin{equation*}
-  \int_{-\infty}^{\infty} e^{-z^2} dz = \sqrt{\pi}.
+  \int_{-\infty}^{\infty} e^{-z^2} \d z = \sqrt{\pi}.
 \end{equation*}
 
 \begin{figure}
   \centering
   \subimport{figs/}{gaussianintegral}
   \caption{Gaussian integral.}
-\label{fig:gaussianintegral}
+  \label{fig:gaussianintegral}
 \end{figure}
 
 
@@ -50,15 +50,15 @@ Because there will be multiple definitions of a fractional derivative, we need a
 \subsection{The Gamma Function}
 The gamma function will appear just about everywhere where we deal with fractional derivatives. We have already seen an example. The integral representation of the gamma function is
 \begin{equation}
-  \boxed{ \Gamma(t) = \int_0^\infty e^{-z} z^{t-1} dz. }
+  \boxed{ \Gamma(t) = \int_0^\infty e^{-z} z^{t-1} \d z. }
   \label{eq:gammadef}
 \end{equation}
 
 In the case where $t$ is an integer, they way to compute the integral by hand would be to do so repeated by parts to work the exponent of $z$ in the integrand down to zero:
 \begin{align*}
- \Gamma(t) &= 
-  \int_0^\infty e^{-z} z^{t-1} dz \\ &= \left[ z^{t-1} \left(- e^{-z} \right) \right]^\infty_0 + \left(t-1 \right) \int_0^\infty e^{-z} z^{t-2} dz \\
-&= 0 - 0 + \left( t - 1 \right) \Gamma(t-1).
+  \Gamma(t) &= 
+  \int_0^\infty e^{-z} z^{t-1} \d z \\ &= \left[ z^{t-1} \left(- e^{-z} \right) \right]^\infty_0 + \left(t-1 \right) \int_0^\infty e^{-z} z^{t-2} \d z \\
+  &= 0 - 0 + \left( t - 1 \right) \Gamma(t-1).
 \end{align*}
 Comparing the last line to the right hand side of the line above it gives a recursion relation analogous to $n \left(n - 1 \right)! = n!$, 
 \begin{equation}
@@ -69,9 +69,9 @@ Also, continuing to integrate by parts and knowing that the boundary terms will 
 \begin{align*}
   \Gamma(t) &= \left( t - 1 \right) \Gamma \left( t - 1 \right) \\
   &= \left[ \left( t - 1 \right) \left( t - 2 \right) \right] \Gamma \left( t - 2 \right) \\
- & \vdots \\
- &= \left[ \left(t - 1 \right) \left( t - 2 \right) \cdots 1 \right] \Gamma(1) \\
- &= \left( t - 1 \right)!,
+  & \vdots \\
+  &= \left[ \left(t - 1 \right) \left( t - 2 \right) \cdots 1 \right] \Gamma(1) \\
+  &= \left( t - 1 \right)!,
 \end{align*}
 which proves that $\boxed{ \Gamma(t) = (t-1)!, t \in \mathbb Z }$, where $\mathbb Z$ is the set of natural numbers.
 
@@ -81,7 +81,7 @@ While the gamma function provides a nice generalization of the factorial for pos
   \centering
   \subimport{figs/}{gammaall}
   \caption{Gamma function for positive and negative real $t$ values.}
-\label{fig:gammaall}
+  \label{fig:gammaall}
 \end{figure}
 
 \begin{example}
@@ -99,416 +99,462 @@ The value of the gamma function at some special values should be cataloged.
 \begin{itemize}
   \item $\boxed{ \Gamma(1) = 1. }$ This can be directly computed
     \begin{equation*}
-      \Gamma(1) = \int_0^\infty e^{-z} z^{1 - 1} dz = \left. -e^{-z} \right|_0^\infty = 1.
-    \end{equation*}
-  \item $ \boxed{ \Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}. }$ This can also be directly computed using the Gaussian integral from Equation~\ref{eq:gaussianintegral} 
-    \begin{align*}
-      \Gamma\left(\frac{1}{2}\right) &= \int_0^\infty e^{-z} z^{\frac{1}{2} - 1} dz 
-      = \int_0^\infty e^{-z} z^{-\frac{1}{2}} dz \\ 
-      &= 2 \int_0^\infty e^{-u^2} du \qquad (u^2 = z) \\
-      &= \sqrt{\pi}.
+      \Gamma(1) = \int_0^\infty e^{-z} z^{1 - 1} \d z = \left. -e^{-z} \right|_0^\infty = 1.
+      \end{equation*}
+    \item $ \boxed{ \Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}. }$ This can also be directly computed using the Gaussian integral from Equation~\ref{eq:gaussianintegral} 
+      \begin{align*}
+	\Gamma\left(\frac{1}{2}\right) &= \int_0^\infty e^{-z} z^{\frac{1}{2} - 1} \d z 
+	= \int_0^\infty e^{-z} z^{-\frac{1}{2}} \d z \\ 
+	&= 2 \int_0^\infty e^{-u^2} \d u \qquad (u^2 = z) \\
+	&= \sqrt{\pi}.
+      \end{align*}
+    \item $ \boxed{ \Gamma\left(\frac{3}{2}\right) = \frac{\sqrt{\pi}}{2}. }$  This can be computed using Equation~\ref{eq:gammarecursion}
+      \begin{equation*}
+	\Gamma \left( \frac{3}{2} \right) = \left( \frac{3}{2} -1 \right) \Gamma \left( \frac{3}{2} - 1 \right) = \frac{1}{2} \sqrt{\pi}.
+      \end{equation*}
+    \item $\boxed{ \Gamma\left(\frac{5}{2}\right) = \frac{3 \sqrt{\pi}}{4}. }$ Similar to the previous one
+      \begin{equation*}
+	\Gamma \left( \frac{5}{2} \right) = \left( \frac{5}{2} - 1 \right) \Gamma \left( \frac{5}{2} - 1 \right) = \frac{3}{2} \frac{\sqrt{\pi}}{2} = \frac{3}{4} \sqrt{\pi}.
+      \end{equation*}
+    \item $\boxed { \Gamma \left( -\frac{1}{2} \right) = -2 \sqrt{\pi}.  }$  Similarly, for some negative values, this follows from the recursion relation in Equation~\ref{eq:gammarecursion}
+      \begin{equation*}
+	\Gamma \left( \frac{1}{2} \right) = \left( \frac{1}{2} - 1 \right) \Gamma \left( \frac{1}{2} - 1 \right) \qquad \Longleftrightarrow \qquad \Gamma \left( -\frac{1}{2} \right) = \frac{\Gamma \left( \frac{1}{2} \right)}{-\frac{1}{2}} = -2 \sqrt{\pi}.
+      \end{equation*}
+  \end{itemize}
+
+  The gamma function also appears in fractional-order inverse Laplace transforms. Similarly to what we did previously, we will start with integer-order computations and then generalize. Consider the usual Laplace transform of $f(t) = t^n$ where $n \in \mathbb Z$
+  \begin{align*}
+    \mathcal L \left\{ t^n \right\} &= \int_{0^-}^\infty t^n e^{-s t} \d t \\
+    &= \left. \left( - t^n \frac{1}{s} e^{-s t} \right) \right|_0^\infty + \frac{n}{s}  \int_{0^-}^\infty t^{n-1} e^{-st} \d t \\
+      &= \frac{n}{s}  \int_{0^-}^\infty t^{n-1} e^{-st} \d t  \\
+      & \vdots \\
+      &= \frac{n!}{s^{n+1}} \int_{0^-}^\infty e^{-s t} \d t  \\
+      &= \frac{n!}{s^{n+1}}. 
     \end{align*}
-  \item $ \boxed{ \Gamma\left(\frac{3}{2}\right) = \frac{\sqrt{\pi}}{2}. }$  This can be computed using Equation~\ref{eq:gammarecursion}
+
+    A perfectly reasonable, albeit not mathematically rigorous, inference at this point would be 
     \begin{equation*}
-      \Gamma \left( \frac{3}{2} \right) = \left( \frac{3}{2} -1 \right) \Gamma \left( \frac{3}{2} - 1 \right) = \frac{1}{2} \sqrt{\pi}.
+      \boxed{ \mathcal L  \left\{ t^\alpha \right\} =  \frac{\Gamma \left( \alpha + 1 \right)}{s^{\alpha + 1}}. }
     \end{equation*}
-  \item $\boxed{ \Gamma\left(\frac{5}{2}\right) = \frac{3 \sqrt{\pi}}{4}. }$ Similar to the previous one
+    In fact, we can compute it directly
+    \begin{align*}
+      \mathcal L \left\{ t^\alpha \right\} &= \int_{0^-}^\infty t^\alpha e^{-s t} \d t \\
+      &= \int_{0^-}^\infty \left( \frac{u}{s} \right)^\alpha \frac{e^{-u}}{s} \d u \qquad \left( u = st \right) \\
+      &= \frac{1}{s^{\alpha + 1}} \int_{0^-}^\infty e^{-u} u^\alpha \d u \\
+      &= \frac{\Gamma \left( \alpha + 1 \right)}{s^{\alpha + 1}}, \quad \alpha > -1.
+    \end{align*}
+
+    \subsection{Binomial Coefficient}
+    In the integer case, the binomial coefficient for $n,k \in \mathbb Z$ is
+    \begin{equation}
+      \left( \begin{array}{c} n \\ k \end{array} \right) = \frac{n!}{k!\left(n-k\right)!}.
+      \label{eq:binomialint}
+    \end{equation}
+    Common interpretations include entries in Pascal's triangle and ``n choose k'' because it is the number of different ways to choose $k$ elements from a set with $n$ elements. It will be convenient, but perhaps not so rigorous, to consider the binomial coefficient to be zero ``outside'' of Pascal's triangle. This makes sense for the probability: \eg, there are zero ways to choose $5$ elements from a set of $4$.
+
+    We will use it because it naturally arises in finite difference expansions, and we will naturally want to allow the entries to be non-integers. So we will have the generalization
+    \begin{equation}
+      \left( \begin{array}{c} \alpha \\ \beta \end{array} \right) = \frac{\Gamma\left(\alpha+1\right)}{\Gamma\left(\beta + 1 \right) \Gamma \left(\alpha - \beta + 1\right)},
+      \label{eq:binomialfrac}
+    \end{equation}
+    where $\alpha, \beta \in \mathbb R$, \ie, they can be fractional.
+
+    The following example illustrates the manner in which this will play a role in a subsequent fractional derivative definition.
+
+    \begin{example}
+      Consider the binomial coefficient with $n=4$ for various values of $k$, as shown in the first row of Table~\ref{tab:binomialex}, where we have adopted the convention that the value is zero where the factorials are not defined. These values are also plotted in Figure~\ref{fig:binomialex}. 
+
+      \begin{table}
+	\centering
+	\begin{tabular}{|c||c|c|c|}
+	  \hline k & n=4&n=3.95&n=3.5 \\
+	  \hline \hline
+	  0& 1& 1& 1\\ \hline
+	  1& 4& 3.95 &3.5\\ \hline
+	  2& 6& 5.82625& 4.375\\ \hline
+	  3& 4& 3.78706& 2.1875\\ \hline
+	  4& 1& 0.899427& 0.273438\\ \hline 
+	  5& 0& -0.00899427& -0.0273438\\ \hline
+	  6& 0& 0.001574& 0.00683594\\ \hline
+	  7& 0& -0.000460957& -0.00244141\\ \hline
+	  8& 0&  0.00017574& 0.00106812\\ \hline
+	  9& 0& -0.00007908& -0.000534058\\ \hline
+	  10& 0& 0.00003994& 0.000293732 \\ \hline
+	\end{tabular}
+	\caption{Binomial coefficients with $n=4$, $n=3.95$ and $n=3.5$ for various integer values of $k$}
+	\label{tab:binomialex}
+      \end{table}
+
+      \begin{figure}
+	\centering
+	\subimport{figs/}{bincoeffex}
+	\caption{Binomial coefficient values for $n=4, 3.95 and 3.5$ for various $k$ values.}
+	\label{fig:binomialex}
+      \end{figure}
+
+      Note that for a small change in $n$ from $4$ to $3;95$ the values of the binomial coefficient are close to the values for $4$. However, while the values for increasing $\beta$ are tending towards zero in absolute value, they are not equal to zero and the rate of convergence is not all that fast.
+    \end{example}
+
+    \subsection{The Error Function and Complementary Error Functions}
+    These functions will be important as solutions to equations like
     \begin{equation*}
-      \Gamma \left( \frac{5}{2} \right) = \left( \frac{5}{2} - 1 \right) \Gamma \left( \frac{5}{2} - 1 \right) = \frac{3}{2} \frac{\sqrt{\pi}}{2} = \frac{3}{4} \sqrt{\pi}.
+      \frac{\d^\frac{1}{2} x}{\d t^\frac{1}{2}}(t) + x(t) = 1.
     \end{equation*}
-  \item $\boxed { \Gamma \left( -\frac{1}{2} \right) = -2 \sqrt{\pi}.  }$  Similarly, for some negative values, this follows from the recursion relation in Equation~\ref{eq:gammarecursion}
+
+    The error function is defined by
+    \begin{equation}
+      \boxed{ \erf(t) = \frac{2}{\sqrt{\pi}} \int_0^t e^{-z^2} \d z. }
+      \label{eq:erf}
+    \end{equation}
+    Note that it is like the Gaussian integral, but only over a subset of the range of the definite integral. The \emph{complementary error function} is the integral over the remaining part of the domain
+    \begin{equation}
+      \boxed{ \erfc(t)  = \frac{2}{\sqrt{\pi}} \int_t^\infty e^{-z^2} \d z. }
+      \label{eq:erfc}
+    \end{equation}
+    Plots of both the error function and the complementary error function appear in Figure~\ref{fig:erferfc}. It is clear from the definitions and the plots that
+    \begin{equation}
+      \erfc(t) = 1 - \erf(t).
+      \label{eq:erfs}
+    \end{equation}
+
+    \begin{figure}
+      \centering
+      \subimport{figs/}{erferfc}
+      \caption{The error function and complementary error function.}
+      \label{fig:erferfc}
+    \end{figure}
+
+    Evaluating $\erf$ at specific values of $t$:
+    \begin{itemize}
+      \item $ \boxed{ \erf(0) = \frac{2}{\sqrt{ \pi} } \int_0^0 e^{-u^2} \d u = 0. }$
+      \item $ \boxed{ \erf(\infty) = \frac{2}{\sqrt{ \pi }} \int_0^\infty e^{-u^2} \d u = 1. }$
+      \item $ \boxed{ \erf(-\infty) = -1. }$
+    \end{itemize}
+
+    \subsection{Mittag-Leffler Functions}
+    \emph{Mittag-Leffler Functions} are generalizations of the exponential function, and play a role in solutions to constant-coefficient, homogeneous linear fractional-order ordinary differential equations analogous to the exponential for integer order differential equations. As will be shown subsequently, just as $x(t) = c e^{-a t}$ is the solution to
     \begin{equation*}
-      \Gamma \left( \frac{1}{2} \right) = \left( \frac{1}{2} - 1 \right) \Gamma \left( \frac{1}{2} - 1 \right) \qquad \Longleftrightarrow \qquad \Gamma \left( -\frac{1}{2} \right) = \frac{\Gamma \left( \frac{1}{2} \right)}{-\frac{1}{2}} = -2 \sqrt{\pi}.
+      \frac{\d x}{\d t}(t) + a x(t) = 0
     \end{equation*}
-\end{itemize}
+    the function $c t^{\alpha - 1} E_{\alpha,\alpha}\left(-a t^\alpha\right)$, where $E_{\alpha,\alpha}$ is the Mittag-Leffler function to be defined shortly, is the solution to 
+    \begin{equation*}
+      \frac{\d^\alpha x}{\d t^\alpha}(t) + a x(t) = 0.
+    \end{equation*}
 
-The gamma function also appears in fractional-order inverse Laplace transforms. Similarly to what we did previously, we will start with integer-order computations and then generalize. Consider the usual Laplace transform of $f(t) = t^n$ where $n \in \mathbb Z$
-\begin{align*}
-  \mathcal L \left\{ t^n \right\} &= \int_{0^-}^\infty t^n e^{-s t} dt \\
-  &= \left. \left( - t^n \frac{1}{s} e^{-s t} \right) \right|_0^\infty + \frac{n}{s}  \int_{0^-}^\infty t^{n-1} e^{-st} dt \\
-    &= \frac{n}{s}  \int_{0^-}^\infty t^{n-1} e^{-st} dt  \\
-    & \vdots \\
-    &= \frac{n!}{s^{n+1}} \int_{0^-}^\infty e^{-s t} dt  \\
-    &= \frac{n!}{s^{n+1}}. 
-\end{align*}
+    Recall the Taylor series of the exponential function about $t=0$ is
+    \begin{equation*}
+      e^{t} = 1 + t + \frac{t^2}{2!} + \frac{t^3}{3!} + \cdots = \sum_{k=0}^\infty \frac{t^k}{k!}.
+    \end{equation*}
 
-A perfectly reasonable, albeit not mathematically rigorous, inference at this point would be 
-\begin{equation*}
-  \boxed{ \mathcal L  \left\{ t^\alpha \right\} =  \frac{\Gamma \left( \alpha + 1 \right)}{s^{\alpha + 1}}. }
-\end{equation*}
-In fact, we can compute it directly
-\begin{align*}
-  \mathcal L \left\{ t^\alpha \right\} &= \int_{0^-}^\infty t^\alpha e^{-s t} dt \\
-  &= \int_{0^-}^\infty \left( \frac{u}{s} \right)^\alpha \frac{e^{-u}}{s} du \qquad \left( u = st \right) \\
-  &= \frac{1}{s^{\alpha + 1}} \int_{0^-}^\infty e^{-u} u^\alpha du \\
-  &= \frac{\Gamma \left( \alpha + 1 \right)}{s^{\alpha + 1}}, \quad \alpha > -1.
-\end{align*}
+    These days we can not help but replace factorials with gamma functions. However, just doing that in the previous equation does not generalize anything because
+    \begin{equation*}
+      \sum_{k=0}^\infty \frac{t^k}{\Gamma \left( k + 1 \right)} = e^t,
+    \end{equation*}
+    and nothing is really changed. 
 
-\subsection{Binomial Coefficient}
-In the integer case, the binomial coefficient for $n,k \in \mathbb Z$ is
-\begin{equation}
-  \left( \begin{array}{c} n \\ k \end{array} \right) = \frac{n!}{k!\left(n-k\right)!}.
-  \label{eq:binomialint}
-\end{equation}
-Common interpretations include entries in Pascal's triangle and ``n choose k'' because it is the number of different ways to choose $k$ elements from a set with $n$ elements. It will be convenient, but perhaps not so rigourous, to consider the binomial coefficient to be zero ``outside'' of Pascal's triangle. This makes sense for the probability: \eg, there are zero ways to choose $5$ elements from a set of $4$.
+    The \emph{one parameter} and \emph{two parameter} Mittag-Leffler functions put a coefficient in front of the $k$ and $1$ in the gamma function
+    \begin{equation}
+      \boxed{ E_\alpha(t) = \sum_{k=1}^\infty \frac{t^k}{\Gamma \left( \alpha k + 1 \right)}, \quad \alpha > 0 }
+      \label{eq:mlone}
+    \end{equation}
+    and
+    \begin{equation}
+      \boxed{  E_{\alpha, \beta}(t) = \sum_{k=1}^\infty \frac{t^k}{\Gamma \left( \alpha k + \beta \right)}, \quad \alpha, \beta > 0. }
+      \label{eq:mltwo}
+    \end{equation}
 
-We will use it because it naturally arises in finit difference expansions, and we will naturally want to allow the entries to be non-integers. So we will have the generalization
-\begin{equation}
-  \left( \begin{array}{c} \alpha \\ \beta \end{array} \right) = \frac{\Gamma\left(\alpha+1\right)}{\Gamma\left(\beta + 1 \right) \Gamma \left(\alpha - \beta + 1\right)},
-  \label{eq:binomialfrac}
-\end{equation}
-where $\alpha, \beta \in \mathbb R$, \ie, they can be fractional.
+    In order to gain some insight into these functions, let us see what the effect of varying the two parameters does. Figure~\ref{fig:mlfalpha} plots $E_{\alpha,t}(-t)$ for various values of $\alpha$. Observe that for negative values, smaller $\alpha$ values are ``stronger'' whereas for positive values of $t$ the opposite is basically the case. All of the curves go through the value of $1$ at $t=0$. The curves are more ``curved'' than the exponential for $\alpha$ values less than one, and less curved for $\alpha$ values greater than one.
 
-The following example illustrates the manner in which this will play a role in a subsequent fractional derivative definition.
+    \begin{figure}
+      \centering
+      \subimport{figs/}{mlfalpha}
+      \caption{Mittag-Leffler functions, $E_{\alpha,1}(-t)$ for $\alpha = 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75$ and $2$. Looking at the left part of the plot near $t = -1$, $\alpha = 0.25$ is the top curve, and they are in order down to $\alpha = 2$ for the bottom curve.}
+      \label{fig:mlfalpha}
+    \end{figure}
 
-\begin{example}
-  Consider the binomial coefficient with $n=4$ for various values of $k$, as shown in the first row of Table~\ref{tab:binomialex}, where we have adopted the convention that the value is zero where the factorials are not defined. These values are also plotted in Figure~\ref{fig:binomialex}. 
+    Figure~\ref{fig:mlfbeta} illustrates $E_{1,\beta}(-t)$ for various $\beta$ values. The trend to observe is that around time $t=0$, the lowest curve corresponds to the smallest $\beta$ values, and each subsequent curve increased from that one correspond to increasing $\beta$ values. 
 
-  \begin{table}
-    \centering
-    \begin{tabular}{|c||c|c|c|}
-      \hline k & n=4&n=3.95&n=3.5 \\
-\hline \hline
-0& 1& 1& 1\\ \hline
-1& 4& 3.95 &3.5\\ \hline
-2& 6& 5.82625& 4.375\\ \hline
-3& 4& 3.78706& 2.1875\\ \hline
-4& 1& 0.899427& 0.273438\\ \hline 
-5& 0& -0.00899427& -0.0273438\\ \hline
-6& 0& 0.001574& 0.00683594\\ \hline
-7& 0& -0.000460957& -0.00244141\\ \hline
-8& 0&  0.00017574& 0.00106812\\ \hline
-9& 0& -0.00007908& -0.000534058\\ \hline
-10& 0& 0.00003994& 0.000293732 \\ \hline
-    \end{tabular}
-    \caption{Binomial coefficients with $n=4$, $n=3.95$ and $n=3.5$ for various integer values of $k$}
-    \label{tab:binomialex}
-  \end{table}
+    \begin{figure}
+      \centering
+      \subimport{figs/}{mlfbeta}
+      \caption{Mittag-Leffler functions, $E_{1, \beta}(-t)$ for $\beta = 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75$ and $2$. Near $t=0$ the lowest curve is for $\beta = 0.25$ and increased values in $\beta$ correspond to the curves above that in order.}
+      \label{fig:mlfbeta}
+    \end{figure}
 
-  \begin{figure}
-    \centering
-    \subimport{figs/}{bincoeffex}
-    \caption{Binomial coefficient values for $n=4, 3.95 and 3.5$ for various $k$ values.}
-    \label{fig:binomialex}
-  \end{figure}
-
-  Note that for a small change in $n$ from $4$ to $3;95$ the values of the binomial coefficient are close to the values for $4$. However, while the values for increasing $\beta$ are tending towards zero in absolute value, they are not equal to zero and the rate of convergence is not all that fast.
-\end{example}
-
-\subsection{The Error Function and Complementary Error Functions}
-These functions will be important as solutions to equations like
-\begin{equation*}
-  \frac{d^\frac{1}{2} x}{d t^\frac{1}{2}}(t) + x(t) = 1.
-\end{equation*}
-
-The error function is defined by
-\begin{equation}
-  \boxed{ \erf(t) = \frac{2}{\sqrt{\pi}} \int_0^t e^{-z^2} dz. }
-  \label{eq:erf}
-\end{equation}
-Note that it is like the Gaussian integral, but only over a subset of the range of the definite integral. The \emph{complementary error function} is the integral over the remaining part of the domain
-\begin{equation}
-  \boxed{ \erfc(t)  = \frac{2}{\sqrt{\pi}} \int_t^\infty e^{-z^2} dz. }
-  \label{eq:erfc}
-\end{equation}
-Plots of both the error function and the complementary error function appear in Figure~\ref{fig:erferfc}. It is clear from the definitions and the plots that
-\begin{equation}
-  \erfc(t) = 1 - \erf(t).
-  \label{eq:erfs}
-\end{equation}
-
-\begin{figure}
-  \centering
-  \subimport{figs/}{erferfc}
-  \caption{The error function and complementary error function.}
-  \label{fig:erferfc}
-\end{figure}
-
-Evaluating $\erf$ at specific values of $t$:
-\begin{itemize}
-  \item $ \boxed{ \erf(0) = \frac{2}{\sqrt{ \pi} } \int_0^0 e^{-u^2} du = 0. }$
-  \item $ \boxed{ \erf(\infty) = \frac{2}{\sqrt{ \pi }} \int_0^\infty e^{-u^2} du = 1. }$
-  \item $ \boxed{ \erf(-\infty) = -1. }$
-\end{itemize}
-
-\subsection{Mittag-Leffler Functions}
-\emph{Mittag-Leffler Functions} are generalizations of the exponential function, and play a role in solutions to constant-coefficient, homogeneous linear fractional-order ordinary differential equations analogous to the exponential for integer order differential equations. As will be shown subsequently, just as $x(t) = c e^{-a t}$ is the solution to
-\begin{equation*}
-  \frac{dx}{dt}(t) + a x(t) = 0
-\end{equation*}
-the function $c t^{\alpha - 1} E_{\alpha,\alpha}\left(-a t^\alpha\right)$, where $E_{\alpha,\alpha}$ is the Mittag-Leffler function to be defined shortly, is the solution to 
-\begin{equation*}
-  \frac{d^\alpha x}{dt^\alpha}(t) + a x(t) = 0.
-\end{equation*}
-
-Recall the Taylor series of the exponential function about $t=0$ is
-\begin{equation*}
-  e^{t} = 1 + t + \frac{t^2}{2!} + \frac{t^3}{3!} + \cdots = \sum_{k=0}^\infty \frac{t^k}{k!}.
-\end{equation*}
-
-These days we can not help but replace factorials with gamma functions. However, just doing that in the previous equation does not generalize anything because
-\begin{equation*}
-  \sum_{k=0}^\infty \frac{t^k}{\Gamma \left( k + 1 \right)} = e^t,
-\end{equation*}
-and nothing is really changed. 
-
-The \emph{one parameter} and \emph{two parameter} Mittag-Leffler functions put a coefficient in front of the $k$ and $1$ in the gamma function
-\begin{equation}
-  \boxed{ E_\alpha(t) = \sum_{k=1}^\infty \frac{t^k}{\Gamma \left( \alpha k + 1 \right)}, \quad \alpha > 0 }
-  \label{eq:mlone}
-\end{equation}
-and
-\begin{equation}
-  \boxed{  E_{\alpha, \beta}(t) = \sum_{k=1}^\infty \frac{t^k}{\Gamma \left( \alpha k + \beta \right)}, \quad \alpha, \beta > 0. }
-  \label{eq:mltwo}
-\end{equation}
-
-In order to gain some insight into these functions, let us see what the effect of varying the two parameters does. Figure~\ref{fig:mlfalpha} plots $E_{\alpha,t}(-t)$ for various values of $\alpha$. Observe that for negative values, smaller $\alpha$ values are ``stronger'' whereas for positive values of $t$ the opposite is basically the case. All of the curves go through the value of $1$ at $t=0$. The curves are more ``curved'' than the exponential for $\alpha$ values less than one, and less curved for $\alpha$ values greater than one.
-
-\begin{figure}
-  \centering
-  \subimport{figs/}{mlfalpha}
-  \caption{Mittag-Leffler functions, $E_{\alpha,1}(-t)$ for $\alpha = 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75$ and $2$. Looking at the left part of the plot near $t = -1$, $\alpha = 0.25$ is the top curve, and they are in order down to $\alpha = 2$ for the bottom curve.}
-  \label{fig:mlfalpha}
-\end{figure}
-
-Figure~\ref{fig:mlfbeta} illustrates $E_{1,\beta}(-t)$ for various $\beta$ values. The trend to observe is that around time $t=0$, the lowest curve corresponds to the smallest $\beta$ values, and each subsequent curve increased from that one correspond to increasing $\beta$ values. 
-
-\begin{figure}
-  \centering
-  \subimport{figs/}{mlfbeta}
-  \caption{Mittag-Leffler functions, $E_{1, \beta}(-t)$ for $\beta = 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75$ and $2$. Near $t=0$ the lowest curve is for $\beta = 0.25$ and increased values in $\beta$ correspond to the curves above that in order.}
-  \label{fig:mlfbeta}
-\end{figure}
-
-There are certain combinations of $\alpha$ and $\beta$ where $E_{\alpha,\beta}(t)$ is equal to a known function. Specifically
-\begin{itemize}
-  \item $\boxed{ E_{1,1}(t) = E_1(t) = e^t. }$
-  \item $\boxed{ E_{\frac{1}{2},1} (t) = E_\frac{1}{2}(t) = x^{t^2} \erfc(-t)  }$
-  \item $\boxed{ E_{1,2}(t) = \frac{e^t - 1}{t}  }$
-  \item $\boxed{ E_{2,1}(t^2) \cosh(t) }$
-  \item $\boxed{ E_{2,2 }(t^2) = \frac{\sinh(t)}{t}. }$
-\end{itemize}
+    There are certain combinations of $\alpha$ and $\beta$ where $E_{\alpha,\beta}(t)$ is equal to a known function. Specifically
+    \begin{itemize}
+      \item $\boxed{ E_{1,1}(t) = E_1(t) = e^t. }$
+      \item $\boxed{ E_{\frac{1}{2},1} (t) = E_\frac{1}{2}(t) = x^{t^2} \erfc(-t)  }$
+      \item $\boxed{ E_{1,2}(t) = \frac{e^t - 1}{t}  }$
+      \item $\boxed{ E_{2,1}(t^2) \cosh(t) }$
+      \item $\boxed{ E_{2,2 }(t^2) = \frac{\sinh(t)}{t}. }$
+    \end{itemize}
 
 
-\section{Fractional Integration and Fractional Derivatives}
+    \section{Fractional Integration and Fractional Derivatives}
 
-From last chapter, it was obvious that one element to generalize from integer-order derivatives to allow for fractional or real-ordered derivatives, was the gamma function in cases where the only barrier to allowing a derivative to take real values was a factorial. This section covers a couple other similar tools that we will need shortly.
+    From last chapter, it was obvious that one element to generalize from integer-order derivatives to allow for fractional or real-ordered derivatives, was the gamma function in cases where the only barrier to allowing a derivative to take real values was a factorial. This section covers a couple other similar tools that we will need shortly.
 
-\subsection{Fractional Integration}
+    \subsection{Fractional Integration}
 
-It turns out we will more easily find a general formula for a fractional number of integrations, as opposed to differentiation. That is no problem, though, because, for example, if we want the $1/3$ derivative, we can integrate a function $2/3$ times and then compute the integer-order first derivative of the result, the law of indices (through the Fundamental Theorem of Calculus) gives that the result what we want. 
+    It turns out we will more easily find a general formula for a fractional number of integrations, as opposed to differentiation. That is no problem, though, because, for example, if we want the $1/3$ derivative, we can integrate a function $2/3$ times and then compute the integer-order first derivative of the result, the law of indices (through the Fundamental Theorem of Calculus) gives that the result what we want. 
 
-\begin{theorem}
-  Let $f(t)$ be continuous. Then the $n$th repeated integral of $f(t)$ is given by
-  \begin{align}
-   f^{(-n)}(t) &= \int_a^{t}  \ \int_a^{\sigma_1}  \int_a^{\sigma_2}  \int_a^{\sigma_3} \cdots \int_a^{\sigma_{n-1}} f(\sigma_n) d \sigma_n d \sigma_{n-1} \cdots d \sigma_1 \nonumber  \\
-   &= \frac{1}{\left( n - 1 \right)!} \int_a^t \left( x - z \right)^{n-1} f(z) dz.
-    \label{eq:cauchy}
-  \end{align}
- \label{th:cauchy}
-\end{theorem}
-\begin{proof}
-  This is fairly apparent. In the case where $n$ is an integer, integrate the right hand side by parts $n-1$ times to obtain the left hand side. 
-\end{proof}
+    The following theorem contains what is commonly called \emph{Cauchy's formula for repeated integration}.
 
-This theorem should make some intuitive sense. If you had to evaluate the single integral, the way to to it would be to integrate by parts $n$ times to eliminate the $(x - z)$ term, which would give the multiple integral form of it.
+    \begin{theorem}
+      Let $f(t)$ be continuous. Then the $n$th repeated integral of $f(t)$ is given by
+      \begin{equation}
+	\begin{aligned}
+	  f^{(-n)}(t) &= \int_a^{t}  \ \int_a^{\sigma_1}  \int_a^{\sigma_2}  \int_a^{\sigma_3} \cdots \int_a^{\sigma_{n-1}} f(\sigma_n) d \sigma_n d \sigma_{n-1} \cdots d \sigma_1  \\
+	  &= \frac{1}{\left( n - 1 \right)!} \int_a^t \left( x - z \right)^{n-1} f(z) \d z.
+	\end{aligned}
+	\label{eq:cauchy}
+      \end{equation}
+      \label{th:cauchy}
+    \end{theorem}
+    \begin{proof}
+      This is fairly apparent. In the case where $n$ is an integer, integrate the right hand side by parts $n-1$ times to obtain the left hand side. 
+    \end{proof}
 
-If we ask how can we integrate a function a fractional number of times, though, it is similar to what was done in the first chapter. If we have
-\begin{equation*}
-  f^{(-n)}(t) = \frac{1}{\left( n - 1 \right)!} \int_a^t \left( t - z \right)^{n-1} f(z) dz
-\end{equation*}
-the only term containing the order of integration, $n$ where $n$ can not be a fraction is, again, the factorial. So we can just replace it with a gamma function 
-\begin{equation}
-  \boxed{ \tensor*[_a]{\D}{^{(-\alpha)}_t}(t) = \frac{1}{\Gamma \left( \alpha \right)} \int_a^t \left( t - z \right)^{\alpha-1} f(z) dz }
-  \label{eq:fracint}
-\end{equation}
-where the new notation for the operator $\D$ will be used going forward.
+    This theorem should make some intuitive sense. If you had to evaluate the single integral, the way to to it would be to integrate by parts $n$ times to eliminate the $(x - z)$ term, which would give the multiple integral form of it.
 
-Because it is so common to have initial conditions specified at time $t=0$, we will adopt the notation 
-\begin{equation*}
- \boxed{
- \tensor*[]{\D}{^{(-\alpha)}}(t) =   \tensor*[_0]{\D}{^{(-\alpha)}_t}(t) 
-} 
-\end{equation*}
-\ie, we will not bother with adding to the notation when the limits of integration are from $0$ to $t$. 
+    If we ask how can we integrate a function a fractional number of times, though, it is similar to what was done in the first chapter. If we have
+    \begin{equation*}
+      f^{(-n)}(t) = \frac{1}{\left( n - 1 \right)!} \int_a^t \left( t - z \right)^{n-1} f(z) \d z
+    \end{equation*}
+    the only term containing the order of integration, $n$ where $n$ can not be a fraction is, again, the factorial. So we can just replace it with a gamma function 
+    \begin{equation}
+      \boxed{ \tensor*[_a]{\D}{^{(-\alpha)}_t}(t) = \frac{1}{\Gamma \left( \alpha \right)} \int_a^t \left( t - z \right)^{\alpha-1} f(z) \d z }
+      \label{eq:fracint}
+    \end{equation}
+    where the new notation for the operator $\D$ will be used going forward.
 
-Let us compute some fractional-order integrals of some common functions.
+    Because it is so common to have initial conditions specified at time $t=0$, we will adopt the notation 
+    \begin{equation*}
+      \boxed{
+	\tensor*[]{\D}{^{(-\alpha)}}(t) =   \tensor*[_0]{\D}{^{(-\alpha)}_t}(t) 
+      } 
+    \end{equation*}
+    \ie, we will not bother with adding to the notation when the limits of integration are from $0$ to $t$. 
 
-\begin{example}
-  Consider $f(t) = t$. We know that $\tensor*[]{\D}{^{(-1)}}t = 1/2 t^2$. The half integral should be something ``in between'' $t$ and $t^2$. In detail
-  \begin{align*}
-    \tensor*[]{\D}{^{\frac{1}{2}}} t &= \frac{1}{\Gamma \left( \frac{1}{2} \right)} \int_0^t \left( t - z \right)^{\left( 1/2 - 1 \right)} z \d z \\
-    &= -\frac{1}{\sqrt{\pi}} \int_t^0 \frac{t - u}{\sqrt{u}} \d u \qquad \left(u = t - z \right)\\
-    &= \frac{1}{\sqrt{\pi}} \int_0^t \frac{t}{\sqrt{u}} - \sqrt{u} \d u \\
-    &= \frac{1}{\sqrt{\pi}} \left[ 2 t u^\frac{1}{2} - \frac{2}{3} u^\frac{3}{2} \right]_0^t \\
-    &= \frac{4}{3 \sqrt{\pi}} t^\frac{3}{2}.
-    \label{ex:fracint1}
-  \end{align*}
-  Figure~\ref{fig:fracint1} illustrates $t$, $\tensor*[_0]{\D}{^{\left( -1/2 \right)}_t} t$ and $\tensor*[_0]{\D}{^{(-1)}_t} t$.
-  \label{ex:fracint1}
-\end{example}
+    Let us compute some fractional-order integrals of some common functions.
 
-\begin{figure}
-  \centering
-  \subimport{figs/}{fracint1}
-  \caption{The function $f(t) = t$ (blue), $\tensor*[_0]{\D}{^{(-1)}_t}t$ (red) and $\tensor*[_0]{\D}{^{(-1/2)}_t} t$ (yellow).}
-  \label{fig:fracint1}
-\end{figure}
+    \begin{example}
+      Consider $f(t) = t$. We know that $\tensor*[]{\D}{^{(-1)}}t = 1/2 t^2$. The half integral should be something ``in between'' $t$ and $t^2$. In detail
+      \begin{align*}
+	\tensor*[]{\D}{^{\frac{1}{2}}} t &= \frac{1}{\Gamma \left( \frac{1}{2} \right)} \int_0^t \left( t - z \right)^{\left( 1/2 - 1 \right)} z \d z \\
+	&= -\frac{1}{\sqrt{\pi}} \int_t^0 \frac{t - u}{\sqrt{u}} \d u \qquad \left(u = t - z \right)\\
+	&= \frac{1}{\sqrt{\pi}} \int_0^t \frac{t}{\sqrt{u}} - \sqrt{u} \d u \\
+	&= \frac{1}{\sqrt{\pi}} \left[ 2 t u^\frac{1}{2} - \frac{2}{3} u^\frac{3}{2} \right]_0^t \\
+	&= \frac{4}{3 \sqrt{\pi}} t^\frac{3}{2}.
+	\label{ex:fracint1}
+      \end{align*}
+      Figure~\ref{fig:fracint1} illustrates $t$, $\tensor*[_0]{\D}{^{\left( -1/2 \right)}_t} t$ and $\tensor*[_0]{\D}{^{(-1)}_t} t$.
+      \label{ex:fracint1}
+    \end{example}
 
-\begin{example}
-  Consider $f(t) = \e^{ 2 t }$. Then
-  \begin{align*}
-    \tensor*[]{\D}{^{\left(-1/2\right)}} \e^{2 t} &= \frac{1}{\Gamma \left( \frac{1}{2} \right)} \int_0^t \left( t - z \right)^{(-1/2)} \e^{2 z} \d z \\
-    &= \frac{2}{\sqrt{\pi}} \int_0^{\sqrt{t}} \e^{ 2 \left( t - u^2 \right) } \d u \qquad \left( u = \sqrt{t - z} \right) \\
-    &= \e^{2 t} \frac{1}{\sqrt{\pi}} \int_0^{\sqrt{t}} \e^{\left( \sqrt{2} u \right)^2} \d u \\
-    &= \e^{2 t} \frac{\sqrt{2}}{\sqrt{\pi}} \int_0^{\sqrt{2 t}} \e^{-v^2} \d v \qquad \left( v = \sqrt{2} u \right) \\
-    &= \frac{1}{\sqrt{2}} \e^{2 t} \erf{\sqrt{2 t}}
-  \end{align*}
-  Figures~\ref{fig:fracint2a} and \ref{fig:fracint2b} illustrate $\e^{2 t}$, $\tensor*[_0]{\D}{^{\left( -1/2 \right)}_t} \e^{2 t}$ and $\tensor*[_0]{\D}{^{(-1)}_t} \e^{2 t}$.
-\end{example}
+    \begin{figure}
+      \centering
+      \subimport{figs/}{fracint1}
+      \caption{The function $f(t) = t$ (blue), $\tensor*[_0]{\D}{^{(-1)}_t}t$ (red) and $\tensor*[_0]{\D}{^{(-1/2)}_t} t$ (yellow).}
+      \label{fig:fracint1}
+    \end{figure}
 
-\begin{figure}
-  \centering
-  \subimport{figs/}{fracint2a}
-\caption{The function $f(t) = \e^{2 t}$ and $\tensor*[_0]{\D}{^{(-1)}_t} \e^{2t}$ (red) and $\tensor*[_0]{\D}{^{(-1/2)}_t} \e^{2t}$ (yellow).}
-  \label{fig:fracint2a}
-\end{figure}
+    \begin{example}
+      Consider $f(t) = \e^{ 2 t }$. Then
+      \begin{align*}
+	\tensor*[]{\D}{^{\left(-1/2\right)}} \e^{2 t} &= \frac{1}{\Gamma \left( \frac{1}{2} \right)} \int_0^t \left( t - z \right)^{(-1/2)} \e^{2 z} \d z \\
+	&= \frac{2}{\sqrt{\pi}} \int_0^{\sqrt{t}} \e^{ 2 \left( t - u^2 \right) } \d u \qquad \left( u = \sqrt{t - z} \right) \\
+	&= \e^{2 t} \frac{1}{\sqrt{\pi}} \int_0^{\sqrt{t}} \e^{\left( \sqrt{2} u \right)^2} \d u \\
+	&= \e^{2 t} \frac{\sqrt{2}}{\sqrt{\pi}} \int_0^{\sqrt{2 t}} \e^{-v^2} \d v \qquad \left( v = \sqrt{2} u \right) \\
+	&= \frac{1}{\sqrt{2}} \e^{2 t} \erf{\sqrt{2 t}}
+      \end{align*}
+      Figures~\ref{fig:fracint2a} and \ref{fig:fracint2b} illustrate $\e^{2 t}$, $\tensor*[_0]{\D}{^{\left( -1/2 \right)}_t} \e^{2 t}$ and $\tensor*[_0]{\D}{^{(-1)}_t} \e^{2 t}$. Note that because of the square root, the error function part of the solution is not defined for negative values of $t$.
+    \end{example}
 
-\begin{figure}
-  \centering
-  \subimport{figs/}{fracint2b}
-\caption{The function $f(t) = \e^{2 t}$ and $\tensor*[_0]{\D}{^{(-1)}_t} \e^{2t}$ (red) and $\tensor*[_0]{\D}{^{(-1/2)}_t} \e^{2t}$ (yellow).}
-  \label{fig:fracint2b}
-\end{figure}
+    \begin{figure}
+      \centering
+      \subimport{figs/}{fracint2a}
+      \caption{The function $f(t) = \e^{2 t}$ and $\tensor*[_0]{\D}{^{(-1)}_t} \e^{2t}$ (red) and $\tensor*[_0]{\D}{^{(-1/2)}_t} \e^{2t}$ (yellow).}
+      \label{fig:fracint2a}
+    \end{figure}
 
-\begin{example}
-  Consider $f(t) = \cos 3 t$. We have
-  \begin{equation*}
-    \tensor*[]{\D}{^{-1/2}} \cos 3 t = \frac{1}{\Gamma \left( \frac{1}{2} \right) } \int_0^t \left( t - z \right)^{\left( -1/2 \right)} \cos(3z) \d{z}.
-  \end{equation*}
-  There is a closed-form solution to this integral in terms of the Fresnel integrals, but an easier check in this case
-  is probably a numerical approach. Numerical methods are considered in greater detail subsequently. For now, we can
-  simply evaluate the integral using the \texttt{integrate()} function in octave or Matlab. The plot of this integral is
-  illustrated in Figure~\ref{fig:fracint3} and displays the characterisitics one would expect of the half integral of
-  the cosine function, including both the magnitude and the phase shift.  
+    \begin{figure}
+      \centering
+      \subimport{figs/}{fracint2b}
+      \caption{The function $f(t) = \e^{2 t}$ and $\tensor*[_0]{\D}{^{(-1)}_t} \e^{2t}$ (red) and $\tensor*[_0]{\D}{^{(-1/2)}_t} \e^{2t}$ (yellow).}
+      \label{fig:fracint2b}
+    \end{figure}
 
-  The octave code that generated this figure is:
-  \begin{verbatim}
-  1  t = linspace(0,10,1000);
-  2  soln = zeros(1,length(t));
-  3  f = @(z,t) ((t - z).^(-1/2)).*cos(3*z);
-  4  for i=1:length(t)
-  5    soln(i) = 1/gamma(1/2)*integral(@(z) f(z,t(i)),0,t(i));
-  6  end
-  7  plot(t,cos(3*t),'linewidth',2);
-  8  hold on;
-  9  plot(t,1/3*sin(3*t),'linewidth',2);
-  10 plot(t,soln,'linewidth',2);
-  \end{verbatim}
-\end{example}
+    \begin{example}
+      Consider $f(t) = \cos 3 t$. We have
+      \begin{equation*}
+	\tensor*[]{\D}{^{-1/2}} \cos 3 t = \frac{1}{\Gamma \left( \frac{1}{2} \right) } \int_0^t \left( t - z \right)^{\left( -1/2 \right)} \cos(3z) \d{z}.
+      \end{equation*}
+      There is a closed-form solution to this integral in terms of the Fresnel integrals, but an easier check in this case
+      is probably a numerical approach. Numerical methods are considered in greater detail subsequently. For now, we can
+      simply evaluate the integral using the \texttt{integrate()} function in octave or Matlab. The plot of this integral is
+      illustrated in Figure~\ref{fig:fracint3} and displays the characteristics one would expect of the half integral of
+      the cosine function, including both the magnitude and the phase shift.  
 
-\begin{figure}
-  \centering
-  \subimport{figs/}{fracint3}
-\caption{The function $f(t) = \cos 3 t$ and $\tensor*[_0]{\D}{^{(-1)}_t} \cos 3 t$ (red) and $\tensor*[_0]{\D}{^{(-1/2)}_t} \cos 3t$ (yellow).}
-  \label{fig:fracint3}
-\end{figure}
+      The octave code that generated this figure is:
+      \begin{verbatim}
+      1  t = linspace(0,10,1000);
+      2  soln = zeros(1,length(t));
+      3  f = @(z,t) ((t - z).^(-1/2)).*cos(3*z);
+      4  for i=1:length(t)
+      5    soln(i) = 1/gamma(1/2)*integral(@(z) f(z,t(i)),0,t(i));
+      6  end
+      7  plot(t,cos(3*t),'linewidth',2);
+      8  hold on;
+      9  plot(t,1/3*sin(3*t),'linewidth',2);
+      10 plot(t,soln,'linewidth',2);
+      \end{verbatim}
+    \end{example}
 
-\subsection{Fractional Derivative Definitions}
+    \begin{figure}
+      \centering
+      \subimport{figs/}{fracint3}
+      \caption{The function $f(t) = \cos 3 t$ and $\tensor*[_0]{\D}{^{(-1)}_t} \cos 3 t$ (red) and $\tensor*[_0]{\D}{^{(-1/2)}_t} \cos 3t$ (yellow).}
+      \label{fig:fracint3}
+    \end{figure}
 
-We will consider two basic approaches to generalizing the derivative to fractional orders. The first will use the fractional integration idea above along with the fundamental theorem of calculus. The second is an extension of the usual limit definition of the derivative that has a nice extension to the finite difference method in numerical methods.
+    \subsection{Fractional Derivative Definitions}
 
-At this point we have the ability to integrate a function by a fractional amount, \eg, $\tensor*{\D}{^{\left( -1/2 \right)}}f(t)$ is the one-half integral of $f$. The basic idea is that we can use the fact that integrals and derivatives are inverse oprations and, for example, integrate a function by, say, $2/3$ and then differentiate once to get the $1/3$ derivative. The difference between the first two definitions we will consider is simply whether we differentiate first and then fractionally integrate, or vice versa. That seemingly small difference actually has large consequences.
+    We will consider two basic approaches to generalizing the derivative to fractional orders. The first will use the fractional integration idea above along with the fundamental theorem of calculus. The second is an extension of the usual limit definition of the derivative that has a nice extension to the finite difference method in numerical methods.
 
-\subsubsection{Riemann-Liouville Fractional Derivative}
+    At this point we have the ability to integrate a function by a fractional amount, \eg, $\tensor*{\D}{^{\left( -1/2 \right)}}f(t)$ is the one-half integral of $f$. The basic idea is that we can use the fact that integrals and derivatives are inverse operations and, for example, integrate a function by, say, $2/3$ and then differentiate once to get the $1/3$ derivative. The difference between the first two definitions we will consider is simply whether we differentiate first and then fractionally integrate, or vice versa. That seemingly small difference actually has large consequences.
 
-For the Riemann-Liouville derivative definition, we integrate first and then differentiate, specifically 
-\begin{equation}
-  \begin{aligned}
+    \subsubsection{Riemann-Liouville Fractional Derivative}
+
+    For the Riemann-Liouville derivative definition, we integrate first and then differentiate, specifically 
+    \begin{equation}
+      \begin{aligned}
 %  \boxed{ 
-  \tensor*[^{RL}_0]{\D}{^\alpha_t}  f(t) &= \tensor*[^{RL}]{\D}{^\alpha} f(t) \\
-  &= \frac{\d^{\lc \alpha \rc}}{\d t^{\lc \alpha \rc}} \tensor*[]{\D}{^{-\left( \lc \alpha \rc - \alpha \right)}} f(t) \\ 
-    &= 
-    \frac{\d^{\lc \alpha \rc}}{\d t^{\lc \alpha \rc}} \left( \frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)}
-    \int_0^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1} f(z) \d z \right). 
+	\tensor*[^{RL}_0]{\D}{^\alpha_t}  f(t) &= \tensor*[^{RL}]{\D}{^\alpha} f(t) \\
+	&= \frac{\d^{\lc \alpha \rc}}{\d t^{\lc \alpha \rc}} \tensor*[]{\D}{^{-\left( \lc \alpha \rc - \alpha \right)}} f(t) \\ 
+	&= 
+	\frac{\d^{\lc \alpha \rc}}{\d t^{\lc \alpha \rc}} \left( \frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)}
+	\int_0^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1} f(z) \d z \right). 
 %}
-  \end{aligned}
-  \label{eq:rldef}
-\end{equation}
+      \end{aligned}
+      \label{eq:rldef}
+    \end{equation}
 
-\begin{example}
-Consider $f(t) = t$ and assume we want to compute $\tensor*[^{RL}]{\D}{^{1/2}}t$. So for this problem, $\alpha = 1/2$
-and $\lc \alpha \rc = 1$.  In Example~\ref{ex:fracint1} we computed $\tensor*[]{\D}{^{(-1/2)}}t=4/\left(3 \sqrt{\pi}\right)
-t^{3/2}$. So we have from Equation~\ref{eq:rldef}
-\begin{align*}
-\tensor*[^{RL}]{\D}{^{1/2}} t &= \frac{\d}{\d t} \left( \frac{1}{\Gamma \left( 1/2 \right)} \tensor*[]{\D}{^{-(1-1/2)}}
- t\right)
-\\
-&=  \frac{4}{3 \sqrt{\pi}} \frac{\d}{\d t} t^\frac{3}{2} \\
-&= \frac{2}{\sqrt{\pi}} t^\frac{1}{2}.
-\end{align*}
-Note that this is not the same as the $1/2$ derivative that we could compute from Definition~\ref{def:monomialfracderiv}
-because, while both would have $t^{1/2}$, the coefficients are not the same.
-\label{ex:fracderiv1}
-\end{example}
+    \begin{remark}
+      Note that the nonlocal nature of a fractional derivative is apparent from this definition. Information from the function evaluated over the entire range of the integral will effect the fractional derivative. 
+      \label{rem:nonlocal}
+    \end{remark}
 
-We will do a slightly different example, because its fractional derivative will be different from what we will get with
-the next definition.
+    \begin{example}
+      Consider $f(t) = t$ and assume we want to compute $\tensor*[^{RL}]{\D}{^{1/2}}t$. So for this problem, $\alpha = 1/2$
+      and $\lc \alpha \rc = 1$.  In Example~\ref{ex:fracint1} we computed $\tensor*[]{\D}{^{(-1/2)}}t=4/\left(3 \sqrt{\pi}\right)
+      t^{3/2}$. So we have from Equation~\ref{eq:rldef}
+      \begin{align*}
+	\tensor*[^{RL}]{\D}{^{1/2}} t &= \frac{\d}{\d t} \left( \frac{1}{\Gamma \left( 1/2 \right)} \tensor*[]{\D}{^{-(1-1/2)}} t\right)
+	\\
+	&=  \frac{4}{3 \sqrt{\pi}} \frac{\d}{\d t} t^\frac{3}{2} \\
+	&= \frac{2}{\sqrt{\pi}} t^\frac{1}{2}.
+      \end{align*}
+      Note that this is the same as the $1/2$ derivative that we could compute from Definition~\ref{def:monomialfracderiv}.
+      \label{ex:fracderiv1}
+    \end{example}
 
-\begin{example}
-Add one to the function from the previous example
-\begin{align*}
-\tensor*[^{RL}]{\D}{^{1/2}} \left( t + 1 \right) &= \frac{\d}{\d t} \left( \frac{1}{\Gamma \left( 1/2 \right)}
-\tensor*[]{\D}{^{-(1-1/2)}} \left( t + 1 \right) \right)
-\\
-&=  \frac{\d}{\d t} \left( \frac{4}{3 \sqrt{\pi}} t^\frac{3}{2} +  \frac{2}{\sqrt{\pi}} t^\frac{1}{2} \right)\\
-&= \frac{2}{\sqrt{\pi}} \sqrt{t} + \frac{1}{\sqrt{\pi} \sqrt{t}}. 
-\end{align*}
-See Example~\ref{ex:caputo1} for the substitution to integrate the second term in the integral.
-\label{ex:fracderiv2}
-\end{example}
+    We will do a slightly different example, because its fractional derivative will be different from what we will get with
+    the next definition.
+
+    \begin{example}
+      Add one to the function from the previous example:
+      \begin{align*}
+	\tensor*[^{RL}]{\D}{^{1/2}} \left( t + 1 \right) &= \frac{\d}{\d t} \left( \frac{1}{\Gamma \left( 1/2 \right)} \tensor*[]{\D}{^{-(1-1/2)}} \left( t + 1 \right) \right) \\
+	&=  \frac{\d}{\d t} \left( \frac{4}{3 \sqrt{\pi}} t^\frac{3}{2} +  \frac{2}{\sqrt{\pi}} t^\frac{1}{2} \right)\\
+	&= \frac{2}{\sqrt{\pi}} \sqrt{t} + \frac{1}{\sqrt{\pi} \sqrt{t}}. 
+      \end{align*}
+      See Example~\ref{ex:caputo1} for the substitution to integrate the second term in the integral.
+
+      In integer-order calculus, adding a constant to a function has no effect on its derivative. However, for fractional derivatives, this is not the case. The second term came directly from the added constant in $f(t)$.       \label{ex:fracderiv2}
+    \end{example}
 
 
-\subsubsection{Caputo Fractional Derivative}
-The Caputo definition simply switches the order of fractional-order integration and integer-order differentiation
-\begin{equation}
-  \begin{aligned}
+    \subsubsection{Caputo Fractional Derivative}
+    The Caputo definition simply switches the order of fractional-order integration and integer-order differentiation
+    \begin{equation}
+      \begin{aligned}
 %  \boxed{ 
-  \tensor*[^{C}_0]{\D}{^\alpha_t}  f(t) &= \tensor*[^{C}]{\D}{^\alpha} f(t) \\
-  &= \tensor*[]{\D}{^{-\left( \lc \alpha \rc - \alpha \right)}} \left( \frac{\d^{\lc \alpha \rc} f}{\d t^{\lc \alpha \rc}}(t) \right) \\ 
-    &= 
-    \frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)} \int_0^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1}  \frac{\d^{\lc \alpha \rc}f}{\d t^{\lc \alpha \rc}} (z) \d z. 
+	\tensor*[^{C}_0]{\D}{^\alpha_t}  f(t) &= \tensor*[^{C}]{\D}{^\alpha} f(t) \\
+	&= \tensor*[]{\D}{^{-\left( \lc \alpha \rc - \alpha \right)}} \left( \frac{\d^{\lc \alpha \rc} f}{\d t^{\lc \alpha \rc}}(t) \right) \\ 
+	&= 
+	\frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)} \int_0^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1}  \frac{\d^{\lc \alpha \rc}f}{\d t^{\lc \alpha \rc}} (z) \d z. 
 %}
-  \end{aligned}
-  \label{eq:caputodef}
-\end{equation}
+      \end{aligned}
+      \label{eq:caputodef}
+    \end{equation}
 
-\begin{example}
-Let us repeat Example~\ref{ex:fracderiv1} using the Caputo definition:
-\begin{align*}
-\tensor*[^C]{\D}{^{1/2}} t &= \frac{1}{\Gamma \left( \frac{1}{2} \right) } \int_0^t \left( t - z \right)^{-\frac{1}{2}}
-\frac{\d z}{\d z} \d z \\
-&= \frac{1}{\sqrt{\pi}} \int_0^t \frac{1}{\sqrt{t - z}} \d z \\
-&= \frac{1}{\sqrt{\pi}} \int_t^0 -\frac{1}{\sqrt{u}} \d u \qquad (u = t - z) \\
-&= \frac{1}{\sqrt{\pi}} \int_0^t \frac{1}{\sqrt{u}} \d u \\
-&= \frac{1}{\sqrt{\pi}} \left[ 2 \sqrt{u} \right]_0^t \\
-&= \frac{2}{\sqrt{\pi}} t^\frac{1}{2}.
-\end{align*}
-This is the same as the Riemann-Liouville definition. 
-\label{ex:caputo1}
-\end{example}
+    \begin{example}
+      Let us repeat Example~\ref{ex:fracderiv1} using the Caputo definition:
+      \begin{align*}
+	\tensor*[^C]{\D}{^{1/2}} t &= \frac{1}{\Gamma \left( \frac{1}{2} \right) } \int_0^t \left( t - z \right)^{-\frac{1}{2}}
+	\frac{\d z}{\d z} \d z \\
+	&= \frac{1}{\sqrt{\pi}} \int_0^t \frac{1}{\sqrt{t - z}} \d z \\
+	&= \frac{1}{\sqrt{\pi}} \int_t^0 -\frac{1}{\sqrt{u}} \d u \qquad (u = t - z) \\
+	&= \frac{1}{\sqrt{\pi}} \int_0^t \frac{1}{\sqrt{u}} \d u \\
+	&= \frac{1}{\sqrt{\pi}} \left[ 2 \sqrt{u} \right]_0^t \\
+	&= \frac{2}{\sqrt{\pi}} t^\frac{1}{2}.
+      \end{align*}
+      This is the same as the Riemann-Liouville definition. 
+      \label{ex:caputo1}
+    \end{example}
 
-\begin{example}
-Let us repeate Example~\ref{ex:fracderiv2} using the Caputo definition:
-\begin{align*}
-\tensor*[^C]{\D}{^{1/2}} t &= \frac{1}{\Gamma \left( \frac{1}{2} \right) } \int_0^t \left( t - z \right)^{-\frac{1}{2}}
-\frac{\d }{\d z} \left( z + 1 \right) \d z \\
-&= \frac{1}{\sqrt{\pi}} \int_0^t \frac{1}{\sqrt{t - z}} \d z \\
-&= \frac{2}{\sqrt{\pi}} t^\frac{1}{2}.
-\end{align*}
-This is \emph{not} the same as the Riemann-Liouville definition! It is due to the fact that the constant term in the
-function was eliminated by differentiating first using the Caputo definition, but was retained when it was integrated
-first using the Riemann-Liouville definition. 
-\end{example}
-\subsubsection{Gr\"unwald-Letnikov Fractional Derivative}
+    \begin{example}
+      Let us repeat Example~\ref{ex:fracderiv2} using the Caputo definition:
+      \begin{align*}
+	\tensor*[^C]{\D}{^{1/2}} t &= \frac{1}{\Gamma \left( \frac{1}{2} \right) } \int_0^t \left( t - z \right)^{-\frac{1}{2}}
+	\frac{\d }{\d z} \left( z + 1 \right) \d z \\
+	&= \frac{1}{\sqrt{\pi}} \int_0^t \frac{1}{\sqrt{t - z}} \d z \\
+	&= \frac{2}{\sqrt{\pi}} t^\frac{1}{2}.
+      \end{align*}
+      This is \emph{not} the same as the Riemann-Liouville definition! It is due to the fact that the constant term in the
+      function was eliminated by differentiating first using the Caputo definition, but was retained when it was integrated
+      first using the Riemann-Liouville definition. Figure~\ref{fig:fracderivex1} illustrates the difference between these two fractional derivatives. 
+      \label{ex:fracderivex1} 
+    \end{example}
+
+    \begin{figure}
+      \centering
+      \subimport{figs/}{fracderivex1}
+      \caption{The function $f(t) = t + 1$ (blue), the $1/2$ derivative computed using the Riemann-Liouville definition (red) and the $1/2$ derivative computed using the Caputo definition (yellow).}
+      \label{fig:fracderivex1}
+    \end{figure}
+
+    \subsubsection{Gr\"unwald-Letnikov Fractional Derivative}
+    The third definition of a fractional derivative we will consider is appealing for two reasons. First, it is a limit definition, which corresponds in a sense to our usual consideration of an integer-order derivative. Second, because it is a limit as $\Delta t \rightarrow 0$, we can directly adopt it in numerical methods by eliminating the limit and simply taking a small $\Delta t$. To understand the basis for the definition, we will do what we have done a lot so far, which is look for a pattern.
+
+    Consider the usual definition of the first derivative of the function $f(t)$ at time $t$
+    \begin{equation*}
+      \frac{\d f}{\d t}(t) = \lim_{\Delta t \rightarrow 0} \frac{f(t - \Delta t) - f(t)}{\Delta t} 
+    \end{equation*}
+    and the second derivative
+    \begin{align*}
+      \frac{\d^2 f}{\d t^2}(t) &= \lim_{\Delta t \rightarrow 0} \left( \frac{ \frac{f(t - 2 \Delta t) - f(t - \Delta t)}{\Delta t}  - \frac{f(t - \Delta t) - f(t)}{\Delta t}  }{\Delta t} \right) \\
+      &= \lim_{\Delta t \rightarrow 0} \left( \frac{f(t - 2 \Delta t) - 2 f(t - \Delta t) + f(t)}{\left( \Delta t \right)^2} \right).
+    \end{align*}
+    Continuing to compute higher-order derivatives makes it easy to see the pattern that gives
+    \begin{equation*}
+      \frac{\d^n f}{\d t^n}(t) = \lim_{\Delta t \rightarrow 0} \frac{ \sum_{k=0}^n (-1)^k \begin{pmatrix} n \\ k \end{pmatrix} f(t - k \Delta t) }{\left( \Delta t \right)^n}
+    \end{equation*}
+    where $t = n \Delta t$. We have the usual business of factorials inside the binomial coefficient, which we have already generalized in Equation~\ref{eq:binomialfrac}, which gives us the following definition.
+
+    \begin{definition}
+      The Gr\"unwald-Letnikov fractional derivative is given by
+      \begin{equation}
+	\frac{\d^\alpha f}{\d t^\alpha} (t) = \lim_{\Delta t \rightarrow 0} \frac{ \sum_{k=0}^{\lf \frac{t}{\Delta t} \rf} (-1)^k \begin{pmatrix} \alpha \\ k \end{pmatrix} f(t - k \Delta t) }{\left( \Delta t \right)^\alpha}
+      \label{eq:gwdef}
+    \end{equation}
+      \label{def:gw}
+    \end{definition}
+
+  Note that the nonlocal nature of the fractional-derivative is also present in this definition because the sum incorporates values of the function back to $t=0$, regardless of the order. In cases where the order is an integer order, then many of the binomial coefficients will be zero, making the definition local. In the limit, fractional derivatives will contain an infinite number of terms in the summation, much like the integrals do for the Riemann-Liouville and Caputo definitions. 
+
+  \begin{remark}
+    It may seem like this definition is the best because it will alleviate the need to compute a lot of integrals that may not have solutions in terms of simple functions. However, there is a hidden complication. Note that $k$, the index of the summation, will become increasingly large as $t$ gets large, and will generally be large if $\Delta t$ is small, which we want for good numerical accuracy. However, referring back to the generalization of the binomial coefficient given by Equation~\ref{eq:binomialfrac}, the denominator will contain two gamma functions with possibly large arguments. Recall that the gamma function can be thought of as the generalization of the factorial, so this will grow very large very quickly. Numerical issues arise surprisingly quickly.
+  \end{remark}
