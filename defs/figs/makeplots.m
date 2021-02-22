@@ -75,63 +75,87 @@ print('erferfc.tex','-depslatex');
 %ylabel('$E_{1,\beta}(-t)$');
 %print('mlfbeta.tex','-depslatex');
 %
-gh = figure(7,'paperposition',size);
-data = [];
-for k=0:10
-	data = vertcat(data,[bincoeff(4,k) bincoeff(3.95, k) bincoeff(3.5,k)]);
+%gh = figure(7,'paperposition',size);
+%data = [];
+%for k=0:10
+%	data = vertcat(data,[bincoeff(4,k) bincoeff(3.95, k) bincoeff(3.5,k)]);
+%end
+%plot(data,'o','linewidth',2,'markersize',4);
+%legend('$n=4$','$n=3.95$','$n=3.5$');
+%xlabel('$k$');
+%ylabel('binomial coefficient');
+%print('bincoeffex.tex','-depslatex');
+
+%gh = figure(8,'paperposition',size);
+%t = linspace(0,5,1000);
+%plot(t,t,'linewidth',2);
+%hold on;
+%plot(t,0.5*t.^2,'linewidth',2);
+%plot(t,4/(3*sqrt(pi))*t.^(3/2),'linewidth',2);
+%xlabel('$t$');
+%ylabel('$t$, its integral and its half integral');
+%print('fracint1.tex','-depslatex');
+
+%gh = figure(9,'paperposition',size);
+%t = linspace(0,3,1000);
+%plot(t,exp(2*t),'linewidth',2);
+%hold on
+%plot(t,exp(2*t)/2,'linewidth',2);
+%plot(t,1/sqrt(2)*exp(2*t).*erf(sqrt(2*t)),'linewidth',2);
+%xlabel('$t$');
+%ylabel('$\e^{2 t}$, its integral and half integral');
+%print('fracint2a.tex','-depslatex');
+
+%axis([0 1 0 5])
+%print('fracint2b.tex','-depslatex');
+
+%gh = figure(10,'paperposition',size);
+%t = linspace(0,10,1000);
+%soln = zeros(1,length(t));
+%f = @(z,t) ((t - z).^(-1/2)).*cos(3*z);
+%for i=1:length(t)
+%	soln(i) = 1/gamma(1/2)*integral(@(z) f(z,t(i)),0,t(i));
+%end
+%plot(t,cos(3*t),'linewidth',2);
+%hold on;
+%plot(t,1/3*sin(3*t),'linewidth',2);
+%plot(t,soln,'linewidth',2);
+%xlabel('$t$');
+%ylabel('$\cos 3 t$ and its integral and half integral');
+%print('fracint3.tex','-depslatex');
+
+%gh = figure(11,'paperposition',size)
+%t = linspace(0.001,5,1000);
+%plot(t,t+1,'linewidth',2);
+%hold on;
+%plot(t,2./sqrt(pi)*sqrt(t)+1./(sqrt(pi*t)),'linewidth',2);
+%plot(t,2./sqrt(pi)*sqrt(t),'linewidth',2);
+%axis([0 5 0 10]);
+%xlabel('$t$');
+%ylabel('$t + 1$ and its half derivative');
+%print('fracderivex1.tex','-depslatex');
+
+close all;
+gh = figure(12,'paperposition',size)
+t = linspace(0,10,1001);
+dt = t(2)-t(1);
+alpha = 1.1;
+deriv = 0;
+f = cos(3*t);
+coefs = 0;
+coefs(1) = bincoeff(alpha,0);
+deriv(1) = 0;
+for n = 2:length(t)
+	coefs(n) = (-1)^(n-1)*bincoeff(alpha,(n-1));
+	sum = dot(fliplr(f(1:n)),coefs)/dt^alpha;
+	deriv(n) = sum;
 end
-plot(data,'o','linewidth',2,'markersize',4);
-legend('$n=4$','$n=3.95$','$n=3.5$');
-xlabel('$k$');
-ylabel('binomial coefficient');
-print('bincoeffex.tex','-depslatex');
-
-gh = figure(8,'paperposition',size);
-t = linspace(0,5,1000);
-plot(t,t,'linewidth',2);
+plot(t,f,'linewidth',2);
 hold on;
-plot(t,0.5*t.^2,'linewidth',2);
-plot(t,4/(3*sqrt(pi))*t.^(3/2),'linewidth',2);
+plot(t,-3*sin(3*t),'linewidth',2);
+plot(t,deriv,'linewidth',2);
 xlabel('$t$');
-ylabel('$t$, its integral and its half integral');
-print('fracint1.tex','-depslatex');
+ylabel('half derivative of $\cos 3 t$');
+print('gwex1.tex','-depslatex');
 
-gh = figure(9,'paperposition',size);
-t = linspace(0,3,1000);
-plot(t,exp(2*t),'linewidth',2);
-hold on
-plot(t,exp(2*t)/2,'linewidth',2);
-plot(t,1/sqrt(2)*exp(2*t).*erf(sqrt(2*t)),'linewidth',2);
-xlabel('$t$');
-ylabel('$\e^{2 t}$, its integral and half integral');
-print('fracint2a.tex','-depslatex');
-
-axis([0 1 0 5])
-print('fracint2b.tex','-depslatex');
-
-gh = figure(10,'paperposition',size);
-t = linspace(0,10,1000);
-soln = zeros(1,length(t));
-f = @(z,t) ((t - z).^(-1/2)).*cos(3*z);
-for i=1:length(t)
-	soln(i) = 1/gamma(1/2)*integral(@(z) f(z,t(i)),0,t(i));
-end
-plot(t,cos(3*t),'linewidth',2);
-hold on;
-plot(t,1/3*sin(3*t),'linewidth',2);
-plot(t,soln,'linewidth',2);
-xlabel('$t$');
-ylabel('$\cos 3 t$ and its integral and half integral');
-print('fracint3.tex','-depslatex');
-
-gh = figure(11,'paperposition',size)
-t = linspace(0.001,5,1000);
-plot(t,t+1,'linewidth',2);
-hold on;
-plot(t,2./sqrt(pi)*sqrt(t)+1./(sqrt(pi*t)),'linewidth',2);
-plot(t,2./sqrt(pi)*sqrt(t),'linewidth',2);
-axis([0 5 0 10]);
-xlabel('$t$');
-ylabel('$t + 1$ and its half derivative');
-print('fracderivex1.tex','-depslatex');
 

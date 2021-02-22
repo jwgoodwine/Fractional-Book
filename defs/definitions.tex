@@ -391,11 +391,9 @@ The value of the gamma function at some special values should be cataloged.
       \begin{equation*}
 	\tensor*[]{\D}{^{-1/2}} \cos 3 t = \frac{1}{\Gamma \left( \frac{1}{2} \right) } \int_0^t \left( t - z \right)^{\left( -1/2 \right)} \cos(3z) \d{z}.
       \end{equation*}
-      There is a closed-form solution to this integral in terms of the Fresnel integrals, but an easier check in this case
-      is probably a numerical approach. Numerical methods are considered in greater detail subsequently. For now, we can
-      simply evaluate the integral using the \texttt{integrate()} function in octave or Matlab. The plot of this integral is
-      illustrated in Figure~\ref{fig:fracint3} and displays the characteristics one would expect of the half integral of
-      the cosine function, including both the magnitude and the phase shift.  
+      There is a closed-form solution to this integral in terms of the Fresnel integrals, but an easier check in this case is probably a numerical approach. Numerical methods are considered in greater detail subsequently. For now, we can simply evaluate the integral using the \texttt{integrate()} function in octave or Matlab. The plot of this integral is illustrated in Figure~\ref{fig:fracint3} and displays the characteristics one would expect of the half integral of the cosine function, including both the magnitude and the phase shift.  
+
+      Note that the initial part of the solution is not exactly a shifted cosine function, however. In fact, the fractional derivative is equal to zero at zero whereas a simple phase shift would result in a non-zero value. Specifically, if the fractional integral only shifted the function in phase and scaled the magnitude in a manner expected by the coefficient of $t$ in the argument of the cosine function, we would have expected the value at zero to be equal to $2/3*cos(\pi/4) = \sqrt{2}/3 \approx 0.4714$. 
 
       The octave code that generated this figure is:
       \begin{verbatim}
@@ -547,14 +545,71 @@ The value of the gamma function at some special values should be cataloged.
     \begin{definition}
       The Gr\"unwald-Letnikov fractional derivative is given by
       \begin{equation}
-	\frac{\d^\alpha f}{\d t^\alpha} (t) = \lim_{\Delta t \rightarrow 0} \frac{ \sum_{k=0}^{\lf \frac{t}{\Delta t} \rf} (-1)^k \begin{pmatrix} \alpha \\ k \end{pmatrix} f(t - k \Delta t) }{\left( \Delta t \right)^\alpha}
-      \label{eq:gwdef}
-    \end{equation}
+	\frac{\d^\alpha f}{\d t^\alpha} (t) = \lim_{\Delta t \rightarrow 0} \frac{ \sum_{k=0}^{\infty} (-1)^k \begin{pmatrix} \alpha \\ k \end{pmatrix} f(t - k \Delta t) }{\left( \Delta t \right)^\alpha}.
+	\label{eq:gwdef1}
+      \end{equation}
+      Note that the sum goes back over all values of $f(t)$ from $t$ to $t = -\infty$, \ie, all of the history of $f(t)$ contributes to the definition. 
+
+      If all values of $f(t)$ are zero for $t < 0$, then we can write
+      \begin{equation}
+	\boxed{	\frac{\d^\alpha f}{\d t^\alpha} (t) = \lim_{\Delta t \rightarrow 0} \frac{ \sum_{k=0}^{\lf \frac{t}{\Delta t} \rf} (-1)^k \begin{pmatrix} \alpha \\ k \end{pmatrix} f(t - k \Delta t) }{\left( \Delta t \right)^\alpha} }
+	\label{eq:gwdef2}
+      \end{equation}
+      so the sum only goes back over values of $f(t)$ to zero. In the limit the sum will still contain an infinite number of terms, but those infinite number of evaluations of $f(t)$ will only be between the current $t$ and $0$.
       \label{def:gw}
     \end{definition}
 
-  Note that the nonlocal nature of the fractional-derivative is also present in this definition because the sum incorporates values of the function back to $t=0$, regardless of the order. In cases where the order is an integer order, then many of the binomial coefficients will be zero, making the definition local. In the limit, fractional derivatives will contain an infinite number of terms in the summation, much like the integrals do for the Riemann-Liouville and Caputo definitions. 
+    Note that the nonlocal nature of the fractional-derivative is also present in this definition because the sum incorporates values of the function back to $t=0$, regardless of the order. In cases where the order is an integer order, then many of the binomial coefficients will be zero, making the definition local. In the limit, fractional derivatives will contain an infinite number of terms in the summation, much like the integrals do for the Riemann-Liouville and Caputo definitions. 
 
-  \begin{remark}
+    We will use this definition frequently because taking a small $\Delta t$ should give us decent numerical approximations to fractional derivatives, and, as we will see shorty, allow us to compute numerical solutions to fractional-order differential equations.
+
     It may seem like this definition is the best because it will alleviate the need to compute a lot of integrals that may not have solutions in terms of simple functions. However, there is a hidden complication. Note that $k$, the index of the summation, will become increasingly large as $t$ gets large, and will generally be large if $\Delta t$ is small, which we want for good numerical accuracy. However, referring back to the generalization of the binomial coefficient given by Equation~\ref{eq:binomialfrac}, the denominator will contain two gamma functions with possibly large arguments. Recall that the gamma function can be thought of as the generalization of the factorial, so this will grow very large very quickly. Numerical issues arise surprisingly quickly.
-  \end{remark}
+
+    Unless we specify to the contrary, in this course we will assume everything has a value of zero prior to $t=0$ and hence use the definition in Equation~\ref{eq:gwdef2}. 
+
+    \begin{example}
+      Use the Gr\"unwald-Letnikov definition to compute a numerical approximation for the $1/2$ derivative of 
+      \begin{equation}
+	f(t) = \begin{cases} 0, & t < 0 \\
+	  \cos 3 t, & t \geq 0
+	\end{cases}
+	\label{eq:gwex1}
+      \end{equation}
+      for $t \in ( 0, 10]$.
+
+      The period of oscillation of $f(t)$ is approximately 2, so if we take $\Delta t = 1/100$, each period should contain approximately 200 data points, which, as a first guess, should give a reasonable approximation. So we have
+      \begin{equation*}
+	\frac{\d^\frac{1}{2} f}{\d t^\frac{1}{2}}(t) \approx \sum_{k=0}^{\lf 100 t \rf} \frac{ \left( -1 \right)^k \begin{pmatrix} \frac{1}{2} \\ k \end{pmatrix} \cos 3 \left(t - \frac{k}{100}  \right)}{\frac{1}{100}}
+      \end{equation*}
+
+      The octave code that produced this result is
+      \begin{verbatim}
+	t = linspace(0,10,1001);
+	dt = t(2)-t(1);
+	alpha = 1.1;
+	deriv = 0;
+	f = cos(3*t);
+	coefs = 0;
+	coefs(1) = bincoeff(alpha,0);
+	deriv(1) = 0;
+	for n = 2:length(t)
+	   coefs(n) = (-1)^(n-1)*bincoeff(alpha,(n-1));
+	   sum = dot(fliplr(f(1:n)),coefs)/dt^alpha;
+	   deriv(n) = sum;
+	end
+	plot(t,f,'linewidth',2);
+	hold on;
+	plot(t,-3*sin(3*t),'linewidth',2);
+	plot(t,deriv,'linewidth',2);
+	xlabel('$t$');
+	ylabel('half derivative of $\cos 3 t$');
+      \end{verbatim}
+    \end{example}
+
+    \section{Operational Calculus}
+    This section deals with operational calculus, specifically oriented towards fractional cases, which also includes the more common notions of Laplace transforms.
+
+    \subsection{History and Basic Ideas}
+    \subsection{Rigorous Operational Calculus}
+    \subsection{Laplace Transforms}
+
