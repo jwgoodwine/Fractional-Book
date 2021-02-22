@@ -529,12 +529,12 @@ The value of the gamma function at some special values should be cataloged.
 
     Consider the usual definition of the first derivative of the function $f(t)$ at time $t$
     \begin{equation*}
-      \frac{\d f}{\d t}(t) = \lim_{\Delta t \rightarrow 0} \frac{f(t - \Delta t) - f(t)}{\Delta t} 
+      \frac{\d f}{\d t}(t) = \lim_{\Delta t \rightarrow 0} \frac{f(t) - f(t - \Delta t)}{\Delta t} 
     \end{equation*}
     and the second derivative
     \begin{align*}
-      \frac{\d^2 f}{\d t^2}(t) &= \lim_{\Delta t \rightarrow 0} \left( \frac{ \frac{f(t - 2 \Delta t) - f(t - \Delta t)}{\Delta t}  - \frac{f(t - \Delta t) - f(t)}{\Delta t}  }{\Delta t} \right) \\
-      &= \lim_{\Delta t \rightarrow 0} \left( \frac{f(t - 2 \Delta t) - 2 f(t - \Delta t) + f(t)}{\left( \Delta t \right)^2} \right).
+      \frac{\d^2 f}{\d t^2}(t) &= \lim_{\Delta t \rightarrow 0} \left( \frac{ \frac{f(t) - f(t - \Delta t)}{\Delta t}  - \frac{f(t - \Delta t) - f(t - 2 \Delta t)}{\Delta t}  }{\Delta t} \right) \\
+      &= \lim_{\Delta t \rightarrow 0} \left( \frac{f(t) - 2 f(t - \Delta t) + f(t - 2 \Delta t)}{\left( \Delta t \right)^2} \right).
     \end{align*}
     Continuing to compute higher-order derivatives makes it easy to see the pattern that gives
     \begin{equation*}
