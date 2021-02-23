@@ -613,3 +613,56 @@ The value of the gamma function at some special values should be cataloged.
     \subsection{Rigorous Operational Calculus}
     \subsection{Laplace Transforms}
 
+    In many ways, Laplace transforms will be one of the more powerful tools. First we will consider the Laplace transform of some of the functions described in the previous sections, and it will be apparent that they are related to some fractional powers of $s$. Then we will consider fractional differentiation and integration in the Laplace transform context.
+
+    First, though, recall the definition of the Laplace transform
+    \begin{equation}
+      \boxed{ F(s) = \mathcal L \left\{ f(t) \right\} = \int_{0^-}^\infty f(t) \e^{-s t} dt
+      }
+      \label{eq:laplacedef}
+    \end{equation} 
+    and the inverse
+    \begin{equation}
+      f(t) = \frac{1}{2 \pi \i} \lim_{b \rightarrow \infty} \int_{a - \i b}^{a + \i b} F(s) e^{s t} ds.
+      \label{eq:inverselaplace}
+    \end{equation}
+
+    \subsection{Laplace Transform Pairs}
+
+    A list of the Laplace transform of some functions appears in Table~\ref{tab:ltpairs}. We will work out some of the entries and leave the others as exercises.
+
+    First, consider $f(t) = t^n$ where $n$ is a positive integer. Using the definition and integrating by parts gives
+    \begin{align*}
+      \mathcal L \left\{ t^n \right\} &= 
+      \int_0^\infty t^n \e^{-s t} dt \\
+      &= \left[ t^{n} \e^{-s t} \right]_{0^-}^\infty + \frac{n}{s} \int_{0^-}^\infty t^{n-1} \e^{-s t} dt \\
+      &= \frac{n}{s} \int_{0^-}^\infty t^{n-1} \e^{-s t} dt \\
+      &= \frac{n}{s} \left( \left[ t^{n-1} \e^{-s t} \right]_{0^-}^\infty + \frac{n-1}{s} \int_{0^-}^\infty t^{n-1} \e^{-s t} dt \right) \\
+	&= \vdots  \\
+	&= \frac{n!}{s^{n+1}}.
+    \end{align*}
+    From this, we have a pretty clear generalization for $f(t) = t^\alpha$ where $\alpha$ is not necessarily an integer, specifically
+    \begin{equation*}
+      \mathcal L \left\{ t^\alpha \right\} = \frac{\Gamma(\alpha + 1)}{s^{\alpha + 1}}.
+    \end{equation*}
+    This leads easily to a few special cases for specific values of $\alpha$:
+    \begin{itemize}
+      \item $\mathcal L \left\{ \frac{1}{\sqrt{t}} \right\} = \frac{\sqrt{\pi}}{\sqrt{s}}$
+      \item $\mathcal L \left\{ \sqrt{t} \right\} = \frac{\sqrt{\pi}}{2 s^\frac{3}{2}}$
+    \end{itemize}
+
+    \begin{table}
+      \centering
+      \begin{tabular}{|c|c|c|}
+	\hline
+	 & $f(t)$ & $F(s)$ \\ \hline
+	$1$ & $1$ & $\frac{1}{s}$ \\ \hline
+	$2$ & $t^n, \quad n \in \mathbb Z$ & $\frac{n!}{s^{n+1}}$ \\ \hline
+	$3$ & $t^\alpha, \quad \alpha \in \mathbb R$ & $\frac{\Gamma(\alpha + 1)}{t^{\alpha + 1}}$ \\ \hline
+	$4$ & $\frac{1}{\sqrt{t}}$ & $\sqrt{\frac{\pi}{s}} $ \\ \hline
+	$5$ & $\sqrt{t}$ & $\frac{\sqrt{\pi}}{2 s^{3/2}} $ \\ \hline
+      \end{tabular}
+      \caption{Laplace Transform Pairs.}
+      \label{tab:ltpairs}
+    \end{table}
+
