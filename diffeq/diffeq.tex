@@ -1,0 +1,65 @@
+\chapter{Fractional-Order Differential Equations}
+
+\begin{example}
+  Determine the solution to
+  \begin{equation*}
+    \frac{\d^{\frac{1}{2}}x}{\d t^{\frac{1}{2}}}(t) + a x(t) = f(t)
+  \end{equation*}
+  where we use the Riemann-Liouville fractional derivative, or
+  \begin{equation}
+    \tensor*[^{RL}]{\D}{^{\frac{1}{2}}} x(t) + a x(t) = f(t).
+    \label{eq:fracdiffeqex1}
+  \end{equation}
+Computing the Laplace transform of each side of the equation gives
+\begin{equation*}
+  s^\frac{1}{2} X(s) - \left[ \tensor*[]{\D}{^{-\frac{1}{2}}} x(t) \right]_{t=0} + a X(s) = F(s).
+\end{equation*}
+For the time being, let us assume that the initial condition term is not zero, and call it $c$. Solving for $X(s)$ gives
+\begin{equation*}
+  X(s) = \frac{c}{\sqrt{s} + a} + \frac{F(s)}{\sqrt{s} + a}.
+\end{equation*}
+
+If $f(t) = 0$ and $c = 1$, then
+\begin{equation*}
+  X(s) = \frac{1}{\sqrt{s}+a}
+\end{equation*}
+and the Laplace transform table gives that 
+\begin{equation*}
+  x(t) = \frac{1}{\sqrt{t}} \E_{\frac{1}{2},\frac{1}{2}}\left( a \sqrt{t} \right). 
+\end{equation*}
+The solution to this equation is illustrated in Figure~\ref{fig:fracdiffeqex1a}. Note for increasing $a$ the solution decays more rapidly. A graph of $x(t) = \e^{-2 t}$ is also shown for comparison.
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{fracdiffeqex1a}
+  \caption{Solutions to Equation~\ref{eq:fracdiffeqex1} for various $a = 1/2$ (blue), $a=1$ (red), $a=3.2$ gold and $a=2$ (purple) and $f(t)=0$ and $x(t) = e^{-2 t}$ (green) for comparison.}
+  \label{fig:fracdiffeqex1a}
+\end{figure}
+
+Now, assume that $f(t) = 1$, so that $F(s) = 1/s$, in which case
+\begin{equation}
+  X(s) = \frac{1}{\sqrt{s} + a} + \frac{1}{s \left( \sqrt{s} + a \right)}.
+\end{equation}
+From Table~\ref{tab:ltpairs}, for the second term, we need that $\alpha = 1/2$ and in order to get the other $s$ term in the denominator, we need $\beta - \alpha = 1$, so $\beta = 3/2$, which gives
+\begin{equation*}
+  x(t) = \frac{1}{\sqrt{t}} \E_{\frac{1}{2},\frac{1}{2}} \left( a \sqrt{t} \right) + \sqrt{t} \E_{\frac{1}{2},\frac{3}{2}} \left( a \sqrt{t} \right).
+\end{equation*}
+
+Figure~\ref{fig:fracdiffeqex1b} illustrates the solutions when $c=0$, \ie, it is the``step response'' portion of the solution. Figure~\ref{fig:fracdiffeqex1c} illustrates the full solution including the term with $c=1$.
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{fracdiffeqex1b}
+  \caption{Solutions to Equation~\ref{eq:fracdiffeqex1} for various $a = 1/2$ (blue), $a=1$ (red), $a=3.2$ gold and $a=2$ (purple), $f(t)=1$ and $c=0$  and $x(t) = 1 - e^{-2 t}$ (green) for comparison.}
+  \label{fig:fracdiffeqex1b}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{fracdiffeqex1c}
+\caption{Solutions to Equation~\ref{eq:fracdiffeqex1} for various $a = 1/2$ (blue), $a=1$ (red), $a=3.2$ gold and $a=2$ (purple), $f(t)=1$ and $c=1$.}
+  \label{fig:fracdiffeqex1c}
+\end{figure}
+
+
+\end{example}

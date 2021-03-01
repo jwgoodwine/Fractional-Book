@@ -482,7 +482,7 @@ The value of the gamma function at some special values should be cataloged.
 	\tensor*[^{C}_0]{\D}{^\alpha_t}  f(t) &= \tensor*[^{C}]{\D}{^\alpha} f(t) \\
 	&= \tensor*[]{\D}{^{-\left( \lc \alpha \rc - \alpha \right)}} \left( \frac{\d^{\lc \alpha \rc} f}{\d t^{\lc \alpha \rc}}(t) \right) \\ 
 	&= 
-	\frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)} \int_0^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1}  \frac{\d^{\lc \alpha \rc}f}{\d t^{\lc \alpha \rc}} (z) \d z. 
+	\frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)} \int_0^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1}  \frac{\d^{\lc \alpha \rc}f}{\d z^{\lc \alpha \rc}} (z) \d z. 
 %}
       \end{aligned}
       \label{eq:caputodef}
@@ -663,7 +663,7 @@ The value of the gamma function at some special values should be cataloged.
 	$5$ & $\sqrt{t}$ & $\frac{\sqrt{\pi}}{2 s^{3/2}} $ \\ \hline
 	$6$ & $t^{\beta - 1} \E_{\alpha,\beta}\left( \pm a t^\alpha \right)$ & $ \frac{s^{\alpha - \beta}}{s^\alpha \mp a}$ \\ \hline
 	$7$ & $\frac{1}{\sqrt{t}} \E_{\frac{1}{2},\frac{1}{2}}\left( \pm a \sqrt{t} \right)$ & $ \frac{1}{\sqrt{s} \mp a}$ \\ \hline
-	$8$ & $\E_{\alpha}\left( \pm a t^\alpha \right)$ & $ \frac{s^{\alpha}}{s^\alpha \mp a}$ \\ \hline
+	$8$ & $\E_{\alpha}\left( \pm a t^\alpha \right)$ & $ \frac{s^{\alpha}}{s \left( s^\alpha \mp a \right)}$ \\ \hline
       \end{tabular}
       \caption{Laplace Transform Pairs.}
       \label{tab:ltpairs}
@@ -693,3 +693,59 @@ The value of the gamma function at some special values should be cataloged.
       \end{enumerate}
     \end{remark}
     A few special cases that may arise frequently are also in the table.
+
+    \subsection{Integration and Differentiation in the Frequency Domain}
+
+    Now we will consider calculus in the frequency domain. First, recall the basic property of Laplace transforms that multiplication in the time domain is equal to convolution in the frequency domain, specifically
+    \begin{align*}
+      \mathcal L \left\{ \int_0^t f_1(t - \tau) f_2(\tau) \d \tau \right\} &= \int_{0^-}^\infty   \int_0^t f_1(t - \tau) f_2(\tau) \d \tau \e^{-s t} \d t \\
+      &= \int_{0^-}^\infty \int_0^\infty f_1(t - \tau) \mathds 1 (t - \tau) f_2(\tau) \d \tau \e^{-st} \d t \\
+      &= \int_0^\infty \int_{0^-}^\infty f_1(t - \tau) \mathds 1 (t - \tau) f_2(\tau) \e^{-st} \d t \d \tau \\
+      &= \int_0^\infty \left(   \int_{0^-}^\infty f_1(t - \tau) \mathds 1 (t - \tau) \e^{-st} \d t \right) f_2(\tau)  \d \tau \\
+      &= \int_0^\infty \left( \int_{-\tau}^\infty f_1(\lambda) \mathds 1 (\lambda) \e^{-s (\lambda + \tau)} \d \lambda \right) f_2(\tau) \d \tau \\
+      &= \int_0^\infty \left( \int_{0}^\infty f_1(\lambda)  \e^{-s \lambda } \d \lambda \right) \e^{-s \tau} f_2(\tau) \d \tau \\
+      &=  \left( \int_{0}^\infty f_1(\lambda)  \e^{-s \lambda } \d \lambda \right) \left( \int_0^\infty \e^{-s \tau} f_2(\tau) \d \tau \right) \\
+      &= F_1(s) F_2(s).
+    \end{align*}
+    This is a fundamental fact important outside the fractional context. We will use it to derive the formulas we want; namely, that division by $s^\alpha$ corresponds to the fractional-order integral operation and correspondingly for multiplication and differentiation.
+
+    Consider the Laplace transform of the fractional-order integral given in Equation~\ref{eq:fracint}
+    \begin{align*}
+      \mathcal L \left\{ \tensor*[_0]{\D}{^{-\alpha}_t} f(t) \right\} &= \int_0^\infty \frac{1}{\Gamma(\alpha)} \int_0^t (t-z)^{\alpha - 1} f(z) \d z \e^{-st} \d t\\
+      &= \frac{1}{\Gamma(\alpha)} \mathcal L \left\{ t^{\alpha - 1} \right\} \mathcal L \left\{ f(t) \right\} \\
+      &= \frac{1}{\Gamma(\alpha)} \left( \frac{\Gamma(\alpha - 1 + 1)}{s^{\alpha-1+1}} \right) \left( F(s) \right) \\
+      &= \frac{1}{s^\alpha} F(s)
+    \end{align*}
+    which is exactly what we would expect. Fractional integration of order $\alpha$ in the frequency domain is division by $s^\alpha$. 
+    It is important enough to  put it in a box and give it a number:
+    \begin{equation}
+      \boxed{ \mathcal L \left\{ \tensor*[]{\D}{^{(-\alpha)}}f(t) \right\} = \frac{1}{s^\alpha} F(s), \qquad \alpha>0. }
+      \label{eq:fracintfreq}
+    \end{equation}
+   
+    For fractional differentiation in the frequency domain, we will get a different answer for the Riemann-Liouville and Caputo definitions. 
+For the Riemann-Liouville fractional derivative we have
+\begin{align*}
+  \mathcal L \left\{ \tensor*[^{RL}]{\D}{^\alpha} f(t) \right\} &= \mathcal L \left\{  \frac{\d^{\lc \alpha \rc}}{\d t^{\lc \alpha \rc}} \left( \tensor*[]{\D}{^{-(\lc \alpha \rc - \alpha)}} f(t) \right) \right\} \\
+  &=  s^{\lc \alpha \rc} \left( \frac{F(s)}{s^{\lc \alpha \rc - \alpha}}  \right)  - s^{\lc \alpha \rc - 1} \left[   \tensor*[]{\D}{^{-(\lc \alpha \rc - \alpha)}} f(t) \right]_{t=0} \\
+  & \qquad - s^{\lc \alpha \rc - 2} \left[ \frac{\d}{\d t}\left( \tensor*[]{\D}{^{-(\lc \alpha \rc - 1)}}f(t) \right) \right]_{t=0} \\
+  & \qquad - \cdots -  \left[ \frac{\d^{\lc \alpha \rc - 1}}{\d t^{\lc \alpha \rc - 1}}\left( \tensor*[]{\D}{^{-(\lc \alpha \rc - 1)}}f(t) \right) \right]_{t=0}. 
+\end{align*}
+Note that the first term simplifies to $s^\alpha F(s)$ just like we want. However, the initial conditions involve fractional integrals of $f(t)$, which may (or may not!) be convenient for a given problem. In the usual situation in controls where we assume that all initial conditions, including fractional initial conditions, are zero, we have 
+\begin{equation*}
+  \mathcal L \left\{ \tensor*[^{RL}]{\D}{^\alpha} f(t) \right\} = s^\alpha F(s).
+\end{equation*}
+
+For the Caputo derivative, we have
+\begin{align*}
+  \mathcal L \left\{ \tensor*[^C]{\D}{^\alpha} f(t) \right\} &= \mathcal L \left\{ 
+      \tensor*[]{\D}{^{-( \lc \alpha \rc - \alpha)}} \left( \frac{\d^{\lc \alpha \rc} f}{\d t^{\lc \alpha \rc}}(t) \right) \right\} \\
+      &= \mathcal L \left\{ 
+	\frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)} \int_0^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1}  \frac{\d^{\lc \alpha \rc}f}{\d z^{\lc \alpha \rc}} (z) \d z \right\} \\
+	&= \frac{1}{\Gamma \left( \lc \alpha \rc - \alpha \right)} \mathcal L \left\{ \left( t - z \right)^{\lc \alpha \rc - \alpha - 1} \right\} \mathcal L \left\{  \frac{\d^{\lc \alpha \rc}f}{\d t^{\lc \alpha \rc}} (t) \right\} \\
+	&= \frac{1}{s^{\lc \alpha \rc - \alpha}} \left( s^{\lc \alpha \rc} F(s) - s^{\lc \alpha \rc - 1} f(0) - s^{\lc \alpha \rc - 2} \frac{\d f}{\d t}(0) - \right. \\
+	& \qquad \cdots - \left. \frac{\d^{\lc \alpha \rc - 1}f}{\d t^{\lc \alpha \rc - 1}}(0) \right) 
+\end{align*}
+Note that the Laplace transform of the Caputo derivative involves evaluating \emph{integer-order} initial conditions, in contrast to the fractional-order initial conditions from the Riemann-Liouville derivative.
+
+
