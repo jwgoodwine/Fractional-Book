@@ -60,6 +60,30 @@ Figure~\ref{fig:fracdiffeqex1b} illustrates the solutions when $c=0$, \ie, it is
 \caption{Solutions to Equation~\ref{eq:fracdiffeqex1} for various $a = 1/2$ (blue), $a=1$ (red), $a=3.2$ gold and $a=2$ (purple), $f(t)=1$ and $c=1$.}
   \label{fig:fracdiffeqex1c}
 \end{figure}
-
-
 \end{example}
+
+\begin{example}
+  As a second example, consider a mass attached to a wall and subjected to a force as illustrated in Figure~\ref{fig:masswall}. We will consider the attachment to the wall as having some sort of mechanical impendence, which could be a spring, or a damper or perhaps a fractional-order type network such as the $1/2$-order tree network of springs and dampers considered earlier in Section~\ref{sec:introexamples}. The top part of the figure illustrates the half-order connection, and the bottom part represents the more general situation where the order of the relationship between the force resisting the motion and the displacement is of order $\alpha$.
+
+  \begin{figure}
+    \centering
+    \psfrag{f}{$f$}
+    \psfrag{m}{$m$}
+    \psfrag{x1}{$x$}
+    \psfrag{q}{$Q(s^\alpha)$}
+    \psfrag{k}{$k$}
+    \psfrag{b}{$b$}
+    \includegraphics[width=3.5in]{figs/structurewall}
+    \caption{Mass attached to a wall.}
+    \label{fig:masswall}
+  \end{figure}
+
+  Newton's law on the mass gives
+  \begin{equation*}
+    m \frac{\d^2 x}{\d t^2}(t) + q \frac{\d^\alpha x}{\d t^\alpha}(t) = f(t).
+  \end{equation*}a
+  In the case where the connection is a spring, we would use $q = k$ and $\alpha = 0$, and when it is a damper, we would use $q = b$ and $\alpha = 1$. Divide both sides by $m$, let $f(t)$ be a unit step input, assume zero initial conditions of all orders and take the Laplace transform of both sides, which gives
+  \begin{equation*}
+    X(s) = \frac{1}{s \left(s^2 + \frac{q}{m} s^\alpha \right)} = \frac{1}{s^{\alpha + 1} \left( s^{2 - \alpha} + \frac{q}{m} \right) }.
+  \end{equation*}
+\end{example}<++>
