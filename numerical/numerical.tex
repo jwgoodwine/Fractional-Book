@@ -23,3 +23,38 @@ This, of course, leads to the approximation
   \frac{\d^\alpha f}{\d t^\alpha}(t) \approx \frac{\sum_{k=0}^{\lf \frac{t}{\Delta t} \rf}\left(-1\right)^k \begin{pmatrix} \alpha \\ k \end{pmatrix} f \left( t - k \Delta t \right) }{\left( \Delta t \right)^\alpha}, \qquad \Delta t \ll 1.
 \end{equation*}
 
+We will return to an example from the Chapter~\ref{ch:diffeq} to implement this.
+
+\begin{example}
+  Solve
+  \begin{equation*}
+    m \frac{\d^2 x}{\d t^2}(t) + q \frac{\d^\gamma x}{\d t^\gamma}(t) = f(t)
+  \end{equation*}
+  assuming all zero initial conditions. Because this is a numerical method, we need to choose numerical values for all the paramters, so let $m=q=1$ and $\gamma = 1/2$ and let $f(t)$ be a unit step input:
+  \begin{equation*}
+    \frac{\d^2 x}{\d t^2}(t) + \frac{\d^\frac{1}{2} x}{\d t^\frac{1}{2}} = 1.
+  \end{equation*}
+
+  The approach we will take is to convert this second-order differential equation into two first-order equations and use Euler's method to compute an approximate numerical solution. So, let $x_1 = x$ and $x_2 = \dot x$ so that
+  \begin{equation*}
+    \frac{\d}{\d t}\begin{bmatrix}
+    x_1 \\ x_2
+    \end{bmatrix} = 
+    \begin{bmatrix}
+      x_2 \\
+    1 - \frac{\d^\frac{1}{2} x_1}{\d t^\frac{1}{2}}
+    \end{bmatrix}
+  \end{equation*}
+  which gives the approximation
+  \begin{equation*}
+    \begin{bmatrix}
+      x_1\left(t + \Delta t \right) \\
+      x_2\left(t + \Delta t \right)
+    \end{bmatrix} =
+    \begin{bmatrix}
+      x_2(t) \\
+      1 - \sum_{k=0}^{\lf \frac{t}{\Delta t} \rf} \frac{(-1)^k  \begin{pmatrix} \gamma \\ k
+      \end{pmatrix} f \left( t - k \Delta t \right)}{\left( \Delta t \right)^\gamma}
+    \end{bmatrix}.
+  \end{equation*}
+\end{example}
