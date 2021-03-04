@@ -1,0 +1,25 @@
+\chapter[Numerical Methods]{Numerical Methods for Fractional-Order Differential Equations}
+
+Numerical methods are challenging for fractional-order systems because of the non-locality of the fractional derivative. 
+
+\section{Direct Application of the Gr\"unwald-Letnikov Fractional Derivative}
+
+Because the Gr\"unwald-Letnikov definition of the fractional derivative contains a limit, we can use it by taking the limiting term to be small as a computational approximation of the fractional derivative. The approach itself is fairly straight-forward, but numerical issues arise fairly quickly. We will illustrate both the approach and its limitations with an example.
+
+Recall that the Gr\"unwald-Letnikov definition of the fractional derivative is
+\begin{equation*}
+  \frac{\d^\alpha f}{\d t^\alpha}(t) = \lim_{\Delta t \rightarrow 0} \frac{\sum_{k=0}^{\infty}\left(-1\right)^k \begin{pmatrix} \alpha \\ k \end{pmatrix} f \left( t - k \Delta t \right) }{\left( \Delta t \right)^\alpha}
+\end{equation*}
+where the binomial coefficient is generalized to non-integer arguments as
+\begin{equation*}
+  \begin{pmatrix} \alpha \\ k \end{pmatrix} = \frac{\Gamma \left( \alpha + 1 \right)}{\Gamma \left( k + 1 \right) \Gamma \left( \alpha - k + 1 \right)}.
+\end{equation*}
+In the case where all initial conditions of all orders are zero, the upper limit of the summation can be changed
+\begin{equation*}
+  \frac{\d^\alpha f}{\d t^\alpha}(t) = \lim_{\Delta t \rightarrow 0} \frac{\sum_{k=0}^{\lf \frac{t}{\Delta t} \rf}\left(-1\right)^k \begin{pmatrix} \alpha \\ k \end{pmatrix} f \left( t - k \Delta t \right) }{\left( \Delta t \right)^\alpha}.
+\end{equation*}
+This, of course, leads to the approximation
+\begin{equation*}
+  \frac{\d^\alpha f}{\d t^\alpha}(t) \approx \frac{\sum_{k=0}^{\lf \frac{t}{\Delta t} \rf}\left(-1\right)^k \begin{pmatrix} \alpha \\ k \end{pmatrix} f \left( t - k \Delta t \right) }{\left( \Delta t \right)^\alpha}, \qquad \Delta t \ll 1.
+\end{equation*}
+

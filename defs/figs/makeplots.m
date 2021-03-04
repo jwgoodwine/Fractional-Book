@@ -1,56 +1,56 @@
 clear all; close all; graphics_toolkit("gnuplot")
 size = .025*[0,0,162,100];
 
-gh = figure(1,'paperposition',size);
-t = linspace(-3.5,-3.0001,100);
-plot(t,gamma(t),'b','linewidth',2);
-hold on;
-t = linspace(-2.9999,-2.0001,100);
-plot(t,gamma(t),'b','linewidth',2);
-t = linspace(-1.9999,-1.0001,100);
-plot(t,gamma(t),'b','linewidth',2);
-t = linspace(-0.9999,-0.0001,100);
-plot(t,gamma(t),'b','linewidth',2);
-t = linspace(0.0001,4.5,400);
-plot(t,gamma(t),'b','linewidth',2);
-xlabel('$t$');
-ylabel('$\Gamma(t)$');
-axis([-3.5 4.5 -20 20]);
-print("gammaall.tex",'-depslatex');
+%gh = figure(1,'paperposition',size);
+%t = linspace(-3.5,-3.0001,100);
+%plot(t,gamma(t),'b','linewidth',2);
+%hold on;
+%t = linspace(-2.9999,-2.0001,100);
+%plot(t,gamma(t),'b','linewidth',2);
+%t = linspace(-1.9999,-1.0001,100);
+%plot(t,gamma(t),'b','linewidth',2);
+%t = linspace(-0.9999,-0.0001,100);
+%plot(t,gamma(t),'b','linewidth',2);
+%t = linspace(0.0001,4.5,400);
+%plot(t,gamma(t),'b','linewidth',2);
+%xlabel('$t$');
+%ylabel('$\Gamma(t)$');
+%axis([-3.5 4.5 -20 20]);
+%print("gammaall.tex",'-depslatex');
 
-gh = figure(2,'paperposition',size);
-t = linspace(0.000000001,1,777);
-plot(t,t,'linewidth',2);
-hold on;
-alpha = 0.1;
-plot(t,gamma(2)/gamma(2-alpha)*t.^(1-alpha),'linewidth',2);
-alpha = 0.9;
-plot(t,gamma(2)/gamma(2-alpha)*t.^(1-alpha),'linewidth',2);
-plot(t,t.^0,'linewidth',2);
-axis([-0.004 1 0 1.4]);
-xlabel('$t$');
-ylabel('fractional derivatives');
-print('singex.tex','-depslatex');
+%gh = figure(2,'paperposition',size);
+%t = linspace(0.000000001,1,777);
+%plot(t,t,'linewidth',2);
+%hold on;
+%alpha = 0.1;
+%plot(t,gamma(2)/gamma(2-alpha)*t.^(1-alpha),'linewidth',2);
+%alpha = 0.9;
+%plot(t,gamma(2)/gamma(2-alpha)*t.^(1-alpha),'linewidth',2);
+%plot(t,t.^0,'linewidth',2);
+%axis([-0.004 1 0 1.4]);
+%xlabel('$t$');
+%ylabel('fractional derivatives');
+%print('singex.tex','-depslatex');
 
-gh = figure(3,'paperposition',size);
-t = linspace(-3,3,1000);
-plot(t,exp(-t.^2),'linewidth',2);
-axis([-3 3 0 1.5]);
-xlabel('$u$');
-ylabel('$e^{-u^2}$');
-print('gaussianintegral.tex','-depslatex');
-
-gh = figure(4,'paperposition',size);
-t = linspace(-3,3,1000);
-plot(t,erf(t),'linewidth',2);
-hold on;
-plot(t,erfc(t),'linewidth',2);
-axis([-3 3 -1.05 2.05]);
-xlabel('$t$');
-ylabel('erf, erfc');
-legend('erf','erfc');
-legend('boxoff');
-print('erferfc.tex','-depslatex');
+%gh = figure(3,'paperposition',size);
+%t = linspace(-3,3,1000);
+%plot(t,exp(-t.^2),'linewidth',2);
+%axis([-3 3 0 1.5]);
+%xlabel('$u$');
+%ylabel('$e^{-u^2}$');
+%print('gaussianintegral.tex','-depslatex');
+%
+%gh = figure(4,'paperposition',size);
+%t = linspace(-3,3,1000);
+%plot(t,erf(t),'linewidth',2);
+%hold on;
+%plot(t,erfc(t),'linewidth',2);
+%axis([-3 3 -1.05 2.05]);
+%xlabel('$t$');
+%ylabel('erf, erfc');
+%legend('erf','erfc');
+%legend('boxoff');
+%print('erferfc.tex','-depslatex');
 
 
 %gh = figure(5,'paperposition',size);
@@ -135,27 +135,27 @@ print('erferfc.tex','-depslatex');
 %ylabel('$t + 1$ and its half derivative');
 %print('fracderivex1.tex','-depslatex');
 
-close all;
-gh = figure(12,'paperposition',size)
-t = linspace(0,10,1001);
-dt = t(2)-t(1);
-alpha = 1.1;
-deriv = 0;
-f = cos(3*t);
-coefs = 0;
-coefs(1) = bincoeff(alpha,0);
-deriv(1) = 0;
-for n = 2:length(t)
-	coefs(n) = (-1)^(n-1)*bincoeff(alpha,(n-1));
-	sum = dot(fliplr(f(1:n)),coefs)/dt^alpha;
-	deriv(n) = sum;
-end
-plot(t,f,'linewidth',2);
-hold on;
-plot(t,-3*sin(3*t),'linewidth',2);
-plot(t,deriv,'linewidth',2);
-xlabel('$t$');
-ylabel('half derivative of $\cos 3 t$');
-print('gwex1.tex','-depslatex');
+%close all;
+%gh = figure(12,'paperposition',size)
+%t = linspace(0,10,1001);
+%dt = t(2)-t(1);
+%alpha = 1.1;
+%deriv = 0;
+%f = cos(3*t);
+%coefs = 0;
+%coefs(1) = bincoeff(alpha,0);
+%deriv(1) = 0;
+%for n = 2:length(t)
+%	coefs(n) = (-1)^(n-1)*bincoeff(alpha,(n-1));
+%	sum = dot(fliplr(f(1:n)),coefs)/dt^alpha;
+%	deriv(n) = sum;
+%end
+%plot(t,f,'linewidth',2);
+%hold on;
+%plot(t,-3*sin(3*t),'linewidth',2);
+%plot(t,deriv,'linewidth',2);
+%xlabel('$t$');
+%ylabel('half derivative of $\cos 3 t$');
+%print('gwex1.tex','-depslatex');
 
 

@@ -63,14 +63,14 @@ Figure~\ref{fig:fracdiffeqex1b} illustrates the solutions when $c=0$, \ie, it is
 \end{example}
 
 \begin{example}
-  As a second example, consider a mass attached to a wall and subjected to a force as illustrated in Figure~\ref{fig:masswall}. We will consider the attachment to the wall as having some sort of mechanical impendence, which could be a spring, or a damper or perhaps a fractional-order type network such as the $1/2$-order tree network of springs and dampers considered earlier in Section~\ref{sec:introexamples}. The top part of the figure illustrates the half-order connection, and the bottom part represents the more general situation where the order of the relationship between the force resisting the motion and the displacement is of order $\alpha$.
+  As a second example, consider a mass attached to a wall and subjected to a force as illustrated in Figure~\ref{fig:masswall}. We will consider the attachment to the wall as having some sort of mechanical impendence, which could be a spring, or a damper or perhaps a fractional-order type network such as the $1/2$-order tree network of springs and dampers considered earlier in Section~\ref{sec:introexamples}. The top part of the figure illustrates the half-order connection, and the bottom part represents the more general situation where the order of the relationship between the force resisting the motion and the displacement is of order $\gamma$.
 
   \begin{figure}
     \centering
     \psfrag{f}{$f$}
     \psfrag{m}{$m$}
     \psfrag{x1}{$x$}
-    \psfrag{q}{$Q(s^\alpha)$}
+    \psfrag{q}{$Q(s^\gamma)$}
     \psfrag{k}{$k$}
     \psfrag{b}{$b$}
     \includegraphics[width=3.5in]{figs/structurewall}
@@ -80,10 +80,44 @@ Figure~\ref{fig:fracdiffeqex1b} illustrates the solutions when $c=0$, \ie, it is
 
   Newton's law on the mass gives
   \begin{equation*}
-    m \frac{\d^2 x}{\d t^2}(t) + q \frac{\d^\alpha x}{\d t^\alpha}(t) = f(t).
-  \end{equation*}a
-  In the case where the connection is a spring, we would use $q = k$ and $\alpha = 0$, and when it is a damper, we would use $q = b$ and $\alpha = 1$. Divide both sides by $m$, let $f(t)$ be a unit step input, assume zero initial conditions of all orders and take the Laplace transform of both sides, which gives
-  \begin{equation*}
-    X(s) = \frac{1}{s \left(s^2 + \frac{q}{m} s^\alpha \right)} = \frac{1}{s^{\alpha + 1} \left( s^{2 - \alpha} + \frac{q}{m} \right) }.
+    m \frac{\d^2 x}{\d t^2}(t) + q \frac{\d^\gamma x}{\d t^\gamma}(t) = f(t).
   \end{equation*}
-\end{example}<++>
+  In the case where the connection is a spring, we would use $q = k$ and $\gamma = 0$, and when it is a damper, we would use $q = b$ and $\gamma = 1$. Divide both sides by $m$, let $f(t)$ be a unit step input, assume zero initial conditions of all orders and take the Laplace transform of both sides, which gives
+  \begin{equation}
+    X(s) = \frac{1}{s \left(s^2 + \frac{q}{m} s^\gamma \right)} = \frac{1}{s^{\gamma + 1} \left( s^{2 - \gamma} + \frac{q}{m} \right) }.
+    \label{eq:sw1}
+  \end{equation}
+
+  Referring to Table~\ref{tab:ltpairs}, $\alpha =  2 - \gamma$ and $\alpha - \beta = - \left( \gamma + 1 \right)$, so $\beta = 3$, and the time domain response is
+  \begin{equation*}
+    x(t) = t^2 \E_{2-\gamma,3}\left(-\frac{q}{m} t^{2 - \gamma} \right).
+  \end{equation*}
+  
+  To validate this, let us plot the solution for $\gamma = 0$, which would correspond to the connection being a spring, in which case we expect a purly oscillatory response. Additionally, if we increase $q/m$ we expect a higher frequency response. Both of these attributes of the solution are illustrated in Figure~\ref{fig:structurewall1}. In the case where $\gamma=1$, the connection to the wall is a damper, in which case we would expect the steady-state solution to be a constant velocity where the damper force and applied force are in equilibrium. This case is illustrated in Figure~\ref{fig:structurewall2}. 
+
+  \begin{figure}
+    \centering
+    \subimport{figs/}{structurewall1}
+    \caption{Solution to Equation~\ref{eq:sw1} in the case where $\gamma=0$, corresponding to a spring element connecting the mass to the wall. The blue curve is for $q/m=1$ and the red curve is for $q/m=2$.}
+    \label{fig:structurewall1}
+  \end{figure}
+
+  \begin{figure}
+    \centering
+    \subimport{figs/}{structurewall2}
+    \caption{Solution to Equation~\ref{eq:sw1} in the case where $\gamma=1$, corresponding to a damper element connecting the mass to the wall.}
+    \label{fig:structurewall2}
+  \end{figure}
+
+  Finally, the solutions for $\gamma \in \left\{ 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75 \right\}$ are illustrated in Figure~\ref{fig:structurewall3}. We will revisit this problem in the next chapter when we consider numerical methods.
+
+ \begin{figure}
+    \centering
+    \subimport{figs/}{structurewall3}
+    \caption{Solution to Equation~\ref{eq:sw1} for $\gamma = 0, 0.25, 0.5, \ldots, 1.75$. }
+    \label{fig:structurewall3}
+  \end{figure}
+
+
+
+\end{example}
