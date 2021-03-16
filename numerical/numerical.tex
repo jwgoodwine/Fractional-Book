@@ -57,13 +57,19 @@ We will return to an example from the Chapter~\ref{ch:diffeq} to implement this.
     \begin{bmatrix}
       x_2(t) \\
       1 - \sum_{k=0}^{\lf \frac{t}{\Delta t} \rf} \frac{(-1)^k  \begin{pmatrix} \gamma \\ k
-      \end{pmatrix} f \left( t - k \Delta t \right)}{\left( \Delta t \right)^\gamma}
+      \end{pmatrix} x_1 \left( t - k \Delta t \right)}{\left( \Delta t \right)^\gamma}
     \end{bmatrix} 
     \Delta t.
   \end{equation*}
 
-  The second, which we will adopt, is to express the second derivative using finite differences, \ie, basically use the Gr\"unwald-Letnikov definition for the second derivative term, and solve the resulting expression for $x(t)$:
+  The second, which we will adopt, is to express the second derivative using finite differences, \ie, basically use the Gr\"unwald-Letnikov definition for the second derivative term, 
   \begin{equation*}
-    \frac{x(t) - 2 x(t - \Delta t) + x(t - 2 \Delta t)}{\left( \Delta t \right)^2} +  
-  \end{equation*}<++>
+    \frac{x(t) - 2 x(t - \Delta t) + x(t - 2 \Delta t)}{\left( \Delta t \right)^2} + \sum_{k=0}^{\lf \frac{t}{\Delta t} \rf} \frac{\left( -1 \right)^\gamma \begin{pmatrix}\gamma \\ k \end{pmatrix} x \left( t - k \Delta t \right)}{\left( \Delta t \right)^\gamma} = 1 
+  \end{equation*}
+and solve the resulting expression for $x(t)$
+\begin{equation*}
+  x(t) = \frac{\left( \Delta t \right)^{2 + \gamma}}{\left( \Delta t \right)^2 + \left( \Delta t \right)^\gamma} \left[
+    1 - \sum_{k=1}^{\lf \frac{t}{\Delta t} \rf} \left( \frac{\left( -1 \right)^k \begin{pmatrix} \gamma \\ k \end{pmatrix} x \left( t - k \Delta t \right)}{\left( \Delta t \right)^\gamma} \right) + \frac{2 x \left( t - \Delta t \right) - x \left( t - 2 \Delta t \right)}{\left( \Delta t \right)^2}
+  \right]
+\end{equation*}
 \end{example}
