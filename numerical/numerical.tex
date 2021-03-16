@@ -35,7 +35,7 @@ We will return to an example from the Chapter~\ref{ch:diffeq} to implement this.
     \frac{\d^2 x}{\d t^2}(t) + \frac{\d^\frac{1}{2} x}{\d t^\frac{1}{2}} = 1.
   \end{equation*}
 
-  The approach we will take is to convert this second-order differential equation into two first-order equations and use Euler's method to compute an approximate numerical solution. So, let $x_1 = x$ and $x_2 = \dot x$ so that
+  At this point we can take one of two approaches. The first is to convert this second-order differential equation into two first-order equations and use Euler's method to compute an approximate numerical solution. So, let $x_1 = x$ and $x_2 = \dot x$ so that
   \begin{equation*}
     \frac{\d}{\d t}\begin{bmatrix}
     x_1 \\ x_2
@@ -45,16 +45,25 @@ We will return to an example from the Chapter~\ref{ch:diffeq} to implement this.
     1 - \frac{\d^\frac{1}{2} x_1}{\d t^\frac{1}{2}}
     \end{bmatrix}
   \end{equation*}
-  which gives the approximation
+  which gives the approximation using Euler's method
   \begin{equation*}
     \begin{bmatrix}
       x_1\left(t + \Delta t \right) \\
       x_2\left(t + \Delta t \right)
     \end{bmatrix} =
     \begin{bmatrix}
+      x_1(t) \\ x_2(t)
+    \end{bmatrix} +
+    \begin{bmatrix}
       x_2(t) \\
       1 - \sum_{k=0}^{\lf \frac{t}{\Delta t} \rf} \frac{(-1)^k  \begin{pmatrix} \gamma \\ k
       \end{pmatrix} f \left( t - k \Delta t \right)}{\left( \Delta t \right)^\gamma}
-    \end{bmatrix}.
+    \end{bmatrix} 
+    \Delta t.
   \end{equation*}
+
+  The second, which we will adopt, is to express the second derivative using finite differences, \ie, basically use the Gr\"unwald-Letnikov definition for the second derivative term, and solve the resulting expression for $x(t)$:
+  \begin{equation*}
+    \frac{x(t) - 2 x(t - \Delta t) + x(t - 2 \Delta t)}{\left( \Delta t \right)^2} +  
+  \end{equation*}<++>
 \end{example}
