@@ -4,11 +4,9 @@ Fraction-order control, especially fractional-order PID control, is becoming inc
 \begin{equation*}
   u(t) = k_p e(t) + k_I \tensor*[_0]\D{^{-\lambda}_t} e(t) + k_I \tensor*[_0]\D{^{\mu}_t} e(t)
 \end{equation*}
-where $e(t)$ is the error signal.
+where $e(t)$ is the error signal. If $\lambda$ and $\mu$ are both one, then this is what we normally would call PID control and if they are not one, it is what we call fractional PID control. 
 
-If $\lambda$ and $\mu$ are both one, then this is what we normally would call PID control and if they are not one, it is what we call fractional PID control. 
-
-It makes some sense that since for normal PID control we have the three gains to tune and for fractional PID we have five parameters, the three gains and the two fractional orders, that with more degrees of freedom we can often design a better controller. How to effectively tune five parameters is an issue. Furthermore, a drawback to fractional PID is that the controller needs to either compute or approximate the fractional terms, which can be expensive/slow because they are non local. As such, there has been a lot of effort to determine good appriximations for the fractional controller terms that retain the benefit of fractional PID but are fast to compute.
+It makes some sense that since for normal PID control we have the three gains to tune and for fractional PID we have five parameters, the three gains and the two fractional orders, that with more degrees of freedom we can often design a better controller. How to effectively tune five parameters is an issue. Furthermore, a drawback to fractional PID is that the controller needs to either compute or approximate the fractional terms, which can be expensive and therefore slow because they are non local. As such, there has been a lot of effort to determine good appriximations for the fractional controller terms that retain the benefit of fractional PID but are fast to compute.
 
 Controls in general is primarly concerned with stability and performance. We will consider stability first.
 
@@ -18,7 +16,7 @@ Many of the topics covered in undergraduate controls courses are ultimately cons
 \begin{equation*}
   G(s) = \frac{s^m + a_1 s^{m-1} + \cdots + a_m}{b_0 s^n + b_1 s^{n-1} + \cdots + b_n}
 \end{equation*}
-solutions will have decaying exponential terms if and only if all the roots of the denominator have negative real part. 
+solutions will have decaying exponential terms if and only if all the roots of the denominator have negative real part. Many of the usual tools in controls are essentially directed towards that. 
 \begin{itemize}
   \item Constructing and analyzing the \emph{Routh array} is a means to determine the number of right half plane poles of the transfer function (but it does not fully factor the characteristic equation).
   \item The \emph{root locus} method is a way to plot how the pole locations of a transfer function change as some parameter in the system changes. It is especially useful when the transfer function is made up of interactions among relatively simple, \ie, factorable, sub-transfer functions with some feedback. Modern computational tools make it not particularly valuable as a means to simply determine the pole locations of a transfer function, \emph{but knowing how poles and zeros affect pole locations in a system provide valuable insighe into design controllers}.
@@ -40,7 +38,11 @@ In order to develop some convenient tools to study stability for fractional-orde
 The proof is beyond the scope of this book, but see \cite{fraccontrol,mlfbook}. Here we can check this for a few different cases of $\alpha$, $\beta$ and $a$.
 
 \begin{example}
-  Figure~\ref{fig:mlfasyex1} plots $\E_{1,2}\left(-2 t \right)$ and the corresponding asymptotic expression from Theorem~\ref{th:mlfasymptotics}. 
+  \begin{enumerate}
+    \item Figure~\ref{fig:mlfasyex1} plots $\E_{1,2}\left(-2 t \right)$ and the corresponding asymptotic expression from Theorem~\ref{th:mlfasymptotics}. 
+    \item Figure~\ref{fig:mlfasyex2} plots $\E_{3/2,1/2}\left(-t \right)$ and the corresponding asymptotic expression from Theorem~\ref{th:mlfasymptotics}. 
+    \item Figure~\ref{fig:mlfasyex3} plots $\E_{1,2}\left(t \right)$ and the corresponding asymptotic expression from Theorem~\ref{th:mlfasymptotics}. 
+  \end{enumerate} 
 \end{example}
 
 \begin{figure}  
@@ -50,20 +52,12 @@ The proof is beyond the scope of this book, but see \cite{fraccontrol,mlfbook}. 
   \label{fig:mlfasyex1}
 \end{figure}
 
-\begin{example}
-  Figure~\ref{fig:mlfasyex2} plots $\E_{3/2,1/2}\left(-t \right)$ and the corresponding asymptotic expression from Theorem~\ref{th:mlfasymptotics}. 
-\end{example}
-
 \begin{figure}  
   \centering
   \subimport{figs/}{mlfasyex2}
   \caption{Mittag-Leffler function $\E_{3/2,1/2}\left(-t\right)$ (blue) and asymptotic approximation (red).}
   \label{fig:mlfasyex2}
 \end{figure}
-
-\begin{example}
-  Figure~\ref{fig:mlfasyex3} plots $\E_{1,2}\left(t \right)$ and the corresponding asymptotic expression from Theorem~\ref{th:mlfasymptotics}. 
-\end{example}
 
 \begin{figure}  
   \centering
@@ -92,37 +86,27 @@ The thing to note here is that the denominator term, $s^\alpha + a$ plays a very
 A particularly convenient situation arises in the case of \emph{commensurable transfer functions}.
 
 \begin{definition}
-  A transfer function is said to be commensurable when all the orders $\alpha_k$ and $\beta_k$ are integer multiples of a least common divisor $a > 0$. In that case the transfer function is rational in $s^a$. If we let $\lambda = s^a$ then
-\begin{equation*}
+  A transfer function is said to be commensurable when all the orders $\alpha_k$ and $\beta_k$ are integer multiples of a common divisor $a > 0$. In that case the transfer function is rational in $s^a$. If we let $\lambda = s^a$ then
+  \begin{equation*}
     G(s) = \frac{\sum_{k=1}^m b_k s^{\beta_k}}{\sum_{k=1}^n a_k s^{\alpha_k}} = \frac{\sum_{k=0}^m b_k s^{a k}}{\sum_{k=0}^n a_k s^{a k}} = 
-    \frac{\sum_{k=0}^m b_k \lambda^{k}}{\sum_{k=0}^n a_k \lambda^{k}}
+    \frac{\sum_{k=0}^m b_k \lambda^{k}}{\sum_{k=0}^n a_k \lambda^{k}}.
   \end{equation*}
+  Of course, if all the coefficients of the numerator and denominatore are integer multiples of $a$, they will also be integer multipes of $a/2$, so it is convenient to chose the largest $a$. 
   \label{def:commensurable}
 \end{definition}
 
 \begin{example}
   The transfer function
   \begin{equation*}
-G(s) = \frac{s + 3 s^\frac{1}{2} + 5}{s^2 + 2 s^\frac{3}{2} + s^\frac{1}{2} + 2}
-\end{equation*}
-is commensurable with $a = 1/2$ because if we let $\lambda = 1/2$
-\begin{equation*}
-  G(s) = \frac{\lambda^2 + 3 \lambda + 5}{\lambda^4 + 2 \lambda^3 + \lambda + 2}.
-\end{equation*}
+    G(s) = \frac{s + 3 s^\frac{1}{2} + 5}{s^2 + 2 s^\frac{3}{2} + s^\frac{1}{2} + 2}
+  \end{equation*}
+  is commensurable with $a = 1/2$ because if we let $\lambda = 1/2$
+  \begin{equation*}
+    G(s) = \frac{\lambda^2 + 3 \lambda + 5}{\lambda^4 + 2 \lambda^3 + \lambda + 2}.
+  \end{equation*}
 \end{example}
 
 Stability of commensurable transfer functions has a transparent extension to integer-order transfer functions, but we first need to characterize the idea of left- and right-half planes slightly differently. Another way to say that all the poles of an integer-order transfer function must be in the left half of the complex plane is to require that the absolute value of the angle of the poles (as complex numbers) is greater than $\pi/2$, or more formally, we have the following theorem.
-
-\begin{theorem}
-  A system given by G(s) by Definition~\ref{def:fractionalxf} is stable if and only if
-  \begin{equation*}
-    \forall s: \sum_{k=0}^n a_k s^{\alpha k} = 0, \quad \left| \angle s \right| > \frac{\pi}{2}
-  \end{equation*}
-  where $\angle s \in \left[ -\pi, \pi \right]$.
-  \label{th:fracstability}
-\end{theorem}
-
-The condition stated in terms of angles of the complex number is equivalent to saying the pole must be in the left half plane. For commensurable transfer functions, this condition is particularly easy and is an appealing intutitive generalization of the usual conditions for stability.
 
 \begin{theorem}
   The commensurable transfer function
@@ -130,19 +114,19 @@ The condition stated in terms of angles of the complex number is equivalent to s
     G(s) =  \frac{\sum_{k=1}^m b_k s^{a k}}{\sum_{k=1}^n a_k s^{a k}} = 
     \frac{\sum_{k=1}^m b_k \lambda^{k}}{\sum_{k=1}^n a_k \lambda^{k}}
   \end{equation*}
-is stable if the solutions to $a_n \lambda^n + a_{n-1} \lambda^{n-1} + \cdots + a_0 = 0$, denoted by $\lambda_k$ are such that
-\begin{equation*}
-  \left| \angle \lambda_k \right| > a \frac{\pi}{2}.
-\end{equation*}
+  is stable if the solutions to $a_n \lambda^n + a_{n-1} \lambda^{n-1} + \cdots + a_0 = 0$, denoted by $\lambda_k$ are such that
+  \begin{equation*}
+    \left| \angle \lambda_k \right| > a \frac{\pi}{2}.
+  \end{equation*}
   \label{th:commensurablestability}
 \end{theorem}
 
 \begin{proof}
   (for now copied from \cite{fraccontrol}).
 
-  If there are no repeated roots, then $G(s)$ can be written as
+  If there are no repeated roots, then $G(s)$ can be written as the usual sort of partial fraction expansion
   \begin{equation*}
-    G(s) = \sum_{k=1}^n \frac{\rho_k}{s^\alpha - \lambda_k}
+    G(s) = \sum_{k=1}^n \frac{\rho_k}{\lambda - \lambda_k} =  \sum_{k=1}^n \frac{\rho_k}{s^\alpha - \lambda_k}
   \end{equation*}
   so the impulse response will be of the form
   \begin{equation*}
@@ -154,8 +138,22 @@ is stable if the solutions to $a_n \lambda^n + a_{n-1} \lambda^{n-1} + \cdots + 
   \end{equation*}
   This will be stable as long as the real part of $\lambda_k^{1/\alpha} < 0$. Since
   \begin{align*}
-    \lambda_k^{1/\alpha} &= \left[ \left| \lambda_k \right| \left( \cos \lambda_k + \i \sin \lambda_k \right) \right]^{1/\alpha} \\
-    &= \left| \lambda_k \right|^{1/\alpha} \left( \cos \frac{\angle \lambda_k}{\alpha} + \i \sin \frac{\angle \lambda_k}{\alpha} \right).
+    \lambda_k^{1/\alpha} &= \left[ \left| \lambda_k \right| \left( \cos \angle \lambda_k + \iu \sin \angle \lambda_k \right) \right]^{1/\alpha} \\
+    &= \left| \lambda_k \right|^{1/\alpha} \left( \cos \frac{\angle \lambda_k}{\alpha} + \iu \sin \frac{\angle \lambda_k}{\alpha} \right).
   \end{align*}
-  
-\end{proof}<++>
+  The cosine term will be negative when its argument is greater than $\pi/2$, so we have
+  \begin{equation*}
+    \frac{\angle \lambda_k}{a} > \frac{\pi}{2}
+  \end{equation*}
+  or
+  \begin{equation*}
+    \angle \lambda_k > a \frac{\pi}{2}.
+  \end{equation*}
+  which is the desired result.
+\end{proof}
+
+\begin{remark}
+  In the integer order case, $a = 1$ and the angle condition is the same as requiring all the poles to be in the left half plane.
+\end{remark}
+
+

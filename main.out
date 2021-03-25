@@ -1,0 +1,33 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Why Study Fractional Calculus?}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Introductory Concepts}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Fractional Derivatives of some Elementary Functions}{chapter.1}% 4
+\BOOKMARK [2][-]{subsection.1.3.1}{Sine and Cosine Functions}{section.1.3}% 5
+\BOOKMARK [2][-]{subsection.1.3.2}{Monomials and Polynomials}{section.1.3}% 6
+\BOOKMARK [2][-]{subsection.1.3.3}{Exponentials}{section.1.3}% 7
+\BOOKMARK [1][-]{section.1.4}{The Law of Indices}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.5}{Examples}{chapter.1}% 9
+\BOOKMARK [2][-]{subsection.1.5.1}{Mechanical System and Frequency Domain Example}{section.1.5}% 10
+\BOOKMARK [2][-]{subsection.1.5.2}{Ultrasound Example}{section.1.5}% 11
+\BOOKMARK [0][-]{chapter.2}{Fractional Derivative Definitions}{}% 12
+\BOOKMARK [1][-]{section.2.1}{Summary of Important Functions}{chapter.2}% 13
+\BOOKMARK [2][-]{subsection.2.1.1}{Preliminaries}{section.2.1}% 14
+\BOOKMARK [2][-]{subsection.2.1.2}{The Gamma Function}{section.2.1}% 15
+\BOOKMARK [2][-]{subsection.2.1.3}{Binomial Coefficient}{section.2.1}% 16
+\BOOKMARK [2][-]{subsection.2.1.4}{The Error Function and Complementary Error Functions}{section.2.1}% 17
+\BOOKMARK [2][-]{subsection.2.1.5}{Mittag-Leffler Functions}{section.2.1}% 18
+\BOOKMARK [1][-]{section.2.2}{Fractional Integration and Fractional Derivatives}{chapter.2}% 19
+\BOOKMARK [2][-]{subsection.2.2.1}{Fractional Integration}{section.2.2}% 20
+\BOOKMARK [2][-]{subsection.2.2.2}{Fractional Derivative Definitions}{section.2.2}% 21
+\BOOKMARK [1][-]{section.2.3}{Operational Calculus}{chapter.2}% 22
+\BOOKMARK [2][-]{subsection.2.3.1}{History and Basic Ideas}{section.2.3}% 23
+\BOOKMARK [2][-]{subsection.2.3.2}{Rigorous Operational Calculus}{section.2.3}% 24
+\BOOKMARK [2][-]{subsection.2.3.3}{Laplace Transforms}{section.2.3}% 25
+\BOOKMARK [2][-]{subsection.2.3.4}{Laplace Transform Pairs}{section.2.3}% 26
+\BOOKMARK [2][-]{subsection.2.3.5}{Integration and Differentiation in the Frequency Domain}{section.2.3}% 27
+\BOOKMARK [0][-]{chapter.3}{Fractional-Order Differential Equations}{}% 28
+\BOOKMARK [0][-]{chapter.4}{Numerical Methods}{}% 29
+\BOOKMARK [1][-]{section.4.1}{Direct Application of the Gr\374nwald-Letnikov Fractional Derivative}{chapter.4}% 30
+\BOOKMARK [0][-]{chapter.5}{Fractional Control}{}% 31
+\BOOKMARK [1][-]{section.5.1}{Stability of Fractional-Order Transfer Functions}{chapter.5}% 32
+\BOOKMARK [2][-]{subsection.5.1.1}{Commensurable Transfer Functions}{section.5.1}% 33
