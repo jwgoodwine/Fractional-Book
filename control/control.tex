@@ -30,7 +30,7 @@ In order to develop some convenient tools to study stability for fractional-orde
 \begin{theorem}
   For $0 < \alpha < 2$ and all $\beta$, 
   \begin{equation*}
-    \lim_{\left| t \right| \rightarrow \infty} \E_{\alpha,\beta} \left( a t \right) \approx \frac{1}{\alpha} t^{\frac{1-\beta}{\alpha}}\e^{\left( a t \right)^\frac{1}{\alpha}}.
+    \lim_{ t \rightarrow \infty} \E_{\alpha,\beta} \left( a t \right) \approx \frac{1}{\alpha} t^{\frac{1-\beta}{\alpha}}\e^{\left( a t \right)^\frac{1}{\alpha}}.
   \end{equation*}
   \label{th:mlfasymptotics}
 \end{theorem}
@@ -156,4 +156,67 @@ Stability of commensurable transfer functions has a transparent extension to int
   In the integer order case, $a = 1$ and the angle condition is the same as requiring all the poles to be in the left half plane.
 \end{remark}
 
+Consider the following program that uses the Gr\"unwald-Letnikov numerical approximation to numerically compute the solution to
+\begin{equation*}
+  \frac{\d x}{\d t}(t) + a \frac{d^\frac{1}{2} x}{\d t^\frac{1}{2}}(t) + b x(t) = 1
+\end{equation*}
+assuming all initial conditions of all orders are zero. Note that the \texttt{bincoeff()} function uses the \texttt{gammaln()} function to extend the domain over which it returns a non-zero value. We will use this program to compute numerical step responses for the next couple examples.
+\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
+\lstinputlisting[language=matlab]{step.m}
+
+\begin{example}
+  Is the solution
+  \begin{equation*}
+  	\frac{\d x}{\d t}(t) -2  \frac{d^\frac{1}{2} x}{\d t^\frac{1}{2}}(t) + 5 x(t) = 1
+  \end{equation*}
+  where all initial conditions of all orders are zero stable?
+
+  Since all initial conditions are zero, the Laplace transform of the equation is the same if we use the Riemann-Liouville or Caputo fractional derivatives, and we get
+  \begin{equation*}
+    X(s) = \frac{1}{s - 2 s^\frac{1}{2} + 5}.
+  \end{equation*}
+  This transfer function is commensurate of order $a = 1/2$ and will be stable of all roots of
+  \begin{equation*}
+    \lambda^2 - 2 \lambda + 5 = 0
+  \end{equation*}
+   are such that $\left| \angle \lambda_i \right| > \frac{1}{2} \frac{\pi}{2}$.  In this case $\lambda = 1 \pm 2 \iu$ which has an angle greater than $45^\circ$, so the system is stable. 
+
+	A numerically-computed solution is in Figure~\ref{fig:comstableex1}.
+	\label{ex:comstableex1}
+\end{example}
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{comstableex1}
+  \caption{Step response for Example~\ref{ex:comstableex1}.}
+  \label{fig:comstableex1}
+\end{figure}
+
+\begin{example}
+  Is the solution
+  \begin{equation*}
+  	\frac{\d x}{\d t}(t) -4  \frac{d^\frac{1}{2} x}{\d t^\frac{1}{2}}(t) + 5 x(t) = 1
+  \end{equation*}
+  where all initial conditions of all orders are zero stable?
+
+  Since all initial conditions are zero, the Laplace transform of the equation is the same if we use the Riemann-Liouville or Caputo fractional derivatives, and we get
+  \begin{equation*}
+    X(s) = \frac{1}{s - 4 s^\frac{1}{2} + 5}.
+  \end{equation*}
+  This transfer function is commensurate of order $a = 1/2$ and will be stable of all roots of
+  \begin{equation*}
+    \lambda^2 - 4 \lambda + 5 = 0
+  \end{equation*}
+   are such that $\left| \angle \lambda_i \right| > \frac{1}{2} \frac{\pi}{2}$.  In this case $\lambda = 2 \pm  \iu$ which has an angle less than $45^\circ$, so the system is unstable. 
+
+	A numerically-computed solution is in Figure~\ref{fig:comstableex2}.
+	\label{ex:comstableex2}
+\end{example}
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{comstableex2}
+  \caption{Step response for Example~\ref{ex:comstableex2}.}
+  \label{fig:comstableex2}
+\end{figure}
 
