@@ -37,7 +37,18 @@ In order to develop some convenient tools to study stability for fractional-orde
 
 The proof is beyond the scope of this book, but see \cite{fraccontrol,mlfbook}. Here we can check this for a few different cases of $\alpha$, $\beta$ and $a$.
 
-\begin{example}
+\begin{remark}
+  For stability this theorem provides some easy boundaries:
+  \begin{itemize}
+  	\item If $a \in \mathbb R$, then we need $a < 0$ as usual.
+  	\item If $a \in \mathbb C$, then we need the real part of $a$ to be negative as usual.
+  	\item The value of $\beta$ does not matter.
+	\item The theorem only applies for $0 < \alpha < 2$.
+  \end{itemize}
+  Note that as $\alpha \rightarrow 2$, the region in the complex plan where the poles must be for stability shrinks to nothing. In the case where $a \in \mathbb R$, this makes sense because the square root of a negative number is purly imaginary and cube roots will have a positive real part. When $a > 0$, one of the roots will always be positive.
+\end{remark}
+
+\begin{example} \hspace*{1in} \\
   \begin{enumerate}
     \item Figure~\ref{fig:mlfasyex1} plots $\E_{1,2}\left(-2 t \right)$ and the corresponding asymptotic expression from Theorem~\ref{th:mlfasymptotics}. 
     \item Figure~\ref{fig:mlfasyex2} plots $\E_{3/2,1/2}\left(-t \right)$ and the corresponding asymptotic expression from Theorem~\ref{th:mlfasymptotics}. 
@@ -86,12 +97,12 @@ The thing to note here is that the denominator term, $s^\alpha + a$ plays a very
 A particularly convenient situation arises in the case of \emph{commensurable transfer functions}.
 
 \begin{definition}
-  A transfer function is said to be commensurable when all the orders $\alpha_k$ and $\beta_k$ are integer multiples of a common divisor $a > 0$. In that case the transfer function is rational in $s^a$. If we let $\lambda = s^a$ then
+  A transfer function is said to be commensurable when all the orders $\alpha_k$ and $\beta_k$ are integer multiples of a common divisor $\alpha > 0$. In that case the transfer function is rational in $s^\alpha$. If we let $\lambda = s^\alpha$ then
   \begin{equation*}
-    G(s) = \frac{\sum_{k=1}^m b_k s^{\beta_k}}{\sum_{k=1}^n a_k s^{\alpha_k}} = \frac{\sum_{k=0}^m b_k s^{a k}}{\sum_{k=0}^n a_k s^{a k}} = 
+    G(s) = \frac{\sum_{k=1}^m b_k s^{\beta_k}}{\sum_{k=1}^n a_k s^{\alpha_k}} = \frac{\sum_{k=0}^m b_k s^{\alpha k}}{\sum_{k=0}^n a_k s^{\alpha k}} = 
     \frac{\sum_{k=0}^m b_k \lambda^{k}}{\sum_{k=0}^n a_k \lambda^{k}}.
   \end{equation*}
-  Of course, if all the coefficients of the numerator and denominatore are integer multiples of $a$, they will also be integer multipes of $a/2$, so it is convenient to chose the largest $a$. 
+  Of course, if all the coefficients of the numerator and denominatore are integer multiples of $\alpha$, they will also be integer multipes of $\alpha/2$, so it is convenient to chose the largest $\alpha$. 
   \label{def:commensurable}
 \end{definition}
 
@@ -220,3 +231,92 @@ assuming all initial conditions of all orders are zero. Note that the \texttt{bi
   \label{fig:comstableex2}
 \end{figure}
 
+Because we normally do not factor separate complex terms, it makes sense to consider stability of a ``second-order'' type commensurable system. Analogous to the ubiquitous $\omega_n^2/\left( s^2 + 2 \zeta \omega_n s + \omega_n^2 \right)$ transfer function, consider
+\begin{align}
+  G(s) &= \frac{k}{m s^{2 \alpha} + b s^\alpha + k} \nonumber \\
+  &= \frac{\omega_n^2}{s^{2 \alpha} + 2 \zeta \omega_n s^\alpha + \omega_n^2} \nonumber \\
+  &= \frac{1}{\left( \frac{s^\alpha}{\omega_n} \right)^2 + 2 \zeta \left( \frac{s^\alpha}{\omega_n} \right) + 1}. \label{eq:secondcommensurable}
+\end{align}
+
+The solutions of $\lambda^2/\omega_n^2 + 2 \zeta \lambda/\omega_n + 1 = 0$ are
+\begin{equation*}
+  \lambda = \omega_n \left( -\zeta \pm \sqrt{\zeta^2-1} \right) \qquad \Longleftrightarrow \qquad
+  s^\alpha =  \omega_n \left( -\zeta \pm \sqrt{\zeta^2-1} \right).   
+\end{equation*}
+From this we can infer the following:
+\begin{enumerate}
+  \item If $\zeta > 1$ both roots are real and both are negative. Hence the transfer function is stable as long as $0 < \alpha < 2$
+  \item  If $\zeta < -1$, then at least one root is positive and hence the transfer function is unstable.
+  \item If $\zeta = 0$, then the roots are $\pm \iu \omega_n$. Hence the transfer function will be stable if $\alpha < 1$ and unstable if $\alpha > 1$. 
+  \item If $0 < \zeta < 1$ and $0 < \alpha \leq 1$, then the roots are complex with negative real part. Since $\alpha < \leq 1$ the entire left half plane is in the stability region and hence the transfer function is stable.
+  \item If $-1 < \zeta < 0$ and $0 < \alpha < 1$, then the roots are complex with a positive real part. To be stable, $\alpha$ must be small enough so that the roots are in the stability region. The tangent of the angle is given by the ratio of the imagainary to the real part of the pole, so for stability we require 
+    \begin{equation*}
+      \tan^{-1} \frac{\sqrt{1 - \zeta^2}}{-\zeta} > \alpha \frac{\pi}{2} \quad \Longrightarrow 
+      \frac{\sqrt{1 - \zeta^2}}{-\zeta} > \tan \frac{\alpha \pi}{2}.
+    \end{equation*}
+    Because $\zeta < 0$ the left hand side is positive 
+    \begin{equation*}
+      \frac{1 - \zeta^2}{\zeta^2} > \tan^2 \frac{\alpha \pi}{2} \qquad \Longleftrightarrow \qquad
+      \cos^2 \frac{\alpha \pi}{2} > \zeta^2.
+    \end{equation*}
+    Because $\zeta < 0$, we finally have that the transfer function is stable if
+    \begin{equation*}
+      \zeta > -\cos \frac{\alpha \pi}{2}.
+    \end{equation*}
+  \item A similar argument shows that if $0 < \zeta < 1$ and $1 < \alpha < 2$, the transfer function is stable if 
+    \begin{equation*}
+      \zeta > -\cos \frac{\alpha \pi}{2}.
+    \end{equation*}
+  \item Finally, if $-1 < \zeta < 0$ and $1 \leq \alpha < 2$ the roots are complex and in the right half plane. Because $\alpha > 1$ the stability region is ``less than'' the left half plane. Hence the transfer function is always unstable.
+\end{enumerate}
+
+Figure~\ref{fig:secondstable} illustrates the stability regions for a commensurable transfer fuction where the area above the curve is stable and the area under the curve is unstable.
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{secondstable}
+  \caption{Stability regions for transfer functions of the form given by Equation~\ref{eq:secondcommensurable}.}
+  \label{fig:secondstable}
+\end{figure}
+
+\section{Frequency Response}
+Bode plots for fractional-order systems are computationally straight-forward to construct by simply defining set of discrete frequencies and evaluating $\left| G \left( \iu \omega \right) \right|$ and $\angle G \left( \iu \omega \right)$ at those frequencies. 
+
+\begin{example}
+  Consider
+  \begin{equation}
+    G(s) = \frac{1}{s^\frac{1}{2} + 10}.
+    \label{eq:fracfreqex1}
+  \end{equation}
+  The Bode plot for that transfer function is illustrated in Figure~\ref{fig:fracfreqex1}.
+
+  Observe that for high frequencies the slope of the magnitude curve is $-10$db/decade and the phase is $-45^\circ$.
+
+  The code that generated Figure~\ref{fig:fracfreqex1} is:
+
+\lstinputlisting[language=matlab]{freq.m}
+\end{example}
+
+\begin{figure}
+  \centering
+  \subimport{figs/}{fracfreqex1}
+  \caption{Frequency response for system in Equation~\ref{eq:fracfreqex1}.}
+  \label{fig:fracfreqex1}
+\end{figure}
+
+\section{Integer-Order Approximations for Fractional-Order Transfer Functions}
+It may be the case that we want to use an integer-order transfer function that mimics a fractional order one. That could be, for example, if we design a fractional-order controller. In that case, when we implement the controller we may use an integer-order approximation that has approximately the same dynamics.
+
+Recall that the way to draw the magnitude plot for
+\begin{equation*}
+  G(s)= \frac{p}{s+p}
+\end{equation*}
+the usual approach is to treat the magnitude as $0$dB for frequencies less than $p$ and then for frequencies greater than $p$, as a line with a slope of $-20$dB/decade (on a log-dB scale). So, when the frequency crosses from a lower to higher frequency than a pole, the slope decreases by $20$dB/decade. Correspondingly when the frequency crosses a zero, the slope increases by $20$dB/decade. Thus if we properly space poles and zeros we can construct a stair-case type magnitude plot that, on average, has a slope of, say, $-10$dB/decade. In fact, if the poles are evenly spaced logarithmically with the zeros half way between each pole (again logarithmically), we would expect a slope of $-10$dB/decade. Analogous reasoning will lead to a phase of $-45^\circ$.
+
+\begin{example}
+  Consider 
+  \begin{equation*}
+    G(s) = \frac{ \left(s + 0.0316 \right) \left(s + 0.316 \right)  \left(s + 3.16 \right) \left(s + 31.6 \right)  
+    }{\left(s+0.01 \right)\left(s+0.1 \right) \left(s+1 \right) \left(s+10 \right) \left(s+100 \right)} 
+  \end{equation*}
+\end{example}

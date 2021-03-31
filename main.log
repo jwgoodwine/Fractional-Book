@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=latex 2021.3.3)  31 MAR 2021 08:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Arch Linux) (preloaded format=latex 2021.3.31)  31 MAR 2021 14:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -446,7 +446,12 @@ Overfull \hbox (1.18124pt too wide) in paragraph at lines 35--35
  [][] [] [][]  
  []
 
-[3])
+[3]
+Overfull \hbox (18.11182pt too wide) in paragraph at lines 40--40
+ [][] [] [][]  
+ []
+
+)
 \tf@toc=\write5
  (./intro/introduction.tex [4]
 Chapter 1.
@@ -641,7 +646,12 @@ Overfull \hbox (10.00061pt too wide) in paragraph at lines 38--39
 []\OT1/cmr/m/n/10 The proof is be-yond the scope of this book, but see [[],
  []
 
-[52] (./control/figs/mlfasyex1.tex
+[52]
+Underfull \hbox (badness 10000) in paragraph at lines 51--52
+
+ []
+
+(./control/figs/mlfasyex1.tex
 File: control/figs//mlfasyex1.eps Graphic file (type eps)
  <control/figs//mlfasyex1.eps>)
 (./control/figs/mlfasyex2.tex
@@ -652,9 +662,9 @@ File: control/figs//mlfasyex3.eps Graphic file (type eps)
  <control/figs//mlfasyex3.eps>) [53] [54] [55]
 (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-)
+) [56]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 165.
+nput line 176.
  (./step.m
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 2
 .
@@ -670,7 +680,7 @@ Overfull \hbox (57.00409pt too wide) in paragraph at lines 2--3
 ][] 
  []
 
-[56]
+
 Overfull \hbox (141.00494pt too wide) in paragraph at lines 14--15
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][][][][][] 
@@ -695,27 +705,49 @@ Overfull \hbox (39.0039pt too wide) in paragraph at lines 25--26
 
  []
 
-) (./control/figs/comstableex1.tex
+) [57] (./control/figs/comstableex1.tex
 File: control/figs//comstableex1.eps Graphic file (type eps)
- <control/figs//comstableex1.eps>) [57]
+ <control/figs//comstableex1.eps>)
 (./control/figs/comstableex2.tex
 File: control/figs//comstableex2.eps Graphic file (type eps)
- <control/figs//comstableex2.eps>)) [58]
-[59] [60
+ <control/figs//comstableex2.eps>) [58]
+[59] (./control/figs/secondstable.tex
+File: control/figs//secondstable.eps Graphic file (type eps)
+ <control/figs//secondstable.eps>)
+Overfull \hbox (21.01996pt too wide) in paragraph at lines 293--294
+[]\OT1/cmr/m/it/10 Observe that for high fre-quen-cies the slope of the mag-ni-
+tude curve is $\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 10$\OT1/cmr/m/it/10 db/decad
+e
+ []
 
-] (./main.bbl) [61
+(./freq.m [60]) (./control/figs/fracfreqex1.tex
+File: control/figs//fracfreqex1.eps Graphic file (type eps)
+
+<control/figs//fracfreqex1.eps>)
+Overfull \hbox (9.35626pt too wide) in paragraph at lines 307--307
+[]\OT1/cmr/bx/n/14.4 Integer-Order Ap-prox-i-ma-tions for Fractional-
+ []
+
+
+Overfull \hbox (125.80547pt too wide) has occurred while \output is active
+\OT1/cmr/m/sl/10 5.3.  INTEGER-ORDER APPROXIMATIONS FOR FRACTIONAL-ORDER TRANSF
+ER FUNCTIONS \OT1/cmr/m/n/10 61
+ []
+
+[61]) [62] (./main.bbl) [63
+
 
 ] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 9D183B026F30D6708AB4A574F8BB0ACC;2563.
+(rerunfilecheck)             Checksum: CE6EE332F6258BAB2812861C492D7FF6;2743.
  ) 
 Here is how much of TeX's memory you used:
- 9915 strings out of 479384
- 145371 string characters out of 5875857
- 690444 words of memory out of 5000000
- 26703 multiletter control sequences out of 15000+600000
- 414515 words of font info for 71 fonts, out of 8000000 for 9000
+ 9954 strings out of 479384
+ 146097 string characters out of 5875856
+ 700631 words of memory out of 5000000
+ 26731 multiletter control sequences out of 15000+600000
+ 415251 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,16n,77p,989b,2408s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 72i,16n,77p,989b,1931s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (61 pages, 267256 bytes).
+Output written on main.dvi (63 pages, 288164 bytes).

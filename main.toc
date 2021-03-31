@@ -36,3 +36,5 @@
 \contentsline {chapter}{\numberline {5}Fractional Control}{51}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Stability of Fractional-Order Transfer Functions}{51}{section.5.1}%
 \contentsline {subsection}{\numberline {5.1.1}Commensurable Transfer Functions}{55}{subsection.5.1.1}%
+\contentsline {section}{\numberline {5.2}Frequency Response}{60}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Integer-Order Approximations for Fractional-Order Transfer Functions}{61}{section.5.3}%
