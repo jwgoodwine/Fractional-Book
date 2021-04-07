@@ -172,7 +172,7 @@ Consider the following program that uses the Gr\"unwald-Letnikov numerical appro
   \frac{\d x}{\d t}(t) + a \frac{d^\frac{1}{2} x}{\d t^\frac{1}{2}}(t) + b x(t) = 1
 \end{equation*}
 assuming all initial conditions of all orders are zero. Note that the \texttt{bincoeff()} function uses the \texttt{gammaln()} function to extend the domain over which it returns a non-zero value. We will use this program to compute numerical step responses for the next couple examples.
-\lstset{numbers=left, numberstyle=\tiny, stepnumber=1, numbersep=5pt}
+
 \lstinputlisting[language=matlab]{step.m}
 
 \begin{example}
@@ -315,8 +315,174 @@ the usual approach is to treat the magnitude as $0$dB for frequencies less than 
 
 \begin{example}
   Consider 
-  \begin{equation*}
+  \begin{equation}
     G(s) = \frac{ \left(s + 0.0316 \right) \left(s + 0.316 \right)  \left(s + 3.16 \right) \left(s + 31.6 \right)  
     }{\left(s+0.01 \right)\left(s+0.1 \right) \left(s+1 \right) \left(s+10 \right) \left(s+100 \right)} 
-  \end{equation*}
+    \label{eq:PID}
+  \end{equation}
 \end{example}
+
+\section{Fractional-Order PID}
+As mentioned at the beginning of this chapter, we can generalize PID control to the fractional case by allowing the derivative and integral terms to have a fractional order, \ie, 
+\begin{equation*}
+  u(t) = k_p e(t) + k_I \tensor*[_0]\D{^{-\lambda}_t} e(t) + k_I \tensor*[_0]\D{^{\mu}_t} e(t)
+\end{equation*}
+where $u(t)$ is the input and $e(t)$ is the error signal. Fractional-order PID should generally allow for better performance because integer-order PID is among the options available, \ie, the special case where we choose $\lambda = \mu = 1$. However, we do need a method to search for all five parameters. The main benefit of PID control, and hence its ubiquity, is that it is fairly straight-forward to tune on a real system. In other words, we do not need a mathematical model to design the controller if the approach is to implement PID in hardware and tune the three gains by experiment on the real system. Specifically, for a second-order plant, the three gains have very straight-forward effects: increasing the proporational gain increases the natural frequency, increasing the derivative gain increases the damping and increasing the integral gain decreases the time to eliminate steady-state error.
+
+In this chapter we take an alternative approach when a good mathematical model is avaiable, which is to implement an optimization algorithm to search for the best gains. Because optimization is not generally covered in many controls courses, first we will present a problem implementing this in full detail.
+
+\subsection{Optimization of a PID Controller}
+The example in this section is taken from \cite{YQChenAcc}. Consider a DC motor driving a load as illustrated in Figure~\ref{fig:PIDex}. An input voltage drives a circuit with a dc motor. The motor shaft has an inertia $J_m$ and its motion is resisted by viscous friction described by the coefficient $\beta_m$. The angle of the motor shaft is given by $\theta_m$. The shaft is attached to a gearbox with a gear ratio of $\rho$, and the output of the gear box drives the load. The inertia of the load is $J_L$ and the motion of the load is resisted by viscous friction with a coefficient of $\beta_L$. The shaft connecting the output of the gearbox to the load is flexible and acts like a torsional spring with spring constant $k_\theta$. 
+
+\begin{figure}
+  \centering
+  \psfrag{R}{$R$}
+  \psfrag{V}{$V_{in}$}
+  \psfrag{qm}{$\theta_m$}
+  \psfrag{ql}{$\theta_L$}
+  \psfrag{Jm}{$J_m, \beta_m$}
+  \psfrag{Jl}{$J_L, \beta_L$}
+  \psfrag{r}{$\rho$}
+  \psfrag{kt}{$k_\tau, k_e$}
+  \psfrag{kth}{$k_\theta$}
+  \includegraphics{figs/PIDex}
+  \caption{PID system.}
+  \label{fig:PIDex}
+\end{figure}
+
+\textbf{Problem Statement:} Use PID control given by Equation~\ref{eq:PID} where $u(t)$ is the voltage into the circuit and $e(t)$ is the difference between the desired angle of the load and the actual angle of the load. Find the optimal gains, $k_p$, $k_d$ and $k_i$ such that:
+\begin{itemize}
+  \item The cost function
+    \begin{equation}
+      J = \int_0^{60} \left( \theta_{desired}(t) - \theta_L(t) \right)^2 \d t 
+      \label{eq:optcf}
+    \end{equation}
+    is minimized;
+  \item $\left| V_{in}(t) \right| \leq 220$ 
+  \item The torque in the output shaft of the gearbox driving the load always has a magnitude less than $100$Nm.
+\end{itemize}
+This is a \emph{constrained optmization problem}. We will use the Matlab function \texttt{fmincon()} to find a solution.
+
+Kirchhoff's voltage law gives
+\begin{equation*}
+  V_{in}(t) = i(t) R + k_e \dot \theta_m(t)
+\end{equation*}
+where $i(t)$ is the current through the motor. Hence, the output torque from the motor is given by
+\begin{equation*}
+  \tau_m(t) = k_\tau \left( \frac{V_{in}(t) - k_e \dot \theta_m(t)}{R} \right).
+\end{equation*}
+Newton's law on the motor shaft is given by
+\begin{equation*}
+  J_m \ddot \theta_m(t) = k_\tau \left( \frac{V_{in}(t) - k_e \dot \theta_m(t)}{R} \right) - \beta_m \dot \theta_m(t) + \frac{k_\theta}{\rho} \left( \theta_L(t) - \frac{\theta_m(t)}{\rho} \right)
+\end{equation*}
+and similarly on the load
+\begin{equation*}
+  J_l \ddot \theta_L(t) = -k_\theta \left( \theta_L(t) - \frac{\theta_m(t)}{\rho} \right) - \beta_L \dot \theta_L(t).
+\end{equation*}
+
+If we define the state vector as
+\begin{equation*}
+  x(t) = \begin{bmatrix} \theta_L(t) \\ \dot \theta_L(t) \\ \theta_m(t) \\ \dot \theta_m(t) \end{bmatrix}
+\end{equation*}
+then we can express the equations of motion in the standard state space form of $\dot x(t) = A x(t) + B V_{in}(t)$ as
+\begin{equation}
+  \frac{\d}{\d t} \begin{bmatrix} \theta_L(t) \\ \dot \theta_L(t) \\ \theta_m(t) \\ \dot \theta_m(t) \end{bmatrix} =
+  \begin{bmatrix}
+	0 & 1 & 0 & 1 \\
+	-\frac{k_\theta}{J_L} & -\frac{\beta_L}{J_L} & \frac{k_\theta}{\rho J_L} & 0 \\
+	0 & 0 & 0 & 1 \\
+	\frac{k_\theta}{\rho J_m} & 0 & -\frac{k_\theta}{\rho^2 J_m} & - \left( \frac{k_\tau k_e}{J_m R} + \frac{\beta_M}{J_m} \right)
+  \end{bmatrix}
+  \begin{bmatrix}
+    \theta_L(t) \\ \dot \theta_L(t) \\ \theta_m(t) \\ \dot \theta_m(t)
+  \end{bmatrix}
+  + 
+  \begin{bmatrix}
+    0 \\ 0 \\ 0 \\ \frac{k_\tau}{J_m R}
+  \end{bmatrix} V_{in}(t).
+  \label{eq:PIDexeom}
+\end{equation}
+If the only state we can measure is $\theta_L(t)$ then in the standard form $y(t) = C x(t) + D V_{in}(t)$ we have
+\begin{equation*}
+  y = \begin{bmatrix} 1 & 0 & 0 & 0 \end{bmatrix} x(t).
+\end{equation*}
+
+From~\cite{YQChenAcc} let 
+\begin{itemize}
+  \item $k_\theta = 1280.2$
+  \item $k_\tau = 10$
+  \item $k_e = 10$ 
+  \item $J_m = 0.5$ 
+  \item $J_L = 25$
+  \item $\rho = 20$
+  \item $\beta_m = 0.1$
+  \item $\beta_L = 25$
+  \item $R = 20$.
+\end{itemize}
+Using those values and constructing $A$, $B$, $C$ and $D$ in Matlab, and then using \texttt{G = ss2tf(A,B,C,D)} gives the transfer function from the input voltage to the angular position of the load as
+\begin{equation*}
+  G(s) = \frac{\Theta_L(s)}{V_{in}(s)} = \frac{2.56}{s^4 + 11.2 s^3 + 67.81 s^2 + 528.7 s}
+\end{equation*}
+which is a type 1 system, which also makes sense.
+
+If we already have PID gains, or we wish to tune the controller by hand, then we can use set numerical values for the gains and use \texttt{Con = tf([kd + kp + ki],[1 0])} to define the PID controller transfer function, from which \texttt{step(feedback(Con*G,1))} will plot the step response. 
+
+Because our goal is to compare integer-order PID control with fractional-order PID control, we need an objective basis for comparison. As such, we will set up an optimization problem to find the ``best'' PID gains in each case, and compare the results. We will use \texttt{(fmincon()} in Matlab. From the documentation, the function attempts to find the minimum of a problem specified by
+\begin{equation}
+  \min_x f(x) \mbox{such that} \begin{cases} c(x) &\leq 0 \\ 
+    c_{eq}(x) &= 0 \\ 
+					A x &\leq b \\ 
+					A_{eq} x &= b_{eq} \\ 
+					lb &\leq x \leq ub  \end{cases}
+  \label{eq:opt}
+\end{equation}
+For the constraints
+\begin{itemize}
+  \item $c(x) \leq 0$ are the nonlinear inequality constraints
+  \item $c_{eq}(x) = 0$ are the nonlinear equality constraints
+  \item $Ax \leq b$ are the linear inequality constraints
+  \item $A_{eq} x = b_{eq}$ are the linear equality constraints
+  \item $lb \leq x \leq ub$ are the bound constraints.
+\end{itemize}
+The Matlab syntax is
+\begin{center}
+  \texttt{fmincon(fun,x0,A,b,Aeq,beq,lb,ub,nonlin)}
+\end{center}
+where 
+\begin{itemize}
+  \item \texttt{fun} is the function to be minimized
+  \item \texttt{x0} is the initial guess for the solution
+  \item \texttt{A} is the matrix in the linear inequality constraints
+  \item \texttt{b} is the right hand side of the linear inequality consntraints
+  \item \texttt{Aeq} is the matrix in the linear equality constraints
+  \item \texttt{beq} is the right hand side of the linear equality constraints
+  \item \texttt{lb} and \texttt{ub} are the lower and upper bounds of the search space
+  \item \texttt{nonlin} is the function of the nonlinear inequality and equality constraints (the are combined!).
+\end{itemize}
+
+For our problem, the function to be minimixed is given by Equation~\ref{eq:optcf}. Note that we are searching for optimal gains, so the gains are represented by $x$ in the previous equations describing \texttt{fmincon()}, which of course can be confusing because we are using $x$ to represent the states in our problem. We need a matlab function that evaluates Equation~\ref{eq:optcf}. So the function has to determine the step response for the given gains, and then compute the integral of the square of the difference between the desired angle and actual angle of the load.
+
+So the function will have to call either \texttt{step()} or \texttt{ode45()} to compute the step response. With some foresight knowing we will have to compute the input voltage and the torque in the flexible shaft, we will solve the problem in state space using \texttt{ode45()}. The function (\texttt{sossserr()} ``sum of squares for the state space system of the error'') will need to know the equations of motion, time and the gains:
+
+\begin{lstlisting}
+function ret = sossserr(ks,A,B,C,D,t)
+    [t,y] = ode45(@(t,x)sspidrhs(t,x,ks,A,B,C,D),t,[0; 0; 0; 0; 0]);
+    ret = trapz(((1-y(:,1)).^2)*(t(2)-t(1)));
+end
+\end{lstlisting}
+
+The right hand side of the differential equations needs an additional state appended to be able to compute the integral of the error. So a fifth state which is the integral of the error is appended, so its derivative is simply the error:
+
+\begin{lstlisting}
+function xdot = sspidrhs(t,x,ks,A,B,C,D)
+    error = 1 - x(1);
+    errordot = 0 - x(2);
+    input = ks(1)*error + ks(2)*errordot + ks(3)*x(5);
+    xdot(1:4) = A*x(1:4)+B*input;
+    xdot(5) = error;
+    xdot = xdot';
+end
+\end{lstlisting}
+
+Using these functions, we now can find the best PID gains to minimize the integral of the square of the error. However, if we simply try to minimize $J$, then the algorithm to determine the gains will not coverge because arbitrarily high gains will drive the solution to the desired value of one. Hence, we must add bounds to the search using \texttt{lb} and \texttt{ub} or add in some other constraints. The real constraints are the voltage and torque limits, but because those are relatively difficult to implement, for now we will just put bounds on the allowable gain values.
+

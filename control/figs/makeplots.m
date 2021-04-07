@@ -1,5 +1,5 @@
-%clear all; close all; graphics_toolkit("gnuplot")
-%size = .025*[0,0,162,100];
+clear all; close all; graphics_toolkit("gnuplot")
+size = .025*[0,0,162,100];
 %
 %gh = figure(1,'paperposition',size);
 %alpha = 1; beta=2; a=-2;
@@ -104,3 +104,22 @@ xlabel('$\omega$');
 ylabel('$\angle G(\iu \omega)$');
 print('fracfreqex1.tex','-depslatex');
 
+z = 0.0316; p = 0.01;
+
+gh = figure(8,'paperposition',size);
+alpha = 1/2;
+w = logspace(-2,2,1000);
+s = i*w;
+G = s.^alpha;
+subplot(2,1,1);
+semilogx(w,20*log10(abs(G)),'linewidth',2); grid on; hold on;
+subplot(2,1,2);
+semilogx(w,angle(G)*180/pi,'linewidth',2); grid on; hold on;
+
+wb = 1/100; wh = 100;
+b = 10; d = 9;
+subplot(2,1,1);
+approx = ((1 + s/(d/b*wb))./(1 + s/(b/d*wh))).^alpha;
+semilogx(w,20*log10(abs(approx)),'linewidth',2);
+subplot(2,1,2);
+semilogx(w,angle(approx)*180/pi,'linewidth',2); grid on; hold on;
