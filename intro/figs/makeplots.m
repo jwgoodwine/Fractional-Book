@@ -48,7 +48,7 @@ hold on;
 plot(t,cos(t),'linewidth',2);
 plot(t,-sin(t),'linewidth',2);
 annotation('textarrow',[.625 .535],[.775 .775],'string','first derivative','headwidth',4,'headlength',4);
-annotation('textarrow',[.625 .42],[.85 .85],'string','second derivatives','headwidth',4,'headlength',4);
+annotation('textarrow',[.625 .44],[.85 .85],'string','second derivatives','headwidth',4,'headlength',4);
 axis([-2*pi 2*pi -2 2])
 xlabel('$t$');
 ylabel('$\sin t$ and derivatives');

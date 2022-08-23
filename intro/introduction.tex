@@ -5,10 +5,10 @@ Some people may study fractional calculus because it is inherently interesting t
 \begin{itemize}
   \item Fractional calculus expands the descriptive power of calculus beyond the familiar integer order derivatives and the basic concept of rate of change. This will yield more accurate descriptive equations when a system truly is fractional.
   \item Fractional calculus can expand scientific understanding when it models things that are traditionally very difficult to describe mathematically.
-  \item Integer order derivatives are \emph{local} needing information only in a neighborhood of a point. As will be seen, fractional derivatives are \emph{non-local} and can describe systems with such a feature. For example, $F=ma$ right \emph{now}. How something accelerates only depends on the forces right now, not the forces at any time in the past. For systems with ``memory'' effects, or analogous non-local spatial effects, the differential equation describing it most accurately may be fractional.
+  \item Integer order derivatives are \emph{local} needing information only in a neighborhood of a point. As will be seen, fractional derivatives are \emph{non-local} and can describe systems with such a feature. For example, the equation $F=ma$ holds instantaneously. How something accelerates only depends on the forces right now, not the forces at any time in the past. For systems with ``memory'' effects, or analogous non-local spatial effects, the differential equation describing it most accurately may be fractional.
 \end{itemize}
 
-It is not surprising that ``normal'' integer-order calculus works well for most engineering applications over the past few centuries. Newton, who was one of the very early developers of calculus, clearly had a strong interest in mechanics \cite{principia}. However, there are a couple topics of more recent interest in engineering for which fractional calculus may be important. One area is bioengineering, where traditional mechanics and electromagnetism do not fully describe the system and in which non-local time effects may occur. Another is very large scale systems that may be easier to consider as having an infinite number of components, rather than keeping track of every single part. Examples of each type are given in this chapter.  Finally, fractional calculus has been used as a new tool to try to match measured responses to ``generally hard to model'' system, \textit{e.g.}, systems with friction, stiction, etc. 
+It is not surprising that ``normal'' integer-order calculus works well for most engineering applications over the past few centuries. Newton, who was one of the very early developers of calculus, clearly had a strong interest in mechanics \cite{principia}. However, there are engineering topics of modern interest for which fractional calculus may be important (and correspondingly, integer-order calculus insufficient). One area is bioengineering, where traditional mechanics and electromagnetism do not fully describe the system and in which non-local time effects may occur. Another is very large scale systems that may be easier to consider as having an infinite number of components, rather than keeping track of every single part. Examples of each type are given in this chapter.  Finally, fractional calculus has been used as a new tool to try to match measured responses to ``generally hard to model'' system, \textit{e.g.}, systems with friction, stiction, etc. 
 
 \section{Introductory Concepts}
 Anyone reading this book should be familiar with the notion of the first, second and higher derivatives, \textit{e.g.}, for $f(t) = t^3 + 5 t^2 + 2$, 
@@ -27,7 +27,7 @@ and we adopt a notation of $f^{(1)}(t)$ as the first derivative, $f^{(2)}(t)$ as
 A mathematically curious reader may already be wondering if there are any derivatives ``in between'' the integer ones.
 For example, is there a one-half derivative:
 \begin{equation}
-  \frac{\d^\frac{1}{2} f}{\d t^\frac{1}{2}}(t) = f^{\left(\frac{1}{2}\right)} = ?.
+  \frac{\d^\frac{1}{2} f}{\d t^\frac{1}{2}}(t) = f^{\left(\frac{1}{2}\right)} = ?
   \label{eq:halfderiv}
 \end{equation}
 There is not an immediate obvious answer to this because of the fact that the integer order derivative (as is the integral) is defined as a limit
@@ -82,7 +82,7 @@ As a first step into some real functions, we consider sine and cosine.
     \frac{\d}{\d t} \sin(t) &= \cos(t) \\
     \frac{\d^2}{\d t^2} \sin(t) &= -\sin(t)
   \end{align*}
-  as illustrated in Figure~\ref{fig:fracidea4}, it is clear that the derivative for this function just shifts it to the left by $\pi/2$. So clearly we would expect that the $1/2$ derivative just shifts it to the left by $\pi/4$, or the $1/2$ integral shifts it right by $\pi/3$, \textit{etc}. Therefore, a reasonable guess for the half derivative would be as illustrated in Figure~\ref{fig:fracidea5}.
+  as illustrated in Figure~\ref{fig:fracidea4}, it is clear that the derivative for this function just shifts it to the left by $\pi/2$. So clearly we would expect that the $1/2$ derivative just shifts it to the left by $\pi/4$, or the $1/3$ integral shifts it right by $\pi/6$, \textit{etc}. Therefore, a reasonable guess for the half derivative would be as illustrated in Figure~\ref{fig:fracidea5}.
 
   \begin{figure}
     \centering
@@ -102,7 +102,7 @@ As a first step into some real functions, we consider sine and cosine.
 
 \subsection{Monomials and Polynomials}
 
-Being able to take the fractional derivative of sine and cosine functions is nice, but we would like to do more. The next easiest class of functions is polynomials. Consider 
+Being able to take the fractional derivative of sine and cosine functions is nice, but we would like to do more. Another relatively simple class of functions is polynomials. Consider 
 \begin{equation}
   f(t) = t^k
   \label{eq:poly}
@@ -116,7 +116,7 @@ which is easy to differentiate a few times and figure out the pattern:
   \frac{\d^n f}{\d t^n}(t) &= \frac{k!}{\left( k - n \right)!} t^{k-n}, \qquad n \leq k.
   \label{eq:polyderivs}
 \end{align}
-Since we are looking to define a fractional derivative of $t^k$, we need to see what is allowed and not allowed for $n$ to take on fractional values in Equation~\ref{eq:polyderivs}. The exponent of $t$ can be a fraction (more about that later, but engineers are so used to it they may not remember where it came from). What is definitely a problem, though, is the factorial in the denominator: if $k$ is a natural number and $n$ is not an integer, then the factorial is not defined.
+Since we are looking to define a fractional derivative of $t^k$, we need to see what is allowed and not allowed for $n$ to take on fractional values in Equation~\ref{eq:polyderivs}. The exponent of $t$ can be a fraction, so that is not a problem.\footnote{This is actually a very important point that we will consider in detail in Section~\ref{sec:indices}. For now, as engineers, we will accept as a given the commonly used operation that an exponent can be a fraction.} What is definitely a problem, though, is the factorial in the denominator: if $k$ is a natural number and $n$ is not an integer, then the factorial is not defined.
 
 The factorial function is just a series of values, so it seems we can generalize the derivative of $t^k$ if we can find a curve through the factorial values. In fact, of course, it has been done and it is the gamma function defined by
 \begin{equation}
@@ -152,7 +152,7 @@ This definition was used to make the fractional derivative curves in Figures~\re
 \ref{fig:fracidea3}, so in a sense it has been validated. Also, because everything we have done is linear in $t$, we can
 use this definition for monomials and extend it term-by-term to polynomials. 
 
-For fun, we will do and example with a different $k$ and also include negative values for $\alpha$ to see if integral-like ideas appear.
+For fun, we will do an example with a different $k$ and also include negative values for $\alpha$ to see if integral-like ideas appear.
 
 \begin{example}
   Consider $f(t) = t^\frac{1}{2} = \sqrt{t}$. Various fractional order derivatives and integrals computed using Equation~\ref{eq:monomialfrac} in Definition~\ref{def:monomialfracderiv} are illustrated in Figure~\ref{fig:monex}.
@@ -160,7 +160,7 @@ For fun, we will do and example with a different $k$ and also include negative v
   \begin{figure}
     \centering
     \subimport{figs/}{monex}
-    \caption{Various fractional derivatives using Definition~\ref{def:monomialfracderiv} for $f(t) = \sqrt{t}$. The thick blue curve is the function, or zeroth derivative. The red curve is the $\alpha = -1$ derivative, which does correspond to the integral. The gold curve is the $\alpha = -1/2$ derivative, or the $1/2$ integral. The green and light blue curves are the $1/2$ and first derivatives, respectively.}
+    \caption{Various fractional derivatives using Definition~\ref{def:monomialfracderiv} for $f(t) = \sqrt{t}$. The thick blue curve is the function, or zeroth derivative. The red curve is the $\alpha = -1$ derivative, which does correspond to the integral. The gold curve is the $\alpha = -1/2$ derivative, or the $1/2$ integral. The green and light blue curves are the $1/2$ and first derivatives, respectively.} 
     \label{fig:monex}
   \end{figure}
 \end{example}
@@ -182,7 +182,7 @@ At this point we can compute things we consider to be fractional derivatives and
 
 
 \section{The Law of Indices}
-
+\label{sec:indices}
 Engineers deal with fractional and negative exponents so often that it is easy to lose track of why they actually make sense. The exponent is defined for natural numbers (integers greater than zero) as the number of times the base is multiplied by itself, \textit{i.e.},
 \begin{equation}
   t^n = \underbrace{t \times t \times t \cdots t \times t}_{\mbox{$n$ times}}.
@@ -215,13 +215,14 @@ For fractional values Equation we can use Equation~\ref{eq:indices2} so that
 \begin{equation}
   t^\frac{n}{m} = y \qquad \Longrightarrow \qquad \left( t^\frac{n}{m} \right)^m = y^m \qquad \Longrightarrow \qquad t^n = y^m
 \end{equation}
-which gives the meaning that $y$ is the number that if you raise it to the $m$th power gives $t$ to the $n$th power, e.g. in the simple case of $1/2$, $y$ is the number that if you square you get $t$.
+which gives the meaning that if $y = t^{n/m}$, then $y$ is the number that if you raise it to the $m$th power gives $t$ to the $n$th power, \eg, in the simple case of $1/2$, $y$ is the number that if you square you get $t$.
 
 These exercises in indices are important, because they hold for integer order derivatives
 \begin{equation}
-  \frac{\d^n}{\d t^n} \left( \frac{\d^m}{\d t^m} f(t) \right) = \frac{\d^{n+m} f}{\d t^{n+m}}(t).
+  \label{eq:derivindex}
+  \frac{\d^n}{\d t^n} \left( \frac{\d^m}{\d t^m} f(t) \right) = \frac{\d^{n+m} f}{\d t^{n+m}}(t), \quad m,n > 0.
 \end{equation}
-By insisting that the same property hold when $n$ and $m$ are fractional, will help in generalizing the derivative to non-integer values for a larger class of functions that simple sines, cosines and polynomials. In fact, we may as well call it an attribute.
+By insisting that the same property hold when $n$ and $m$ are fractional, will help in generalizing the derivative to non-integer values for a larger class of functions that simple sines, cosines and polynomials. In fact, we may as well call it an attribute. 
 
 \begin{attribute}
   For real values of $\alpha$ and $\beta$
@@ -231,11 +232,12 @@ By insisting that the same property hold when $n$ and $m$ are fractional, will h
   \end{equation}
 \end{attribute}
 
-Even in integer order calculus, integration and differentiation are not exactly inverses because an indefinite integral will have a constant of integration. In other words, if we take $f(t)$ and differentiate it and then integrate it, we get $f(t) + c$, but if we integrate and then differentiate, we get $f(t)$. The idea is clear enough, but it turns out that this complication does affect things.
+Even in integer order calculus, integration and differentiation are not exactly inverses because an indefinite integral will have a constant of integration. In other words, if we take $f(t)$ and differentiate it and then integrate it, we get $f(t) + c$, but if we integrate and then differentiate, we get $f(t)$. The idea is clear enough, but it turns out that this complication does affect things, and, in fact, is a key difference between two of the most common definitions of fractional derivatives. 
 
 
 \section{Examples}
 
+This section contains two examples where fractional-order dynamics naturally appear. They are motivational examples, and many more detailed and more complicated examples appear subsequently in Chapter~\ref{ch:example}. 
 \subsection{Mechanical System and Frequency Domain Example}
 \label{sec:introexamples}
 
@@ -258,7 +260,7 @@ Higher derivatives are just increased exponents on the $s$, \textit{e.g.},
 \end{equation}
 again assuming zero initial conditions.
 
-Of course, the half derivative then would correspond to $s$ raised to the one-half power:
+Of course, the half derivative then would correspond to $s$ raised to the one-half power:\footnote{This will be more rigorously justified subsequently.}
 \begin{equation}
   \mathcal L \left\{ \frac{\d^\frac{1}{2} f}{\d t^\frac{1}{2}}(t) \right\} = s^\frac{1}{2} F(s).
 \end{equation}
@@ -271,14 +273,14 @@ It turns out that irrational transfer functions can arise rather easily in two t
 The following example illustrates the first case. Non-locality will be inherent in the more general definitions of fractional derivatives we develop subsequently, so examples will be deferred until later.
 
 \begin{example}
-  Consider the tree network of springs and dampers illustrated in Figure~\ref{fig:structure}. The position of the left-most node is $x_1(t)$ and the right-most node by $x_{last}(t)$. Note all the nodes on the right are in the same position, so in effect they make one node. The equations of motion for this system can be determined by applying the relatively simple series and parallel rules for the springs and dampers. In order to change the network, a force must be exerted on one end, and an an equal and opposite force on the other, $f(t)$.
+  Consider the tree network of springs and dampers illustrated in Figure~\ref{fig:structure}. The position of the left-most node is $x_1(t)$. Assume that all the nodes on the far right are in the same position, \ie, they are somehow fixed together, so in effect they can be considered as one node, and its position will be denoted by $x_{last}(t)$. Assume the nodes have no mass.  In order to compress or extend the network, a force must be exerted on one end, and an an equal and opposite force on the other, $f(t)$. 
 
   \begin{figure}
     \centering
     \psfrag{k}{$k$}
     \psfrag{b}{$b$}
-    \psfrag{pin}{$p_{in}$}
-    \psfrag{pout}{$p_{out}$}
+    \psfrag{pin}{}
+    \psfrag{pout}{}
     \psfrag{x1}{$x_1$}
     \psfrag{xl}{$x_{last}$}
     \psfrag{f(t)}{$f(t)$}
@@ -286,7 +288,6 @@ The following example illustrates the first case. Non-locality will be inherent 
     \caption{Infinite tree of springs and dampers.}
     \label{fig:structure}
   \end{figure}
-\end{example}
 
 It turns out that if we consider the network to be infinitely large, \textit{i.e.}, an infinite number of bifurcating generations, it is easier to determine the transfer function describing we want, which is
 \begin{equation}
@@ -299,14 +300,13 @@ As such, the transfer function from the first node to the end, is equal to the t
 
 \begin{figure}
   \centering
-  \psfrag{k}{$k$}
-  \psfrag{b}{$b$}
-  \psfrag{pin}{$p_{in}$}
-  \psfrag{pout}{$p_{out}$}
+  \psfrag{g1}{$\small{G_1(s)}$}
+  \psfrag{g2}{$G_2(s)$}
+  \psfrag{g}{$G_\infty(s)$}
   \psfrag{x1}{$x_1$}
   \psfrag{xl}{$x_{last}$}
   \psfrag{f(t)}{$f(t)$}
-  \includegraphics[width=3in]{figs/structure3}
+  \includegraphics[width=3in]{figs/structure2}
   \caption{Self-similar network where the transfer function from the beginning to end of each outlined region must be equal.}
   \label{fig:selfsimilar}
 \end{figure}
@@ -336,6 +336,7 @@ where the $G_\infty(s)$ on the left hand side is the transfer function for the e
 \end{figure}
 
 Consistent with the idea above about fractional order systems ``converging'' to integer order ones, we plot the Bode plot for a network of this type where there are five generations with $k =1$ and The Bode plot for this system is illustrated in Figure~\ref{fig:bodeelement}, which is characterized by two half-order dynamics features. First, the slope of the high frequency portion of the magnitude plot is $-10$dB/decade and the phase is $-45^\circ$. Because first order terms are characterized by a slope of $-20$dB/decade and a phase of $-90^\circ$, these features make sense as half order effects.
+\end{example}
 
 \subsection{Ultrasound Example}
 Reference and summaries Holm's paper.

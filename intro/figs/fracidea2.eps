@@ -1,7 +1,7 @@
 %!PS-Adobe-2.0 EPSF-2.0
 %%Title: fracidea2.tex
-%%Creator: gnuplot 5.4 patchlevel 1
-%%CreationDate: Mon Jan 25 13:42:47 2021
+%%Creator: gnuplot 5.4 patchlevel 4
+%%CreationDate: Tue Aug 23 08:53:03 2022
 %%DocumentFonts: 
 %%BoundingBox: 50 50 341 230
 %%EndComments
@@ -438,10 +438,10 @@ systemdict /pdfmark known not {
 SDict begin [
   /Title (fracidea2.tex)
   /Subject (gnuplot plot)
-  /Creator (gnuplot 5.4 patchlevel 1)
+  /Creator (gnuplot 5.4 patchlevel 4)
 %  /Producer (gnuplot)
 %  /Keywords ()
-  /CreationDate (Mon Jan 25 13:42:47 2021)
+  /CreationDate (Tue Aug 23 08:53:03 2022)
   /DOCINFO pdfmark
 end
 } ifelse
@@ -463,7 +463,7 @@ end
                TBx1 TBxmargin sub TBy2 TBymargin add L
 	       TBx2 TBxmargin add TBy2 TBymargin add L
 	       TBx2 TBxmargin add TBy1 TBymargin sub L closepath } def
-/DrawTextBox { PopTextBox stroke /Boxing false def} def
+/DrawTextBox { PL PopTextBox stroke /Boxing false def} def
 /FillTextBox { gsave PopTextBox fill grestore /Boxing false def} def
 0 0 0 0 InitTextBox
 /TBxmargin 20 def
@@ -496,13 +496,8 @@ gsave % colour palette begin
 /Constrain {
   dup 0 lt {0 exch pop}{dup 1 gt {1 exch pop} if} ifelse} def
 /CMY2RGB {  1 exch sub exch 1 exch sub 3 2 roll 1 exch sub 3 1 roll exch } def
-/XYZ2RGB {  3 copy -0.9017 mul exch -0.1187 mul add exch 0.0585 mul exch add
-  Constrain 4 1 roll 3 copy -0.0279 mul exch 1.999 mul add exch
-  -0.9844 mul add Constrain 5 1 roll -0.2891 mul exch -0.5338 mul add
-  exch 1.91 mul exch add Constrain 3 1 roll} def
-/SelectSpace {ColorSpace (HSV) eq {HSV2RGB}{ColorSpace (XYZ) eq {
-  XYZ2RGB}{ColorSpace (CMY) eq {CMY2RGB}{ColorSpace (YIQ) eq {YIQ2RGB}
-  if} ifelse} ifelse} ifelse} def
+/SelectSpace {ColorSpace (HSV) eq {HSV2RGB} {ColorSpace (CMY) eq
+  {CMY2RGB} if} ifelse} def
 /InterpolatedColor true def
 /grayindex {/gidx 0 def
   {GrayA gidx get grayv ge {exit} if /gidx gidx 1 add def} loop} def
