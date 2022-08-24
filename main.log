@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=latex 2022.5.2)  23 AUG 2022 15:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=latex 2022.5.2)  24 AUG 2022 11:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -512,11 +512,8 @@ LaTeX Warning: Reference `ch:example' on page 13 undefined on input line 240.
 File: intro//figs/structure.eps Graphic file (type eps)
  <intro//figs/structure.eps> [14]
 File: intro//figs/structure2.eps Graphic file (type eps)
- <intro//figs/structure2.eps>
-
-LaTeX Font Warning: Command \small invalid in math mode on input line 309.
-
-[15] (./intro//figs/bodeelement.tex
+ <intro//figs/structure2.eps> [15]
+(./intro//figs/bodeelement.tex
 File: intro//figs/bodeelement.eps Graphic file (type eps)
  <intro//figs/bodeelement.eps>))
 (./defs/definitions.tex [16]
@@ -780,12 +777,12 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: AA3793DCB39E98336D84A64E422CA345;7826.
  ) 
 Here is how much of TeX's memory you used:
- 13405 strings out of 478239
- 208311 string characters out of 5850483
- 730641 words of memory out of 5000000
+ 13404 strings out of 478239
+ 208293 string characters out of 5850483
+ 730678 words of memory out of 5000000
  31300 multiletter control sequences out of 15000+600000
- 481379 words of font info for 75 fonts, out of 8000000 for 9000
+ 481080 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  65i,16n,68p,1031b,1944s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (69 pages, 322708 bytes).
+Output written on main.dvi (69 pages, 324876 bytes).

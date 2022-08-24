@@ -1,17 +1,13 @@
-% Constructs the transfer function for the tree robot network, the
-% plots the pole-zero map and Bode plot.
-
 more off;
 close all;
 clear all;
 
-gen = 5;
+gen = 6;
 
 k = 1;
 b = 2;
 m1 = 1;
 m2 = 1;
-
 
 L1num = 1;
 L1den = k;
@@ -28,16 +24,16 @@ endfor
 
 printf("order: den = %f\t num = %f\n",length(Gden),length(Gnum));
 figure;
-mybode(tf(Gnum,Gden),{.0001,100});
+bode(tf(Gnum,Gden));
 figdim = 0.9*[0, 0, 3.04, 2.128];
 set (gcf, "paperposition",figdim);
 %print("bodeelement.tex","-depslatex","-color");
 
 figure;
 mypzmap(tf(Gnum,Gden))
-figdim = [0, 0, 3.04, 2.128];
+figdim = 0.9*[0, 0, 3.04, 2.128];
 set (gcf, "paperposition",figdim);
-print("pzmapelement.tex","-depslatex","-color","-tight");
+%print("pzmapelement.tex","-depslatex","-color");
 
 
 figure;

@@ -289,20 +289,24 @@ The following example illustrates the first case. Non-locality will be inherent 
     \label{fig:structure}
   \end{figure}
 
-It turns out that if we consider the network to be infinitely large, \textit{i.e.}, an infinite number of bifurcating generations, it is easier to determine the transfer function describing we want, which is
+  The goal is to determine the transfer function relating the force applied to the network to its displacement, \ie,
 \begin{equation}
-  G(s) = \frac{X_{last}(s) - X_1(s)}{F(s)}
+  G(s) = \frac{X_{last}(s) - X_1(s)}{F(s)}.
   \label{eq:xfer}
 \end{equation}
-and which describes the relationship between the applied force and deflection of the network. The reason it is easier, is that the network is \emph{self-similar}. If there are an infinite number of generations, if we look at any specific node, then the transfer function from that node to the right end, is the same as any other node to the right end. In other words, from any node, there is an infinite tree growing to the right. 
+If we assume the network is so large that it can be considered infinite\footnote{See \cite{mayes}, which shows that this is a good approximation after approximately seven generations.} then we can consider the network as illustrated in Figure~\ref{fig:selfsimilar}. In this model, the spring element in the first generation has the transfer function $G_1(s) = 1/k$ and the damper on the bottom in the first generation has the transfer function $G_2(s) = 1/(b s)$.  
 
-As such, the transfer function from the first node to the end, is equal to the transfer function from one of the nodes in the second generation to the end, as is illustrated in Figure~\ref{fig:selfsimilar}.
+The key aspect of this infinite network is that it is \emph{self-similar} in that the overall transfer function relating the force on the network to its displacement is equal to the transfer function from \emph{any} node to $X_{last}$, because from any node to the end there will be an infinite tree of springs and dampers. So if we write the overall transfer function as
+\begin{equation}
+  G_\infty(s) = \frac{X_{last}(s) - X_1(s)}{F(s)}
+\end{equation}
+then the transfer for the sub-networks in the red and blue boxes in Figure~\ref{fig:selfsimilar} will also be $G_\infty(s)$. 
 
 \begin{figure}
   \centering
-  \psfrag{g1}{$\small{G_1(s)}$}
-  \psfrag{g2}{$G_2(s)$}
-  \psfrag{g}{$G_\infty(s)$}
+\psfrag{g1}{$\scriptstyle{G_1(s)}$}
+  \psfrag{g2}{$\scriptstyle{G_2(s)}$}
+    \psfrag{g}{$\scriptstyle{G_\infty(s)}$}
   \psfrag{x1}{$x_1$}
   \psfrag{xl}{$x_{last}$}
   \psfrag{f(t)}{$f(t)$}
@@ -311,22 +315,17 @@ As such, the transfer function from the first node to the end, is equal to the t
   \label{fig:selfsimilar}
 \end{figure}
 
-Let $G_\infty(s)$ represent the infinite transfer function from any node to the end, and let the transfer function corresponding to the individual components be
+Because the spring and $G_\infty(s)$ are in series along the top of the network, the transfer function along the top will be $G_1(s) + G_\infty(s) = 1/k + G_\infty(s)$ and similarly along the bottom the transfer function will be $G_2(s) + G_\infty(s) = 1/(bs) + G_\infty(s)$. Then, the overall transfer function is these two in parallel, which requires
+\begin{equation*}
+  G_\infty(s) = \frac{1}{\frac{1}{\frac{1}{k} + G_\infty(s)} + \frac{1}{\frac{1}{bs} + G_\infty(s)}},
+\end{equation*}
+or, solving for $G_\infty(s)$ gives
 \begin{equation}
-  G_1(s) = \frac{1}{k} \qquad G_2(s) = \frac{1}{bs}.
-  \label{eq:selfsimilarbuild}
+  G_\infty(s) = \sqrt{G_1(s) G_2(s)} =\sqrt{\frac{1}{k b s }} = \frac{1}{\sqrt{kb}} \frac{1}{\sqrt{s}}.
+  \label{eq:tferhalf}
 \end{equation}
 
-If there are an infinite number of generations then
-\[
-  G_\infty(s) = \frac{1}{\frac{1}{G_1(s) + G_\infty(s)} +
-  \frac{1}{G_2(s) + G_\infty(s)}},
-\]
-and solving this for $G_\infty(s)$ gives
-\[
-  G_\infty(s) = \sqrt{G_1(s) G_2(s)} =\sqrt{\frac{1}{k b s }} = \frac{1}{\sqrt{kb}} \frac{1}{\sqrt{s}}.
-\] 
-where the $G_\infty(s)$ on the left hand side is the transfer function for the entire network, and the two $G_\infty(s)$ terms in the denominator are the transfer functions from the two nodes in the second generation to the end. So this system should be characterized by half-order dynamics because $\sqrt{s} = s^{1/2}$.
+The square root of $s$ in the transfer function is suggestive of half-order dynamics. Note that a frequency response plot for the transfer function in Equation~\ref{eq:tferhalf} would have a constant phase of $-45^\circ$ and a magnitude plot in decibels with a slope of $-10$ dB/decade.
 
 \begin{figure}
   \centering
