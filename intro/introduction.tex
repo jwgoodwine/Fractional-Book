@@ -338,5 +338,58 @@ Consistent with the idea above about fractional order systems ``converging'' to 
 \end{example}
 
 \subsection{Ultrasound Example}
-Reference and summaries Holm's paper.
 
+Bioengineering is a relatively new engineering research area where fractional-order dynamics may be important. Ultrasound wave propagation through animal tissue is an application for which ``normal'' integer-order mechanics seems inadequate to describe \cite{holm}. In this example, we will follow the development in \cite{holm}, but with the simplification of reducing the problem to one dimension.
+
+The viscous wave equation can be written as
+\begin{equation}
+\nabla^2 u + \tau_d \frac{\partial}{\partial t} \nabla^2 u = \frac{1}{c_0^2} \frac{\partial^2 u}{\partial t^2},
+\end{equation}
+which, in one dimension is
+\begin{equation}
+\frac{\partial^2 u}{\partial x^2} + \tau_d \frac{\partial^3 u}{\partial t \partial x^2} =  \frac{1}{c_0^2} \frac{\partial^2 u}{\partial t^2}.
+\label{eq:1dultra}
+\end{equation}
+where $u(x,t)$ represents the compressional or shear displacement. The usual interpretation of the damping coefficient, $\tau_d$ is that it is the ratio of viscosity and elasticity. For the one-dimensional problem, this term is the time rate of change of the curvature of $u(x,t)$. Such a term makes sense for modeling animal tissue because it is composed of both solid (elastic) and liquid (viscous) components.
+
+We can easily solve Equation~\ref{eq:1dultra} using separation of variables. Assume $u(x,t) = X(x) T(t)$. Substituting into Equation~\ref{eq:1dultra} gives
+\[
+X^{\prime \prime}(x) T(t) + \tau_d X^{\prime \prime}(x) T^{\prime}(t) = \frac{1}{c_0^2} X(x) T^{\prime \prime}(t)
+\]
+and rearranging gives
+\begin{equation}
+\frac{X^{\prime \prime}(x)}{X(x)} = \frac{1}{c_0^2} \frac{T^{\prime \prime}(t)}{T(t) + \tau_d T^{\prime}(t)}.
+\label{eq:separated}
+\end{equation}
+Because the left side of Equation~\ref{eq:separated} is a function of only $x$ and the right side is a function of only $t$, the only way they can be equal is for both sides to be constant. As such,
+\[
+\frac{X^{\prime \prime}(x)}{X(x)} = -\lambda,
+\]
+where $\lambda$ is a constant. Assuming homogeneous boundary conditions, $u(0,t) = u(L,t) = 0$ requires $X(0) = X(L) = 0$ requires $\lambda = \left( n \pi/L \right)^2$, and hence
+\begin{equation}
+X(x) = a_n \sin \left( \frac{n \pi x}{L} \right), \quad n = 1, 2, 3, \ldots.
+\end{equation}
+
+Using this $\lambda$ value for the $T(t)$ equation gives
+\[
+ \frac{1}{c_0^2} \frac{T^{\prime \prime}(t)}{T(t) + \tau_d T^{\prime}(t)} = \left( \frac{n \pi}{L} \right)^2
+ \]
+ or
+ \[
+ T^{\prime \prime}(t) + c_0^2 \tau_d \left(\frac{n \pi}{L}\right)^2 T'(t) +  c_0^2 \left(\frac{n \pi}{L}\right)^2 T(t) = 0, \quad n=1,2,3,\ldots.
+\]
+
+This is a constant coefficient, linear, ordinary, second-order, homogeneous differential equation and thus is easy to solve. Specifically
+\[
+T_n(t) = \e^{-\zeta \omega_n t} \left[ b_n \sin \left( \sqrt{1 - \zeta^2} \omega_n t \right) + c_n \cos \left( \sqrt{1 - \zeta^2} \omega_n t \right) \right]
+\]
+where
+\[
+\omega_n = \frac{c_0 n \pi}{L}
+\]
+and
+\[
+\zeta = \frac{c_0 \tau_d n \pi}{2 L}.
+\]
+
+Note that the damping ratio increases with $n$, which means the \emph{higher modes are dissapated more quickly than the lower modes.} For an ultrasound signal, then, waves that propagate and are reflected by deeper tissue will have increased attenuation of the higher frequency content in the signal. 
