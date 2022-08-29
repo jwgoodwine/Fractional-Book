@@ -1,95 +1,88 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021/Homebrew) (preloaded format=latex 2022.3.3)  25 AUG 2022 11:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Arch Linux) (preloaded format=latex 2022.5.2)  29 AUG 2022 14:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **main
 (./main.tex
-LaTeX2e <2020-10-01> patch level 4
-L3 programming layer <2021-02-18>
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/base/book.cls
-Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/base/bk10.clo
-File: bk10.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-04-10>
+(/usr/share/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/share/texmf-dist/tex/latex/base/bk10.clo
+File: bk10.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 )
-\c@part=\count179
-\c@chapter=\count180
-\c@section=\count181
-\c@subsection=\count182
-\c@subsubsection=\count183
-\c@paragraph=\count184
-\c@subparagraph=\count185
-\c@figure=\count186
-\c@table=\count187
+\c@part=\count185
+\c@chapter=\count186
+\c@section=\count187
+\c@subsection=\count188
+\c@subsubsection=\count189
+\c@paragraph=\count190
+\c@subparagraph=\count191
+\c@figure=\count192
+\c@table=\count193
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/amsmath/amsmat
-h.sty
-Package: amsmath 2020/09/23 v2.17i AMS math features
+(/usr/share/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2021/10/15 v2.17l AMS math features
 \@mathmargin=\skip49
 
 For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2021/08/26 v2.01 AMS text
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/amsmath/amstex
-t.sty
-Package: amstext 2000/06/29 v2.01 AMS text
-
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/amsmath/amsgen
-.sty
+(/usr/share/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks15
+\@emptytoks=\toks16
 \ex@=\dimen139
 ))
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/amsmath/amsbsy
-.sty
+(/usr/share/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen140
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/amsmath/amsopn
-.sty
-Package: amsopn 2016/03/08 v2.02 operator names
+(/usr/share/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2021/08/26 v2.02 operator names
 )
-\inf@bad=\count188
+\inf@bad=\count194
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count189
-\leftroot@=\count190
+\uproot@=\count195
+\leftroot@=\count196
 LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count191
-\DOTSCASE@=\count192
+\classnum@=\count197
+\DOTSCASE@=\count198
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box47
-\strutbox@=\box48
+\Mathstrutbox@=\box50
+\strutbox@=\box51
 \big@size=\dimen141
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count193
-\c@MaxMatrixCols=\count194
+\macc@depth=\count199
+\c@MaxMatrixCols=\count266
 \dotsspace@=\muskip16
-\c@parentequation=\count195
-\dspbrk@lvl=\count196
-\tag@help=\toks16
-\row@=\count197
-\column@=\count198
-\maxfields@=\count199
-\andhelp@=\toks17
+\c@parentequation=\count267
+\dspbrk@lvl=\count268
+\tag@help=\toks17
+\row@=\count269
+\column@=\count270
+\maxfields@=\count271
+\andhelp@=\toks18
 \eqnshift@=\dimen142
 \alignsep@=\dimen143
 \tagshift@=\dimen144
 \tagwidth@=\dimen145
 \totwidth@=\dimen146
 \lineht@=\dimen147
-\@envbody=\toks18
+\@envbody=\toks19
 \multlinegap=\skip50
 \multlinetaggap=\skip51
-\mathdisplay@stack=\toks19
-LaTeX Info: Redefining \[ on input line 2923.
-LaTeX Info: Redefining \] on input line 2924.
+\mathdisplay@stack=\toks20
+LaTeX Info: Redefining \[ on input line 2938.
+LaTeX Info: Redefining \] on input line 2939.
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/amsfonts/amsfo
-nts.sty
+(/usr/share/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
@@ -97,252 +90,209 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/amscls/amsthm.
-sty
+(/usr/share/texmf-dist/tex/latex/amscls/amsthm.sty
 Package: amsthm 2020/05/29 v2.20.6
-\thm@style=\toks20
-\thm@bodyfont=\toks21
-\thm@headfont=\toks22
-\thm@notefont=\toks23
-\thm@headpunct=\toks24
+\thm@style=\toks21
+\thm@bodyfont=\toks22
+\thm@headfont=\toks23
+\thm@notefont=\toks24
+\thm@headpunct=\toks25
 \thm@preskip=\skip52
 \thm@postskip=\skip53
 \thm@headsep=\skip54
-\dth@everypar=\toks25
+\dth@everypar=\toks26
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/tensor/tensor.
-sty
+(/usr/share/texmf-dist/tex/latex/tensor/tensor.sty
 Package: tensor 2004/12/20 v2.1 tensor indices package (PGR)
-\tnsr@Sps=\toks26
-\tnsr@Sbs=\toks27
-\tnsr@Spe=\toks28
-\tnsr@Sbe=\toks29
-\ncld@Mno=\toks30
+\tnsr@Sps=\toks27
+\tnsr@Sbs=\toks28
+\tnsr@Spe=\toks29
+\tnsr@Sbe=\toks30
+\ncld@Mno=\toks31
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/doublestroke/d
-sfont.sty
+(/usr/share/texmf-dist/tex/latex/doublestroke/dsfont.sty
 Package: dsfont 1995/08/01 v0.1 Double stroke roman fonts
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/graphics/graph
-icx.sty
-Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/share/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/graphics/keyva
-l.sty
+(/usr/share/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks31
+\KV@toks@=\toks32
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/graphics/graph
-ics.sty
-Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+(/usr/share/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/graphics/trig.
-sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+(/usr/share/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/graphics-cfg/g
-raphics.cfg
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: dvips.def on input line 105.
+Package graphics Info: Driver file: dvips.def on input line 107.
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/graphics-def/d
-vips.def
+(/usr/share/texmf-dist/tex/latex/graphics-def/dvips.def
 File: dvips.def 2017/06/20 v3.1d Graphics/color driver for dvips
 ))
 \Gin@req@height=\dimen148
 \Gin@req@width=\dimen149
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/xcolor/xcolor.
-sty
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+(/usr/share/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/graphics-cfg/c
-olor.cfg
+(/usr/share/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: dvips.def on input line 225.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+Package xcolor Info: Driver file: dvips.def on input line 227.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/import/import.
-sty
+(/usr/share/texmf-dist/tex/latex/import/import.sty
 Package: import 2020/04/01  v 6.2
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/psfrag/psfrag.
-sty
+(/usr/share/texmf-dist/tex/latex/psfrag/psfrag.sty
 Package: psfrag 1998/04/11 v3.04 PSfrag (MCG)
-\pfg@pcount=\count266
-\pfg@scount=\count267
+\pfg@pcount=\count272
+\pfg@scount=\count273
 \pfg@temp=\write3
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/hyperref/hyper
-ref.sty
-Package: hyperref 2021-02-27 v7.00k Hypertext links for LaTeX
+(/usr/share/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2022-02-21 v7.00n Hypertext links for LaTeX
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/generic/ltxcmds/ltxc
-mds.sty
+(/usr/share/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/generic/iftex/iftex.
-sty
-Package: iftex 2020/03/06 v1.0d TeX engine tests
+(/usr/share/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/generic/pdftexcmds/p
-dftexcmds.sty
+(/usr/share/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/generic/infwarerr/in
-fwarerr.sty
+(/usr/share/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/generic/kvsetkeys/kv
-setkeys.sty
+(/usr/share/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/generic/kvdefinekeys
-/kvdefinekeys.sty
+(/usr/share/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/generic/pdfescape/pd
-fescape.sty
+(/usr/share/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/hycolor/hycolo
-r.sty
+(/usr/share/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/letltxmacro/le
-tltxmacro.sty
+(/usr/share/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/auxhook/auxhoo
-k.sty
+(/usr/share/texmf-dist/tex/latex/auxhook/auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/kvoptions/kvop
-tions.sty
+(/usr/share/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
 \@linkdim=\dimen150
-\Hy@linkcounter=\count268
-\Hy@pagecounter=\count269
+\Hy@linkcounter=\count274
+\Hy@pagecounter=\count275
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/hyperref/pd1en
-c.def
-File: pd1enc.def 2021-02-27 v7.00k Hyperref: PDFDocEncoding definition (HO)
+(/usr/share/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2022-02-21 v7.00n Hyperref: PDFDocEncoding definition (HO)
 Now handling font encoding PD1 ...
 ... no UTF-8 mapping file for font encoding PD1
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/hyperref/hyper
-ref-langpatches.def
-File: hyperref-langpatches.def 2021-02-27 v7.00k Hyperref: patches for babel la
-nguages
-)
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/generic/intcalc/intc
-alc.sty
+(/usr/share/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/generic/etexcmds/ete
-xcmds.sty
+(/usr/share/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count270
+\Hy@SavedSpaceFactor=\count276
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/hyperref/puenc
-.def
-File: puenc.def 2021-02-27 v7.00k Hyperref: PDF Unicode definition (HO)
+(/usr/share/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2022-02-21 v7.00n Hyperref: PDF Unicode definition (HO)
 Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
-Package hyperref Info: Hyper figures OFF on input line 4192.
-Package hyperref Info: Link nesting OFF on input line 4197.
-Package hyperref Info: Hyper index ON on input line 4200.
-Package hyperref Info: Plain pages OFF on input line 4207.
-Package hyperref Info: Backreferencing OFF on input line 4212.
+Package hyperref Info: Hyper figures OFF on input line 4137.
+Package hyperref Info: Link nesting OFF on input line 4142.
+Package hyperref Info: Hyper index ON on input line 4145.
+Package hyperref Info: Plain pages OFF on input line 4152.
+Package hyperref Info: Backreferencing OFF on input line 4157.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
-Package hyperref Info: Bookmarks ON on input line 4445.
-\c@Hy@tempcnt=\count271
+Package hyperref Info: Bookmarks ON on input line 4390.
+\c@Hy@tempcnt=\count277
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/url/url.sty
+(/usr/share/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip17
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
-LaTeX Info: Redefining \url on input line 4804.
+LaTeX Info: Redefining \url on input line 4749.
 \XeTeXLinkMargin=\dimen151
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/generic/bitset/bitse
-t.sty
+(/usr/share/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/generic/bigintcalc/b
-igintcalc.sty
+(/usr/share/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count272
+\Fld@menulength=\count278
 \Field@Width=\dimen152
 \Fld@charsize=\dimen153
-Package hyperref Info: Hyper figures OFF on input line 6075.
-Package hyperref Info: Link nesting OFF on input line 6080.
-Package hyperref Info: Hyper index ON on input line 6083.
-Package hyperref Info: backreferencing OFF on input line 6090.
-Package hyperref Info: Link coloring OFF on input line 6095.
-Package hyperref Info: Link coloring with OCG OFF on input line 6100.
-Package hyperref Info: PDF/A mode OFF on input line 6105.
-LaTeX Info: Redefining \ref on input line 6145.
-LaTeX Info: Redefining \pageref on input line 6149.
+Package hyperref Info: Hyper figures OFF on input line 6027.
+Package hyperref Info: Link nesting OFF on input line 6032.
+Package hyperref Info: Hyper index ON on input line 6035.
+Package hyperref Info: backreferencing OFF on input line 6042.
+Package hyperref Info: Link coloring OFF on input line 6047.
+Package hyperref Info: Link coloring with OCG OFF on input line 6052.
+Package hyperref Info: PDF/A mode OFF on input line 6057.
+LaTeX Info: Redefining \ref on input line 6097.
+LaTeX Info: Redefining \pageref on input line 6101.
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/base/atbegshi-
-ltx.sty
-Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi packa
-ge
-with kernel methods
+(/usr/share/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
 )
-\Hy@abspage=\count273
-\c@Item=\count274
-\c@Hfootnote=\count275
+\Hy@abspage=\count279
+\c@Item=\count280
+\c@Hfootnote=\count281
 )
 Package hyperref Info: Driver (default): hdvips.
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/hyperref/hdvip
-s.def
-File: hdvips.def 2021-02-27 v7.00k Hyperref driver for dvips
+(/usr/share/texmf-dist/tex/latex/hyperref/hdvips.def
+File: hdvips.def 2022-02-21 v7.00n Hyperref driver for dvips
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/hyperref/pdfma
-rk.def
-File: pdfmark.def 2021-02-27 v7.00k Hyperref definitions for pdfmark specials
-\pdf@docset=\toks32
-\pdf@box=\box49
-\pdf@toks=\toks33
-\pdf@defaulttoks=\toks34
-\HyField@AnnotCount=\count276
-\Fld@listcount=\count277
-\c@bookmark@seq@number=\count278
+(/usr/share/texmf-dist/tex/latex/hyperref/pdfmark.def
+File: pdfmark.def 2022-02-21 v7.00n Hyperref definitions for pdfmark specials
+\pdf@docset=\toks33
+\pdf@box=\box52
+\pdf@toks=\toks34
+\pdf@defaulttoks=\toks35
+\HyField@AnnotCount=\count282
+\Fld@listcount=\count283
+\c@bookmark@seq@number=\count284
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/rerunfilecheck
-/rerunfilecheck.sty
+(/usr/share/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/base/atveryend
--ltx.sty
-Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
-e
+(/usr/share/texmf-dist/tex/latex/base/atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
 with kernel methods
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/generic/uniquecounte
-r/uniquecounter.sty
+(/usr/share/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
@@ -350,28 +300,23 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip55
 ))
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/algorithm2e/al
-gorithm2e.sty
+(/usr/share/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
-\c@AlgoLine=\count279
+\c@AlgoLine=\count285
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/base/ifthen.st
-y
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+(/usr/share/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
 )
 \algocf@hangindent=\skip56
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/ifoddpage/ifod
-dpage.sty
+(/usr/share/texmf-dist/tex/latex/ifoddpage/ifoddpage.sty
 Package: ifoddpage 2016/04/23 v1.1 Conditionals for odd/even page detection
-\c@checkoddpage=\count280
+\c@checkoddpage=\count286
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/tools/xspace.s
-ty
+(/usr/share/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/relsize/relsiz
-e.sty
+(/usr/share/texmf-dist/tex/latex/relsize/relsize.sty
 Package: relsize 2013/03/29 ver 4.1
 )
 \skiptotal=\skip57
@@ -389,70 +334,66 @@ Package: relsize 2013/03/29 ver 4.1
 \interspacealgoruled=\dimen158
 \interspacetitleboxruled=\dimen159
 \algocf@ruledwidth=\skip65
-\algocf@inoutbox=\box50
-\algocf@inputbox=\box51
+\algocf@inoutbox=\box53
+\algocf@inputbox=\box54
 \AlCapSkip=\skip66
 \AlCapHSkip=\skip67
 \algoskipindent=\skip68
-\algocf@nlbox=\box52
-\algocf@hangingbox=\box53
-\algocf@untilbox=\box54
+\algocf@nlbox=\box55
+\algocf@hangingbox=\box56
+\algocf@untilbox=\box57
 \algocf@skipuntil=\skip69
-\algocf@capbox=\box55
+\algocf@capbox=\box58
 \algocf@lcaptionbox=\skip70
 \algoheightruledefault=\skip71
 \algoheightrule=\skip72
 \algotitleheightruledefault=\skip73
 \algotitleheightrule=\skip74
-\c@algocfline=\count281
-\c@algocfproc=\count282
-\c@algocf=\count283
-\algocf@algoframe=\box56
-\algocf@algobox=\box57
+\c@algocfline=\count287
+\c@algocfproc=\count288
+\c@algocf=\count289
+\algocf@algoframe=\box59
+\algocf@algobox=\box60
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/listings/listi
-ngs.sty
-\lst@mode=\count284
-\lst@gtempboxa=\box58
-\lst@token=\toks35
-\lst@length=\count285
+(/usr/share/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count290
+\lst@gtempboxa=\box61
+\lst@token=\toks36
+\lst@length=\count291
 \lst@currlwidth=\dimen160
-\lst@column=\count286
-\lst@pos=\count287
+\lst@column=\count292
+\lst@pos=\count293
 \lst@lostspace=\dimen161
 \lst@width=\dimen162
-\lst@newlines=\count288
-\lst@lineno=\count289
+\lst@newlines=\count294
+\lst@lineno=\count295
 \lst@maxwidth=\dimen163
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/listings/lstmi
-sc.sty
+(/usr/share/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count290
-\lst@skipnumbers=\count291
-\lst@framebox=\box59
+\c@lstnumber=\count296
+\lst@skipnumbers=\count297
+\lst@framebox=\box62
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/listings/listi
-ngs.cfg
+(/usr/share/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
-\c@example=\count292
-\c@theorem=\count293
-\c@definition=\count294
-\c@remark=\count295
-\c@attribute=\count296
+\c@example=\count298
+\c@theorem=\count299
+\c@definition=\count300
+\c@remark=\count301
+\c@attribute=\count302
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/l3backend/l3ba
-ckend-dvips.def
-File: l3backend-dvips.def 2021-03-18 L3 backend support: dvips
-\l__pdf_internal_box=\box60
-\g__pdf_backend_object_int=\count297
-\l__pdf_backend_content_box=\box61
-\l__pdf_backend_model_box=\box62
-\g__pdf_backend_annotation_int=\count298
-\g__pdf_backend_link_int=\count299
-\g__pdf_backend_link_sf_int=\count300
+(/usr/share/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
+File: l3backend-dvips.def 2022-04-14 L3 backend support: dvips
+\l__pdf_internal_box=\box63
+\g__pdf_backend_object_int=\count303
+\l__pdf_backend_content_box=\box64
+\l__pdf_backend_model_box=\box65
+\g__pdf_backend_annotation_int=\count304
+\g__pdf_backend_link_int=\count305
+\g__pdf_backend_link_sf_int=\count306
 ) (./main.aux)
 \openout1 = `main.aux'.
 
@@ -476,40 +417,35 @@ LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
 LaTeX Font Info:    ... okay on input line 32.
 Package hyperref Info: Link coloring OFF on input line 32.
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/hyperref/namer
-ef.sty
+(/usr/share/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/refcount/refco
-unt.sty
+(/usr/share/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 )
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/generic/gettitlestri
-ng/gettitlestring.sty
+(/usr/share/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count301
+\c@section@level=\count307
 )
 LaTeX Info: Redefining \ref on input line 32.
 LaTeX Info: Redefining \pageref on input line 32.
 LaTeX Info: Redefining \nameref on input line 32.
- (./main.out) (./main.out)
+
+(./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
 
-\c@lstlisting=\count302
+\c@lstlisting=\count308
 LaTeX Font Info:    Trying to load font information for U+msa on input line 34.
 
-
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/amsfonts/umsa.
-fd
+ (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
 
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/amsfonts/umsb.
-fd
+(/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
@@ -517,12 +453,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ] [2
 
 ] (./main.toc
-Overfull \hbox (1.18124pt too wide) in paragraph at lines 35--35
+Overfull \hbox (1.18124pt too wide) in paragraph at lines 36--36
  [][] [] [][]  
  []
 
 [3]
-Overfull \hbox (18.11182pt too wide) in paragraph at lines 40--40
+Overfull \hbox (18.11182pt too wide) in paragraph at lines 41--41
  [][] [] [][]  
  []
 
@@ -537,7 +473,7 @@ Chapter 1.
 ] (./intro/figs/fracidea.tex
 \gptboxheight=\skip75
 \gptboxwidth=\skip76
-\gptboxtext=\box63
+\gptboxtext=\box66
 File: intro/figs//fracidea.eps Graphic file (type eps)
  <intro/figs//fracidea.eps>)
 (./intro/figs/fracidea2.tex
@@ -568,16 +504,12 @@ Overfull \hbox (10.59698pt too wide) has occurred while \output is active
 /cmr/m/n/10 11
  []
 
-[11] [12]
-
-LaTeX Warning: Reference `ch:example' on page 13 undefined on input line 240.
-
-[13]
+[11] [12] [13]
 File: intro//figs/structure.eps Graphic file (type eps)
  <intro//figs/structure.eps> [14]
 File: intro//figs/structure2.eps Graphic file (type eps)
- <intro//figs/structure2.eps> [15]
-(./intro//figs/bodeelement.tex
+ <intro//figs/structure2.eps>
+[15] (./intro//figs/bodeelement.tex
 File: intro//figs/bodeelement.eps Graphic file (type eps)
  <intro//figs/bodeelement.eps>) [16])
 (./defs/definitions.tex [17] [18]
@@ -659,28 +591,17 @@ Underfull \vbox (badness 1189) has occurred while \output is active []
 [34] [35] (./defs/figs/fracderivex1.tex
 File: defs/figs//fracderivex1.eps Graphic file (type eps)
  <defs/figs//fracderivex1.eps>) [36]
-[37] [38]
-
-LaTeX Warning: Command \i invalid in math mode on input line 626.
-
-
-LaTeX Warning: Command \i invalid in math mode on input line 626.
-
-
-LaTeX Warning: Command \i invalid in math mode on input line 626.
-
-[39]
+[37] [38] [39]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [40]
 [41]
 LaTeX Font Info:    Trying to load font information for U+dsrom on input line 7
 09.
-
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/doublestroke/U
-dsrom.fd
+ (/usr/share/texmf-dist/tex/latex/doublestroke/Udsrom.fd
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-) [42]) (./diffeq/diffeq.tex [43] [44
+) [42])
+(./diffeq/diffeq.tex [43] [44
 
 ]
 Chapter 3.
@@ -705,30 +626,34 @@ File: diffeq/figs//structurewall2.eps Graphic file (type eps)
 (./diffeq/figs/structurewall3.tex
 File: diffeq/figs//structurewall3.eps Graphic file (type eps)
  <diffeq/figs//structurewall3.eps>))
-(./numerical/numerical.tex [49] [50]
+(./applications/applications.tex [49] [50]
 Chapter 4.
+) (./numerical/numerical.tex [51
+
+] [52
+
+]
+Chapter 5.
 
 Overfull \hbox (4.82452pt too wide) in paragraph at lines 5--5
 []\OT1/cmr/bx/n/14.4 Direct Ap-pli-ca-tion of the Gr^^?unwald-Letnikov
  []
 
-[51
-
-]
+[53]
 Overfull \hbox (42.94508pt too wide) detected at line 74
 \OML/cmm/m/it/10 x\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) = [] []
  []
 
-) (./control/control.tex [52]
-Chapter 5.
-[53
+) (./control/control.tex [54]
+Chapter 6.
+[55
 
 ]
 Overfull \hbox (10.00061pt too wide) in paragraph at lines 38--39
 []\OT1/cmr/m/n/10 The proof is be-yond the scope of this book, but see [[],
  []
 
-[54]
+[56]
 Underfull \hbox (badness 10000) in paragraph at lines 51--52
 
  []
@@ -741,10 +666,8 @@ File: control/figs//mlfasyex2.eps Graphic file (type eps)
  <control/figs//mlfasyex2.eps>)
 (./control/figs/mlfasyex3.tex
 File: control/figs//mlfasyex3.eps Graphic file (type eps)
- <control/figs//mlfasyex3.eps>) [55] [56] [57]
-[58]
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/listings/lstla
-ng1.sty
+ <control/figs//mlfasyex3.eps>) [57] [58] [59]
+[60] (/usr/share/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 )
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
@@ -753,7 +676,7 @@ nput line 176.
 LaTeX Font Info:    Trying to load font information for OMS+cmr on input line 2
 .
 
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/base/omscmr.fd
+(/usr/share/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
@@ -772,8 +695,7 @@ Overfull \hbox (141.00494pt too wide) in paragraph at lines 14--15
 
 LaTeX Font Info:    Trying to load font information for OML+cmr on input line 2
 0.
-
-(/opt/homebrew/Cellar/texlive/58837_1/share/texmf-dist/tex/latex/base/omlcmr.fd
+(/usr/share/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10> not available
@@ -790,13 +712,13 @@ Overfull \hbox (39.0039pt too wide) in paragraph at lines 25--26
 
  []
 
-) [59] (./control/figs/comstableex1.tex
+) [61] (./control/figs/comstableex1.tex
 File: control/figs//comstableex1.eps Graphic file (type eps)
  <control/figs//comstableex1.eps>)
 (./control/figs/comstableex2.tex
 File: control/figs//comstableex2.eps Graphic file (type eps)
- <control/figs//comstableex2.eps>) [60]
-[61] (./control/figs/secondstable.tex
+ <control/figs//comstableex2.eps>) [62]
+[63] (./control/figs/secondstable.tex
 File: control/figs//secondstable.eps Graphic file (type eps)
  <control/figs//secondstable.eps>)
 Overfull \hbox (21.01996pt too wide) in paragraph at lines 293--294
@@ -805,7 +727,7 @@ tude curve is $\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 10$\OT1/cmr/m/it/10 db/decad
 e
  []
 
-(./freq.m [62]) (./control/figs/fracfreqex1.tex
+(./freq.m [64]) (./control/figs/fracfreqex1.tex
 File: control/figs//fracfreqex1.eps Graphic file (type eps)
 
 <control/figs//fracfreqex1.eps>)
@@ -815,42 +737,39 @@ Overfull \hbox (9.35626pt too wide) in paragraph at lines 307--307
 
 
 Overfull \hbox (125.80547pt too wide) has occurred while \output is active
-\OT1/cmr/m/sl/10 5.3.  INTEGER-ORDER APPROXIMATIONS FOR FRACTIONAL-ORDER TRANSF
-ER FUNCTIONS \OT1/cmr/m/n/10 63
+\OT1/cmr/m/sl/10 6.3.  INTEGER-ORDER APPROXIMATIONS FOR FRACTIONAL-ORDER TRANSF
+ER FUNCTIONS \OT1/cmr/m/n/10 65
  []
 
-[63] [64]
+[65] [66]
 File: control//figs/PIDex.eps Graphic file (type eps)
- <control//figs/PIDex.eps> [65]
+ <control//figs/PIDex.eps> [67]
 Overfull \hbox (8.53311pt too wide) detected at line 404
-[][] [] \OT1/cmr/m/n/10 = [] [] + [] \OML/cmm/m/it/10 V[]\OT1/cmr/m/n/10 (\OML/
-cmm/m/it/10 t\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 :
+[][][] [] \OT1/cmr/m/n/10 = [] [] + [] \OML/cmm/m/it/10 V[]\OT1/cmr/m/n/10 (\OM
+L/cmm/m/it/10 t\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 :
  []
 
-[66] [67]
+[68] [69]
 Overfull \hbox (63.00415pt too wide) in paragraph at lines 469--470
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][
 ][][][][][][][][][] 
  []
 
-[68]) [69] [70
+[70]) [71] [72
 
-] (./main.bbl) [71
+] (./main.bbl) [73
 
 ] (./main.aux)
-
-LaTeX Warning: There were undefined references.
-
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: AA3793DCB39E98336D84A64E422CA345;7826.
+(rerunfilecheck)             Checksum: A05A554A4BF7B637145B1AD55359A922;7930.
  ) 
 Here is how much of TeX's memory you used:
- 12641 strings out of 478995
- 187096 string characters out of 5848651
- 725501 words of memory out of 5000000
- 29781 multiletter control sequences out of 15000+600000
- 415251 words of font info for 73 fonts, out of 8000000 for 9000
+ 13417 strings out of 478239
+ 208568 string characters out of 5850483
+ 730868 words of memory out of 5000000
+ 31308 multiletter control sequences out of 15000+600000
+ 481080 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 76i,16n,80p,1031b,1934s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 65i,16n,68p,1031b,1944s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (71 pages, 332996 bytes).
+Output written on main.dvi (73 pages, 335668 bytes).

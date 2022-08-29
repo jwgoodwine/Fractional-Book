@@ -177,8 +177,7 @@ we would like it to also hold for when $n$ is not an integer.  Similarly,
 \end{equation*}
 we can require that the same, or something close to this, be true when $n$ is not an integer.
 
-At this point we can compute things we consider to be fractional derivatives and integrals of sines and cosines, monomials, by extension from monomials, polynomials if we do them term-by-term and exponentials.  Before we generalize further, in order to develop a very important property of the fractional derivatives, we need to go a long way back and consider fractional exponents.
-
+At this point we can compute things we consider to be fractional derivatives and integrals of sines and cosines, monomials, by extension from monomials, polynomials if we do them term-by-term and exponentials.  Before we generalize further, in order to develop a very important property of the fractional derivatives, we need to review some very basic mathematics and consider fractional exponents.
 
 
 \section{The Law of Indices}
@@ -205,7 +204,7 @@ which also immediately leads to
 \end{equation}
 This notion of adding indices can be used to \emph{define} negative and fractional exponents by requiring that Equations~\ref{eq:indices} and \ref{eq:indices2} hold for all rational values as well (negative values, zero and fractional values). 
 
-For negatives values, consider $n$ and $m$ to be positive integers with $n > m$, and if we require that $\left( t^n \right) \times \left( t^{-m} \right) = t^{n-m}$, then the only way for the $-m$ to take away powers is for it to mean division, or in too much detail
+For negatives values, consider $n$ and $m$ to be positive integers with $n > m$, and if we require that $\left( t^n \right) \times \left( t^{-m} \right) = t^{n-m}$, then the only way for the $-m$ to take away powers is for it to mean division, 
 \begin{equation}
   t^n \times t^{-m} = \frac{\overbrace{t \times t \times t \cdots t \times t}^{\mbox{$n$ times}}}{\underbrace{t \times t \cdots t \times t}_{\mbox{$m$ times}}} = \underbrace{t \times t  \cdots t \times t}_{\mbox{$n-m$ times}}.
   \label{eq:indices3}
@@ -227,7 +226,7 @@ By insisting that the same property hold when $n$ and $m$ are fractional, will h
 \begin{attribute}
   For real values of $\alpha$ and $\beta$
   \begin{equation}
-    \frac{\d^\alpha}{\d t^\alpha} \left( \frac{\d^\beta}{\d t^\beta} f(t) \right) = \frac{\d^{\alpha + \beta} f}{\d t^{\alpha + \beta}}(t).
+    \frac{\d^\alpha}{\d t^\alpha} \left( \frac{\d^\beta}{\d t^\beta} f(t) \right) = \frac{\d^{\alpha + \beta}}{\d t^{\alpha + \beta}}f(t).
     \label{eq:derivindices}
   \end{equation}
 \end{attribute}
@@ -237,16 +236,16 @@ Even in integer order calculus, integration and differentiation are not exactly 
 
 \section{Examples}
 
-This section contains two examples where fractional-order dynamics naturally appear. They are motivational examples, and many more detailed and more complicated examples appear subsequently in Chapter~\ref{ch:example}. 
+This section contains two examples where fractional-order dynamics naturally appear. They are motivational examples, and many more detailed and more complicated examples appear subsequently in Chapter~\ref{ch:examples}. 
 \subsection{Mechanical System and Frequency Domain Example}
 \label{sec:introexamples}
 
-Multiplication by $s$ in the frequency domain corresponds to differentiation by $t$ in the time domain if we use the
+Laplace transforms in the fractional calculus context will be developed in detail in Section~\ref{sec:laplace}. Here we provide a very quick review. Multiplication by $s$ in the frequency domain corresponds to differentiation by $t$ in the time domain if we use the
 usual variables in the Laplace transform
 \begin{equation}
   \mathcal{L} \left\{ f(t) \right\} = \int_{0^-}^\infty f(t) e^{-s t} \d t = F(s),
 \end{equation}
-\textit{i.e.}, 
+\ie
 \begin{equation}
   \mathcal L \left\{ \frac{\d f}{\d t}(t) \right\} = s F(s) - f(0)
 \end{equation}
@@ -260,12 +259,12 @@ Higher derivatives are just increased exponents on the $s$, \textit{e.g.},
 \end{equation}
 again assuming zero initial conditions.
 
-Of course, the half derivative then would correspond to $s$ raised to the one-half power:\footnote{This will be more rigorously justified subsequently.}
+Of course, the half derivative then would correspond to $s$ raised to the one-half power:
 \begin{equation}
   \mathcal L \left\{ \frac{\d^\frac{1}{2} f}{\d t^\frac{1}{2}}(t) \right\} = s^\frac{1}{2} F(s).
 \end{equation}
 
-It turns out that irrational transfer functions can arise rather easily in two types of cases:
+It turns out that fractional-order transfer functions can arise rather easily in two types of cases:
 \begin{enumerate}
   \item systems with an infinite number of components, and
   \item systems with non-local interactions.
@@ -350,46 +349,48 @@ which, in one dimension is
 \frac{\partial^2 u}{\partial x^2} + \tau_d \frac{\partial^3 u}{\partial t \partial x^2} =  \frac{1}{c_0^2} \frac{\partial^2 u}{\partial t^2}.
 \label{eq:1dultra}
 \end{equation}
-where $u(x,t)$ represents the compressional or shear displacement. The usual interpretation of the damping coefficient, $\tau_d$ is that it is the ratio of viscosity and elasticity. For the one-dimensional problem, this term is the time rate of change of the curvature of $u(x,t)$. Such a term makes sense for modeling animal tissue because it is composed of both solid (elastic) and liquid (viscous) components.
+where $u(x,t)$ represents the compressional or shear displacement. The usual interpretation of the damping coefficient, $\tau_d$ is that it is the ratio of viscosity and elasticity. For the one-dimensional problem, $\tau_d$ is the coefficient of the term that is the time rate of change of the curvature of $u(x,t)$. Such a term makes sense for modeling animal tissue because it is composed of both solid (elastic) and liquid (viscous) components.
 
-We can easily solve Equation~\ref{eq:1dultra} using separation of variables. Assume $u(x,t) = X(x) T(t)$. Substituting into Equation~\ref{eq:1dultra} gives
-\[
-X^{\prime \prime}(x) T(t) + \tau_d X^{\prime \prime}(x) T^{\prime}(t) = \frac{1}{c_0^2} X(x) T^{\prime \prime}(t)
-\]
-and rearranging gives
-\begin{equation}
-\frac{X^{\prime \prime}(x)}{X(x)} = \frac{1}{c_0^2} \frac{T^{\prime \prime}(t)}{T(t) + \tau_d T^{\prime}(t)}.
-\label{eq:separated}
-\end{equation}
-Because the left side of Equation~\ref{eq:separated} is a function of only $x$ and the right side is a function of only $t$, the only way they can be equal is for both sides to be constant. As such,
-\[
-\frac{X^{\prime \prime}(x)}{X(x)} = -\lambda,
-\]
-where $\lambda$ is a constant. Assuming homogeneous boundary conditions, $u(0,t) = u(L,t) = 0$ requires $X(0) = X(L) = 0$ requires $\lambda = \left( n \pi/L \right)^2$, and hence
-\begin{equation}
-X(x) = a_n \sin \left( \frac{n \pi x}{L} \right), \quad n = 1, 2, 3, \ldots.
-\end{equation}
+Normally this author would solve this equation using separation of variables, which leads to a series solution and is easily interpreted as a combination of \emph{modes}. However, in the current context we are interested in the rate at which the signal is attenuated as it propagates through tissue, and as such we will consider the d'Alembert solution which focuses on traveling waves. Note that if $\tau_d=0$, then \emph{any} function of the form $u(x,t) = u(x + c t)$ satisfies the
 
-Using this $\lambda$ value for the $T(t)$ equation gives
-\[
- \frac{1}{c_0^2} \frac{T^{\prime \prime}(t)}{T(t) + \tau_d T^{\prime}(t)} = \left( \frac{n \pi}{L} \right)^2
- \]
- or
- \[
- T^{\prime \prime}(t) + c_0^2 \tau_d \left(\frac{n \pi}{L}\right)^2 T'(t) +  c_0^2 \left(\frac{n \pi}{L}\right)^2 T(t) = 0, \quad n=1,2,3,\ldots.
-\]
-
-This is a constant coefficient, linear, ordinary, second-order, homogeneous differential equation and thus is easy to solve. Specifically
-\[
-T_n(t) = \e^{-\zeta \omega_n t} \left[ b_n \sin \left( \sqrt{1 - \zeta^2} \omega_n t \right) + c_n \cos \left( \sqrt{1 - \zeta^2} \omega_n t \right) \right]
-\]
-where
-\[
-\omega_n = \frac{c_0 n \pi}{L}
-\]
-and
-\[
-\zeta = \frac{c_0 \tau_d n \pi}{2 L}.
-\]
-
-Note that the damping ratio increases with $n$, which means the \emph{higher modes are dissapated more quickly than the lower modes.} For an ultrasound signal, then, waves that propagate and are reflected by deeper tissue will have increased attenuation of the higher frequency content in the signal. 
+%We can easily solve Equation~\ref{eq:1dultra} using separation of variables. Assume $u(x,t) = X(x) T(t)$. Substituting into Equation~\ref{eq:1dultra} gives
+%\[
+%X^{\prime \prime}(x) T(t) + \tau_d X^{\prime \prime}(x) T^{\prime}(t) = \frac{1}{c_0^2} X(x) T^{\prime \prime}(t)
+%\]
+%and rearranging gives
+%\begin{equation}
+%\frac{X^{\prime \prime}(x)}{X(x)} = \frac{1}{c_0^2} \frac{T^{\prime \prime}(t)}{T(t) + \tau_d T^{\prime}(t)}.
+%\label{eq:separated}
+%\end{equation}
+%Because the left side of Equation~\ref{eq:separated} is a function of only $x$ and the right side is a function of only $t$, the only way they can be equal is for both sides to be constant. As such,
+%\[
+%\frac{X^{\prime \prime}(x)}{X(x)} = -\lambda,
+%\]
+%where $\lambda$ is a constant. Assuming homogeneous boundary conditions, $u(0,t) = u(L,t) = 0$ requires $X(0) = X(L) = 0$ requires $\lambda = \left( n \pi/L \right)^2$, and hence
+%\begin{equation}
+%X(x) = a_n \sin \left( \frac{n \pi x}{L} \right), \quad n = 1, 2, 3, \ldots.
+%\end{equation}
+%
+%Using this $\lambda$ value for the $T(t)$ equation gives
+%\[
+% \frac{1}{c_0^2} \frac{T^{\prime \prime}(t)}{T(t) + \tau_d T^{\prime}(t)} = \left( \frac{n \pi}{L} \right)^2
+% \]
+% or
+% \[
+% T^{\prime \prime}(t) + c_0^2 \tau_d \left(\frac{n \pi}{L}\right)^2 T'(t) +  c_0^2 \left(\frac{n \pi}{L}\right)^2 T(t) = 0, \quad n=1,2,3,\ldots.
+%\]
+%
+%This is a constant coefficient, linear, ordinary, second-order, homogeneous differential equation and thus is easy to solve. Specifically
+%\[
+%T_n(t) = \e^{-\zeta \omega_n t} \left[ b_n \sin \left( \sqrt{1 - \zeta^2} \omega_n t \right) + c_n \cos \left( \sqrt{1 - \zeta^2} \omega_n t \right) \right]
+%\]
+%where
+%\[
+%\omega_n = \frac{c_0 n \pi}{L}
+%\]
+%and
+%\[
+%\zeta = \frac{c_0 \tau_d n \pi}{2 L}.
+%\]
+%
+%Note that the damping ratio increases with $n$, which means the \emph{higher modes are dissapated more quickly than the lower modes.} For an ultrasound signal, then, waves that propagate and are reflected by deeper tissue will have increased attenuation of the higher frequency content in the signal. 
