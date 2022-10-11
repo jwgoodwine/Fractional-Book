@@ -254,12 +254,12 @@ The value of the gamma function at some special values should be cataloged.
 
     The \emph{one parameter} and \emph{two parameter} Mittag-Leffler functions put a coefficient in front of the $k$ and $1$ in the gamma function
     \begin{equation}
-      \boxed{ E_\alpha(t) = \sum_{k=1}^\infty \frac{t^k}{\Gamma \left( \alpha k + 1 \right)}, \quad \alpha > 0 }
+      \boxed{ E_\alpha(t) = \sum_{k=0}^\infty \frac{t^k}{\Gamma \left( \alpha k + 1 \right)}, \quad \alpha > 0 }
       \label{eq:mlone}
     \end{equation}
     and
     \begin{equation}
-      \boxed{  E_{\alpha, \beta}(t) = \sum_{k=1}^\infty \frac{t^k}{\Gamma \left( \alpha k + \beta \right)}, \quad \alpha, \beta > 0. }
+      \boxed{  E_{\alpha, \beta}(t) = \sum_{k=0}^\infty \frac{t^k}{\Gamma \left( \alpha k + \beta \right)}, \quad \alpha, \beta > 0. }
       \label{eq:mltwo}
     \end{equation}
 
@@ -506,7 +506,7 @@ The value of the gamma function at some special values should be cataloged.
     \begin{example}
       Let us repeat Example~\ref{ex:fracderiv2} using the Caputo definition:
       \begin{align*}
-	\tensor*[^C]{\D}{^{1/2}} t &= \frac{1}{\Gamma \left( \frac{1}{2} \right) } \int_0^t \left( t - z \right)^{-\frac{1}{2}}
+	\tensor*[^C]{\D}{^{1/2}} \left( t + 1 \right) &= \frac{1}{\Gamma \left( \frac{1}{2} \right) } \int_0^t \left( t - z \right)^{-\frac{1}{2}}
 	\frac{\d }{\d z} \left( z + 1 \right) \d z \\
 	&= \frac{1}{\sqrt{\pi}} \int_0^t \frac{1}{\sqrt{t - z}} \d z \\
 	&= \frac{2}{\sqrt{\pi}} t^\frac{1}{2}.
