@@ -696,7 +696,7 @@ The value of the gamma function at some special values should be cataloged.
 
     \subsection{Integration and Differentiation in the Frequency Domain}
 
-    Now we will consider calculus in the frequency domain. First, recall the basic property of Laplace transforms that multiplication in the time domain is equal to convolution in the frequency domain, specifically
+    Now we will consider calculus in the frequency domain. First, recall the basic property of Laplace transforms that the Laplace transform of convolution in the time domain is multiplication in the frequency domain, specifically
     \begin{align*}
       \mathcal L \left\{ \int_0^t f_1(t - \tau) f_2(\tau) \d \tau \right\} &= \int_{0^-}^\infty   \int_0^t f_1(t - \tau) f_2(\tau) \d \tau \e^{-s t} \d t \\
       &= \int_{0^-}^\infty \int_0^\infty f_1(t - \tau) \mathds 1 (t - \tau) f_2(\tau) \d \tau \e^{-st} \d t \\
@@ -728,8 +728,8 @@ For the Riemann-Liouville fractional derivative we have
 \begin{align*}
   \mathcal L \left\{ \tensor*[^{RL}]{\D}{^\alpha} f(t) \right\} &= \mathcal L \left\{  \frac{\d^{\lc \alpha \rc}}{\d t^{\lc \alpha \rc}} \left( \tensor*[]{\D}{^{-(\lc \alpha \rc - \alpha)}} f(t) \right) \right\} \\
   &=  s^{\lc \alpha \rc} \left( \frac{F(s)}{s^{\lc \alpha \rc - \alpha}}  \right)  - s^{\lc \alpha \rc - 1} \left[   \tensor*[]{\D}{^{-(\lc \alpha \rc - \alpha)}} f(t) \right]_{t=0} \\
-  & \qquad - s^{\lc \alpha \rc - 2} \left[ \frac{\d}{\d t}\left( \tensor*[]{\D}{^{-(\lc \alpha \rc - 1)}}f(t) \right) \right]_{t=0} \\
-  & \qquad - \cdots -  \left[ \frac{\d^{\lc \alpha \rc - 1}}{\d t^{\lc \alpha \rc - 1}}\left( \tensor*[]{\D}{^{-(\lc \alpha \rc - 1)}}f(t) \right) \right]_{t=0}. 
+  & \qquad - s^{\lc \alpha \rc - 2} \left[ \frac{\d}{\d t}\left( \tensor*[]{\D}{^{-(\lc \alpha \rc - \alpha)}}f(t) \right) \right]_{t=0} \\
+  & \qquad - \cdots -  \left[ \frac{\d^{\lc \alpha \rc - 1}}{\d t^{\lc \alpha \rc - 1}}\left( \tensor*[]{\D}{^{-(\lc \alpha \rc - \alpha )}}f(t) \right) \right]_{t=0}. 
 \end{align*}
 Note that the first term simplifies to $s^\alpha F(s)$ just like we want. However, the initial conditions involve fractional integrals of $f(t)$, which may (or may not!) be convenient for a given problem. In the usual situation in controls where we assume that all initial conditions, including fractional initial conditions, are zero, we have 
 \begin{equation*}
@@ -742,7 +742,7 @@ For the Caputo derivative, we have
       \tensor*[]{\D}{^{-( \lc \alpha \rc - \alpha)}} \left( \frac{\d^{\lc \alpha \rc} f}{\d t^{\lc \alpha \rc}}(t) \right) \right\} \\
       &= \mathcal L \left\{ 
 	\frac{1}{\Gamma\left(\lc \alpha \rc - \alpha \right)} \int_0^t \left( t - z \right)^{\lc \alpha \rc - \alpha - 1}  \frac{\d^{\lc \alpha \rc}f}{\d z^{\lc \alpha \rc}} (z) \d z \right\} \\
-	&= \frac{1}{\Gamma \left( \lc \alpha \rc - \alpha \right)} \mathcal L \left\{ \left( t - z \right)^{\lc \alpha \rc - \alpha - 1} \right\} \mathcal L \left\{  \frac{\d^{\lc \alpha \rc}f}{\d t^{\lc \alpha \rc}} (t) \right\} \\
+	&= \frac{1}{\Gamma \left( \lc \alpha \rc - \alpha \right)} \mathcal L \left\{  t^{\lc \alpha \rc - \alpha - 1} \right\} \mathcal L \left\{  \frac{\d^{\lc \alpha \rc}f}{\d t^{\lc \alpha \rc}} (t) \right\} \\
 	&= \frac{1}{s^{\lc \alpha \rc - \alpha}} \left( s^{\lc \alpha \rc} F(s) - s^{\lc \alpha \rc - 1} f(0) - s^{\lc \alpha \rc - 2} \frac{\d f}{\d t}(0) - \right. \\
 	& \qquad \cdots - \left. \frac{\d^{\lc \alpha \rc - 1}f}{\d t^{\lc \alpha \rc - 1}}(0) \right) 
 \end{align*}
