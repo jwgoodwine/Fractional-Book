@@ -135,27 +135,27 @@ size = .025*[0,0,162,100];
 %ylabel('$t + 1$ and its half derivative');
 %print('fracderivex1.tex','-depslatex');
 
-%close all;
-%gh = figure(12,'paperposition',size)
-%t = linspace(0,10,1001);
-%dt = t(2)-t(1);
-%alpha = 1.1;
-%deriv = 0;
-%f = cos(3*t);
-%coefs = 0;
-%coefs(1) = bincoeff(alpha,0);
-%deriv(1) = 0;
-%for n = 2:length(t)
-%	coefs(n) = (-1)^(n-1)*bincoeff(alpha,(n-1));
-%	sum = dot(fliplr(f(1:n)),coefs)/dt^alpha;
-%	deriv(n) = sum;
-%end
-%plot(t,f,'linewidth',2);
-%hold on;
-%plot(t,-3*sin(3*t),'linewidth',2);
-%plot(t,deriv,'linewidth',2);
-%xlabel('$t$');
-%ylabel('half derivative of $\cos 3 t$');
-%print('gwex1.tex','-depslatex');
+close all;
+gh = figure(12,'paperposition',size)
+t = linspace(0,10,1001);
+dt = t(2)-t(1);
+alpha = 0.5;
+deriv = 0;
+f = cos(3*t);
+coefs = 0;
+coefs(1) = bincoeff(alpha,0);
+deriv(1) = 0;
+for n = 2:length(t)
+	coefs(n) = (-1)^(n-1)*bincoeff(alpha,(n-1));
+	sum = dot(fliplr(f(1:n)),coefs)/dt^alpha;
+	deriv(n) = sum;
+end
+plot(t,f,'linewidth',2);
+hold on;
+plot(t,-3*sin(3*t),'linewidth',2);
+plot(t,deriv,'linewidth',2);
+xlabel('$t$');
+ylabel('half derivative of $\cos 3 t$');
+print('gwex1.tex','-depslatex');
 
 

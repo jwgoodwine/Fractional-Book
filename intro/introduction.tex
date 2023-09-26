@@ -3,66 +3,120 @@
 \section{Reasons to Study Fractional Calculus}
 Some people may study fractional calculus because it is inherently interesting to them. Other people need more or different reasons. A few reasons include:
 \begin{itemize}
-  \item Fractional calculus expands the descriptive power of calculus beyond the familiar integer order derivatives and the basic concept of rate of change. This will yield more accurate descriptive equations when a system truly is fractional.
-  \item Fractional calculus can expand scientific understanding when it models things that are traditionally very difficult to describe mathematically.
-  \item Integer order derivatives are \emph{local} needing information only in a neighborhood of a point. As will be seen, fractional derivatives are \emph{non-local} and can describe systems with such a feature. For example, the equation $F=ma$ holds instantaneously. How something accelerates only depends on the forces right now, not the forces at any time in the past. For systems with ``memory'' effects, or analogous non-local spatial effects, the differential equation describing it most accurately may be fractional.
+
+  \item Fractional calculus expands the descriptive power of calculus beyond the
+	familiar integer order derivatives and the basic concept of rate of change.
+	This will yield more accurate descriptive equations when a system truly is
+	fractional.
+
+  \item Fractional calculus can expand scientific understanding when it models
+	things that are traditionally very difficult to describe mathematically.
+
+  \item Integer order derivatives are \emph{local} needing information only in a
+	neighborhood of a point. As will be seen, fractional derivatives are
+	\emph{non-local} and can describe systems with such a feature. For example,
+	the equation $F=ma$ holds instantaneously. How something accelerates only
+	depends on the forces right now, not the forces at any time in the past. For
+	systems with ``memory'' effects, or analogous non-local spatial effects, the
+	differential equation describing it most accurately may be fractional.  
+
 \end{itemize}
 
-It is not surprising that ``normal'' integer-order calculus works well for most engineering applications over the past few centuries. Newton, who was one of the very early developers of calculus, clearly had a strong interest in mechanics \cite{principia}. However, there are engineering topics of modern interest for which fractional calculus may be important (and correspondingly, integer-order calculus insufficient). One area is bioengineering, where traditional mechanics and electromagnetism do not fully describe the system and in which non-local time effects may occur. Another is very large scale systems that may be easier to consider as having an infinite number of components, rather than keeping track of every single part. Examples of each type are given in this chapter.  Finally, fractional calculus has been used as a new tool to try to match measured responses to ``generally hard to model'' system, \textit{e.g.}, systems with friction, stiction, etc. 
+It is not surprising that ``normal'' integer-order calculus works well for most
+engineering applications over the past few centuries. Newton, who was one of the
+very early developers of calculus, clearly had a strong interest in mechanics
+\cite{principia}. However, there are engineering topics of modern interest for
+which fractional calculus may be important (and correspondingly, integer-order
+calculus insufficient). One area is bioengineering, where traditional mechanics
+and electromagnetism do not fully describe the system and in which non-local
+time effects may occur. Another is very large scale systems that may be easier
+to consider as having an infinite number of components, rather than keeping
+track of every single part. Examples of each type are given in this chapter.
+Finally, fractional calculus has been used as a new tool to try to match
+measured responses to ``generally hard to model'' system, \textit{e.g.}, systems
+with friction, stiction, etc. While fractional-order equations may provide a
+better means to ``curve fit'' responses, such systems will not be emphasized in
+this text unless there is a good, underlying mechanistic reason to consider the
+system to be truly fractional. 
 
 \section{Introductory Concepts}
-Anyone reading this book should be familiar with the notion of the first, second and higher derivatives, \textit{e.g.}, for $f(t) = t^3 + 5 t^2 + 2$, 
+
+Anyone reading this book should be familiar with the notion of the first, second
+and higher derivatives, \textit{e.g.}, for $f(t) = t^3 + 5 t^2 + 2$, 
 \begin{align}
   \frac{\d f}{\d t}(t) &= 3 t^2 + 10 t \\
   \frac{\d^2 f}{\d t^2}(t) &= 6t + 10, 
   \label{eq:derivs}
 \end{align}
-\textit{etc.} Also we naturally think of integrals in an antiderivative sense, \textit{e.g.},
+\textit{etc.} Also we naturally think of integrals in an antiderivative sense,
+\textit{e.g.},
 \begin{align}
   \int f(t) \d t &= \frac{1}{4} t^4 + \frac{5}{3} t^3 + 5 t^2 + c 
   \label{eq:integrals}
 \end{align}
-and we adopt a notation of $f^{(1)}(t)$ as the first derivative, $f^{(2)}(t)$ as the second derivative and $f^{(n)}(t)$ as the $n$th derivative as well as $f^{(-1)}(t)$ as $f$ integrated one time, $f^{(-2)}$ as $f$ integrated two times, \textit{etc.}
+and we adopt a notation of $f^{(1)}(t)$ as the first derivative, $f^{(2)}(t)$ as
+the second derivative and $f^{(n)}(t)$ as the $n$th derivative as well as
+$f^{(-1)}(t)$ as $f$ integrated one time, $f^{(-2)}$ as $f$ integrated two
+times, \textit{etc.}
 
-A mathematically curious reader may already be wondering if there are any derivatives ``in between'' the integer ones.
-For example, is there a one-half derivative:
+A mathematically curious reader may already be wondering if there are any
+derivatives ``in between'' the integer ones.  For example, is there a one-half
+derivative:
 \begin{equation}
   \frac{\d^\frac{1}{2} f}{\d t^\frac{1}{2}}(t) = f^{\left(\frac{1}{2}\right)} = ?
   \label{eq:halfderiv}
 \end{equation}
-There is not an immediate obvious answer to this because of the fact that the integer order derivative (as is the integral) is defined as a limit
+There is not an immediate obvious answer to this because of the fact that the
+integer order derivative (as is the integral) is defined as a limit
 \begin{equation}
   \frac{\d f}{\d t}(t) = \lim_{\Delta t \rightarrow 0} = \frac{f\left(t + \Delta t \right) - f\left(t\right)}{\Delta t}
   \label{eq:limdef}
 \end{equation}
 and that is a discrete operation. There is not a natural half way to do it.
 
-Basically we want to generalize the notion of the derivative. In a sense, if we define something to give the, say $\alpha$ derivative where $\alpha \in \mathbb R$, \textit{i.e.}, $\alpha$ is a real number, then all we really need is that when $\alpha$ is an integer we get the usual definition of that integer order derivative. In between there may be lots of different options (there are!), but it makes sense to set some other basic requirements we want a fractional-order derivative to satisfy.
+Basically we want to generalize the notion of the derivative. In a sense, if we
+define something to give the, say $\alpha$ derivative where $\alpha \in \mathbb
+R$, \textit{i.e.}, $\alpha$ is a real number, then all we really need is that
+when $\alpha$ is an integer we get the usual definition of that integer order
+derivative. In between there may be lots of different options (there are!), but
+it makes sense to set some other basic requirements we want a fractional-order
+derivative to satisfy.
 
 \begin{example}
-  Consider $f(t) = t^2$ with the first and second derivatives $f^{(1)}(t) = 2 t$ and $f^{(2)}(t) = 2$, respectively. We should expect that the $1/2$ derivative is, in some qualitative sense, ``between'' $f(t)$ and $f^{(1)}(t)$, and that the $3/2$ derivative is ``between'' the first and second derivatives, as is illustrated in Figures~\ref{fig:fracidea1} and \ref{fig:fracidea2}.
+  Consider $f(t) = t^2$ with the first and second derivatives $f^{(1)}(t) = 2 t$
+  and $f^{(2)}(t) = 2$, respectively. We should expect that the $1/2$ derivative
+  is, in some qualitative sense, ``between'' $f(t)$ and $f^{(1)}(t)$, and that
+  the $3/2$ derivative is ``between'' the first and second derivatives, as is
+  illustrated in Figures~\ref{fig:fracidea1} and \ref{fig:fracidea2}.
 
   \begin{figure}
-    \centering
-    \subimport{figs/}{fracidea}
-    \caption{The zeroth and first derivatives of $f(t)=t^2$, (blue and red curves). A prospective half derivative (gold).}
-    \label{fig:fracidea1}
+	\centering
+	\subimport{figs/}{fracidea}
+	\caption{The zeroth and first derivatives of $f(t)=t^2$, (blue and red
+	curves). A prospective half derivative (gold).}
+	\label{fig:fracidea1}
   \end{figure}
 
   \begin{figure}
-    \centering
-    \subimport{figs/}{fracidea2}
-    \caption{The first and second derivatives of $f(t)=t^2$ (blue and red curves) with a prospective $3/2$ derivative (gold).}
-    \label{fig:fracidea2}
+	\centering
+	\subimport{figs/}{fracidea2}
+	\caption{The first and second derivatives of $f(t)=t^2$ (blue and red
+	curves) with a prospective $3/2$ derivative (gold).}
+	\label{fig:fracidea2}
   \end{figure}
 
-  We also expect that as we vary the order of the derivative, say from $0$ to $1$, for low values of the order the result is near the zeroth derivative, and for values of the fractional order near one, it is near the first derivative. This is illustrated in Figure~\ref{fig:fracidea3}.
+  We also expect that as we vary the order of the derivative, say from $0$ to
+  $1$, for low values of the order the result is near the zeroth derivative, and
+  for values of the fractional order near one, it is near the first derivative.
+  This is illustrated in Figure~\ref{fig:fracidea3}.
 
   \begin{figure}
-    \centering
-    \subimport{figs/}{fracidea3}
-    \caption{The function (blue) and the first derivative (red). The $0.2$, $0.4$, $0.6$ and $0.8$th (yellow, purple, green, light blue) order derivatives ``move'' from the zeroth derivative to the first derivative.}
-    \label{fig:fracidea3}
+	\centering
+	\subimport{figs/}{fracidea3}
+	\caption{The function (blue) and the first derivative (red). The $0.2$,
+	  $0.4$, $0.6$ and $0.8$th (yellow, purple, green, light blue) order
+	derivatives ``move'' from the zeroth derivative to the first derivative.}
+	\label{fig:fracidea3}
   \end{figure}
 \end{example}
 
@@ -79,22 +133,30 @@ As a first step into some real functions, we consider sine and cosine.
 \begin{example}
   Consider $f(t) = \sin(t)$. The nice thing about sines and cosines are their relatively simple derivatives. In fact, from the pattern
   \begin{align*}
-    \frac{\d}{\d t} \sin(t) &= \cos(t) \\
-    \frac{\d^2}{\d t^2} \sin(t) &= -\sin(t)
+	\frac{\d}{\d t} \sin(t) &= \cos(t) \\
+	\frac{\d^2}{\d t^2} \sin(t) &= -\sin(t)
   \end{align*}
-  as illustrated in Figure~\ref{fig:fracidea4}, it is clear that the derivative for this function just shifts it to the left by $\pi/2$. So clearly we would expect that the $1/2$ derivative just shifts it to the left by $\pi/4$, or the $1/3$ integral shifts it right by $\pi/6$, \textit{etc}. Therefore, a reasonable guess for the half derivative would be as illustrated in Figure~\ref{fig:fracidea5}.
+  as illustrated in Figure~\ref{fig:fracidea4}, it is clear that the derivative
+  for this function just shifts it to the left by $\pi/2$. So clearly we would
+  expect that the $1/2$ derivative just shifts it to the left by $\pi/4$, or the
+  $1/3$ integral shifts it right by $\pi/6$, \textit{etc}. Therefore, a reasonable
+  guess for the half derivative would be as illustrated in
+  Figure~\ref{fig:fracidea5}.
 
   \begin{figure}
-    \centering
-    \subimport{figs/}{fracidea4}
-    \caption{First (red) and second (gold) derivative of $\sin(t)$ (blue). The arrows indicate that derivative is just shifts the curve to the left by $\pi/2$ for each derivative.}
-    \label{fig:fracidea4}
+	\centering
+	\subimport{figs/}{fracidea4}
+		\caption{First (red) and second (gold) derivative of $\sin(t)$ (blue). The
+	arrows indicate that derivative is just shifts the curve to the left by
+  $\pi/2$ for each derivative.}
+		\label{fig:fracidea4}
   \end{figure}
 
   \begin{figure}
-    \centering
-    \subimport{figs/}{fracidea5}
-  \caption{Reasonable assumption for the half derivative (red) of $\sin9t)$ (blue).}
+	\centering
+	\subimport{figs/}{fracidea5}
+  \caption{Reasonable assumption for the half derivative (red) of $\sin9t)$
+	(blue).}
   \label{fig:fracidea5}
 \end{figure}
 
@@ -116,9 +178,19 @@ which is easy to differentiate a few times and figure out the pattern:
   \frac{\d^n f}{\d t^n}(t) &= \frac{k!}{\left( k - n \right)!} t^{k-n}, \qquad n \leq k.
   \label{eq:polyderivs}
 \end{align}
-Since we are looking to define a fractional derivative of $t^k$, we need to see what is allowed and not allowed for $n$ to take on fractional values in Equation~\ref{eq:polyderivs}. The exponent of $t$ can be a fraction, so that is not a problem.\footnote{This is actually a very important point that we will consider in detail in Section~\ref{sec:indices}. For now, as engineers, we will accept as a given the commonly used operation that an exponent can be a fraction.} What is definitely a problem, though, is the factorial in the denominator: if $k$ is a natural number and $n$ is not an integer, then the factorial is not defined.
+Since we are looking to define a fractional derivative of $t^k$, we need to see
+what is allowed and not allowed for $n$ to take on fractional values in
+Equation~\ref{eq:polyderivs}. The exponent of $t$ can be a fraction, so that is
+not a problem.\footnote{This is actually a very important point that we will
+consider in detail in Section~\ref{sec:indices}. For now, as engineers, we will
+accept as a given the commonly used operation that an exponent can be a
+fraction.} What is definitely a problem, though, is the factorial in the
+denominator: if $k$ is a natural number and $n$ is not an integer, then the
+factorial is not defined.
 
-The factorial function is just a series of values, so it seems we can generalize the derivative of $t^k$ if we can find a curve through the factorial values. In fact, of course, it has been done and it is the gamma function defined by
+The factorial function is just a series of values, so it seems we can generalize
+the derivative of $t^k$ if we can find a curve through the factorial values. In
+fact, of course, it has been done and it is the gamma function defined by
 \begin{equation}
   \Gamma\left(z\right) = \int_0^\infty x^{z - 1} e^{-x} \d x
   \label{eq:gamma}
@@ -135,33 +207,42 @@ which is plotted for positive real values of $z$ in Figure~\ref{fig:gamma}. Clea
   \label{fig:gamma}
 \end{figure}
 
-So, returning to Equation~\ref{eq:polyderivs}, it seems that all we need to do to define a fractional derivative is to replace the factorial in the denominator with the gamma function shifted by one. Purely for aesthetics, we might as well use a gamma function in the numerator as well, which also then would allow for a fractional $k$. So, we have the following seemingly legitimate definition of a fractional derivative for a monomial.
+So, returning to Equation~\ref{eq:polyderivs}, it seems that all we need to do
+to define a fractional derivative is to replace the factorial in the denominator
+with the gamma function shifted by one. Purely for aesthetics, we might as well
+use a gamma function in the numerator as well, which also then would allow for a
+fractional $k$. So, we have the following seemingly legitimate definition of a
+fractional derivative for a monomial.
 
 \begin{definition}
   For the monomial, $t^k$, $k \in \mathbb R$, define a\footnote{This is \emph{a} fractional derivative, rather than \emph{the} fractional derivative because there are many definitions. } proposed fractional derivative 
   \begin{equation}
-    \boxed{
-    \frac{\d^\alpha}{\d t^\alpha} t^k = \frac{\Gamma\left( k + 1 \right)}{\Gamma \left( k + 1 - \alpha \right)} t^{k - \alpha} }
-    \label{eq:monomialfrac}
+	\boxed{
+	\frac{\d^\alpha}{\d t^\alpha} t^k = \frac{\Gamma\left( k + 1 \right)}{\Gamma \left( k + 1 - \alpha \right)} t^{k - \alpha} }
+	\label{eq:monomialfrac}
   \end{equation}
   for real values of $\alpha$, \textit{i.e.}, $\alpha \in \mathbb R$.
   \label{def:monomialfracderiv}
 \end{definition}
 
-This definition was used to make the fractional derivative curves in Figures~\ref{fig:fracidea1} through
-\ref{fig:fracidea3}, so in a sense it has been validated. Also, because everything we have done is linear in $t$, we can
-use this definition for monomials and extend it term-by-term to polynomials. 
+This definition was used to make the fractional derivative curves in
+Figures~\ref{fig:fracidea1} through \ref{fig:fracidea3}, so in a sense it has
+been validated as conforming to some of the intutive requirements we want to
+have for a fractional derivative. Also, because everything we have done is
+linear in $t$, we can use this definition for monomials and extend it
+term-by-term to polynomials. 
 
-For fun, we will do an example with a different $k$ and also include negative values for $\alpha$ to see if integral-like ideas appear.
+For fun, we will do an example with a different $k$ and also include negative
+values for $\alpha$ to see if integral-like ideas appear.
 
 \begin{example}
   Consider $f(t) = t^\frac{1}{2} = \sqrt{t}$. Various fractional order derivatives and integrals computed using Equation~\ref{eq:monomialfrac} in Definition~\ref{def:monomialfracderiv} are illustrated in Figure~\ref{fig:monex}.
 
   \begin{figure}
-    \centering
-    \subimport{figs/}{monex}
-    \caption{Various fractional derivatives using Definition~\ref{def:monomialfracderiv} for $f(t) = \sqrt{t}$. The thick blue curve is the function, or zeroth derivative. The red curve is the $\alpha = -1$ derivative, which does correspond to the integral. The gold curve is the $\alpha = -1/2$ derivative, or the $1/2$ integral. The green and light blue curves are the $1/2$ and first derivatives, respectively.} 
-    \label{fig:monex}
+	\centering
+	\subimport{figs/}{monex}
+	\caption{Various fractional derivatives using Definition~\ref{def:monomialfracderiv} for $f(t) = \sqrt{t}$. The thick blue curve is the function, or zeroth derivative. The red curve is the $\alpha = -1$ derivative, which does correspond to the integral. The gold curve is the $\alpha = -1/2$ derivative, or the $1/2$ integral. The green and light blue curves are the $1/2$ and first derivatives, respectively.} 
+	\label{fig:monex}
   \end{figure}
 \end{example}
 
@@ -224,14 +305,21 @@ These exercises in indices are important, because they hold for integer order de
 By insisting that the same property hold when $n$ and $m$ are fractional, will help in generalizing the derivative to non-integer values for a larger class of functions that simple sines, cosines and polynomials. In fact, we may as well call it an attribute. 
 
 \begin{attribute}
-  For real values of $\alpha$ and $\beta$
+  For positive real values of $\alpha$ and $\beta$
   \begin{equation}
-    \frac{\d^\alpha}{\d t^\alpha} \left( \frac{\d^\beta}{\d t^\beta} f(t) \right) = \frac{\d^{\alpha + \beta}}{\d t^{\alpha + \beta}}f(t).
-    \label{eq:derivindices}
+	\frac{\d^\alpha}{\d t^\alpha} \left( \frac{\d^\beta}{\d t^\beta} f(t) \right) = \frac{\d^{\alpha + \beta}}{\d t^{\alpha + \beta}}f(t).
+	\label{eq:derivindices}
   \end{equation}
 \end{attribute}
 
-Even in integer order calculus, integration and differentiation are not exactly inverses because an indefinite integral will have a constant of integration. In other words, if we take $f(t)$ and differentiate it and then integrate it, we get $f(t) + c$, but if we integrate and then differentiate, we get $f(t)$. The idea is clear enough, but it turns out that this complication does affect things, and, in fact, is a key difference between two of the most common definitions of fractional derivatives. 
+The reason this attribute is restricted to positive values of the order of the
+derivative is that, even in integer order calculus, integration and
+differentiation are not exactly inverses because an indefinite integral will
+have a constant of integration. In other words, if we take $f(t)$ and
+differentiate it and then integrate it, we get $f(t) + c$, but if we integrate
+and then differentiate, we get $f(t)$. The idea is clear enough, but it turns
+out that this complication does affect things, and, in fact, is a key difference
+between two of the most common definitions of fractional derivatives. 
 
 
 \section{Examples}
@@ -275,65 +363,76 @@ The following example illustrates the first case. Non-locality will be inherent 
   Consider the tree network of springs and dampers illustrated in Figure~\ref{fig:structure}. The position of the left-most node is $x_1(t)$. Assume that all the nodes on the far right are in the same position, \ie, they are somehow fixed together, so in effect they can be considered as one node, and its position will be denoted by $x_{last}(t)$. Assume the nodes have no mass.  In order to compress or extend the network, a force must be exerted on one end, and an an equal and opposite force on the other, $f(t)$. 
 
   \begin{figure}
-    \centering
-    \psfrag{k}{$k$}
-    \psfrag{b}{$b$}
-    \psfrag{pin}{}
-    \psfrag{pout}{}
-    \psfrag{x1}{$x_1$}
-    \psfrag{xl}{$x_{last}$}
-    \psfrag{f(t)}{$f(t)$}
-    \includegraphics[width=3in]{figs/structure}
-    \caption{Infinite tree of springs and dampers.}
-    \label{fig:structure}
+	\centering
+	\psfrag{k}{$k$}
+	\psfrag{b}{$b$}
+	\psfrag{pin}{}
+	\psfrag{pout}{}
+	\psfrag{x1}{$x_1$}
+	\psfrag{xl}{$x_{last}$}
+	\psfrag{f(t)}{$f(t)$}
+	\includegraphics[width=3in]{figs/structure}
+	\caption{Infinite tree of springs and dampers.}
+	\label{fig:structure}
   \end{figure}
 
   The goal is to determine the transfer function relating the force applied to the network to its displacement, \ie,
-\begin{equation}
-  G(s) = \frac{X_{last}(s) - X_1(s)}{F(s)}.
-  \label{eq:xfer}
-\end{equation}
-If we assume the network is so large that it can be considered infinite\footnote{See \cite{mayes}, which shows that this is a good approximation after approximately seven generations.} then we can consider the network as illustrated in Figure~\ref{fig:selfsimilar}. In this model, the spring element in the first generation has the transfer function $G_1(s) = 1/k$ and the damper on the bottom in the first generation has the transfer function $G_2(s) = 1/(b s)$.  
+  \begin{equation}
+	G(s) = \frac{X_{last}(s) - X_1(s)}{F(s)}.
+	\label{eq:xfer}
+  \end{equation}
+  If we assume the network is so large that it can be considered infinite\footnote{See \cite{mayes}, which shows that this is a good approximation after approximately seven generations.} then we can consider the network as illustrated in Figure~\ref{fig:selfsimilar}. In this model, the spring element in the first generation has the transfer function $G_1(s) = 1/k$ and the damper on the bottom in the first generation has the transfer function $G_2(s) = 1/(b s)$.  
 
-The key aspect of this infinite network is that it is \emph{self-similar} in that the overall transfer function relating the force on the network to its displacement is equal to the transfer function from \emph{any} node to $X_{last}$, because from any node to the end there will be an infinite tree of springs and dampers. So if we write the overall transfer function as
-\begin{equation}
-  G_\infty(s) = \frac{X_{last}(s) - X_1(s)}{F(s)}
-\end{equation}
-then the transfer for the sub-networks in the red and blue boxes in Figure~\ref{fig:selfsimilar} will also be $G_\infty(s)$. 
+  The key aspect of this infinite network is that it is \emph{self-similar} in that the overall transfer function relating the force on the network to its displacement is equal to the transfer function from \emph{any} node to $X_{last}$, because from any node to the end there will be an infinite tree of springs and dampers. So if we write the overall transfer function as
+  \begin{equation}
+	G_\infty(s) = \frac{X_{last}(s) - X_1(s)}{F(s)}
+  \end{equation}
+  then the transfer for the sub-networks in the red and blue boxes in Figure~\ref{fig:selfsimilar} will also be $G_\infty(s)$. 
 
-\begin{figure}
-  \centering
-\psfrag{g1}{$\scriptstyle{G_1(s)}$}
-  \psfrag{g2}{$\scriptstyle{G_2(s)}$}
-    \psfrag{g}{$\scriptstyle{G_\infty(s)}$}
-  \psfrag{x1}{$x_1$}
-  \psfrag{xl}{$x_{last}$}
-  \psfrag{f(t)}{$f(t)$}
-  \includegraphics[width=3in]{figs/structure2}
-  \caption{Self-similar network where the transfer function from the beginning to end of each outlined region must be equal.}
-  \label{fig:selfsimilar}
-\end{figure}
+  \begin{figure}
+	\centering
+	\psfrag{g1}{$\scriptstyle{G_1(s)}$}
+	\psfrag{g2}{$\scriptstyle{G_2(s)}$}
+	\psfrag{g}{$\scriptstyle{G_\infty(s)}$}
+	\psfrag{x1}{$x_1$}
+	\psfrag{xl}{$x_{last}$}
+	\psfrag{f(t)}{$f(t)$}
+	\includegraphics[width=3in]{figs/structure2}
+	\caption{Self-similar network where the transfer function from the beginning to end of each outlined region must be equal.}
+	\label{fig:selfsimilar}
+  \end{figure}
 
-Because the spring and $G_\infty(s)$ are in series along the top of the network, the transfer function along the top will be $G_1(s) + G_\infty(s) = 1/k + G_\infty(s)$ and similarly along the bottom the transfer function will be $G_2(s) + G_\infty(s) = 1/(bs) + G_\infty(s)$. Then, the overall transfer function is these two in parallel, which requires
-\begin{equation*}
-  G_\infty(s) = \frac{1}{\frac{1}{\frac{1}{k} + G_\infty(s)} + \frac{1}{\frac{1}{bs} + G_\infty(s)}},
-\end{equation*}
-or, solving for $G_\infty(s)$ gives
-\begin{equation}
-  G_\infty(s) = \sqrt{G_1(s) G_2(s)} =\sqrt{\frac{1}{k b s }} = \frac{1}{\sqrt{kb}} \frac{1}{\sqrt{s}}.
-  \label{eq:tferhalf}
-\end{equation}
+  Because the spring and $G_\infty(s)$ are in series along the top of the network, the transfer function along the top will be $G_1(s) + G_\infty(s) = 1/k + G_\infty(s)$ and similarly along the bottom the transfer function will be $G_2(s) + G_\infty(s) = 1/(bs) + G_\infty(s)$. Then, the overall transfer function is these two in parallel, which requires
+  \begin{equation*}
+	G_\infty(s) = \frac{1}{\frac{1}{\frac{1}{k} + G_\infty(s)} + \frac{1}{\frac{1}{bs} + G_\infty(s)}},
+  \end{equation*}
+  or, solving for $G_\infty(s)$ gives
+  \begin{equation}
+	G_\infty(s) = \sqrt{G_1(s) G_2(s)} =\sqrt{\frac{1}{k b s }} = \frac{1}{\sqrt{kb}} \frac{1}{\sqrt{s}}.
+	\label{eq:tferhalf}
+  \end{equation}
 
-The square root of $s$ in the transfer function is suggestive of half-order dynamics. Note that a frequency response plot for the transfer function in Equation~\ref{eq:tferhalf} would have a constant phase of $-45^\circ$ and a magnitude plot in decibels with a slope of $-10$ dB/decade.
+  The square root of $s$ in the transfer function is suggestive of half-order dynamics. Note that a frequency response plot for the transfer function in Equation~\ref{eq:tferhalf} would have a constant phase of $-45^\circ$ and a magnitude plot in decibels with a slope of $-10$ dB/decade.
 
-\begin{figure}
-  \centering
-  \input{figs/bodeelement}
-  \caption{Network stress-strain frequency response.}
-  \label{fig:bodeelement}
-\end{figure}
+  \begin{figure}
+	\centering
+	\input{figs/bodeelement}
+	\caption{Network stress-strain frequency response.}
+	\label{fig:bodeelement}
+  \end{figure}
 
-Consistent with the idea above about fractional order systems ``converging'' to integer order ones, we plot the Bode plot for a network of this type where there are five generations with $k =1$ and The Bode plot for this system is illustrated in Figure~\ref{fig:bodeelement}, which is characterized by two half-order dynamics features. First, the slope of the high frequency portion of the magnitude plot is $-10$dB/decade and the phase is $-45^\circ$. Because first order terms are characterized by a slope of $-20$dB/decade and a phase of $-90^\circ$, these features make sense as half order effects.
+Consistent with the idea above about fractional order systems ``converging'' to
+integer order ones, we plot the Bode plot for a network of this type where there
+are five generations with $k =1$ and $b=2$. The Bode plot for this system is
+illustrated in Figure~\ref{fig:bodeelement}, which is characterized by two
+half-order dynamics features. First, between frequencies of approximately
+$\omega = 10^{-2}$ and $\omega = 10$, the magnitude plot has a slope of
+$-10$dB/decade and the phase is $-45^\circ$. Because first order terms are
+characterized by a slope of $-20$dB/decade and a phase of $-90^\circ$, these
+features make sense as half order effects. As more generations are added to the
+network, the frequency interval over which the system is characterized by these
+1/2-order effects increases. 
+
 \end{example}
 
 \subsection{Ultrasound Example}
@@ -342,12 +441,12 @@ Bioengineering is a relatively new engineering research area where fractional-or
 
 The viscous wave equation can be written as
 \begin{equation}
-\nabla^2 u + \tau_d \frac{\partial}{\partial t} \nabla^2 u = \frac{1}{c_0^2} \frac{\partial^2 u}{\partial t^2},
+  \nabla^2 u + \tau_d \frac{\partial}{\partial t} \nabla^2 u = \frac{1}{c_0^2} \frac{\partial^2 u}{\partial t^2},
 \end{equation}
 which, in one dimension is
 \begin{equation}
-\frac{\partial^2 u}{\partial x^2} + \tau_d \frac{\partial^3 u}{\partial t \partial x^2} =  \frac{1}{c_0^2} \frac{\partial^2 u}{\partial t^2}.
-\label{eq:1dultra}
+  \frac{\partial^2 u}{\partial x^2} + \tau_d \frac{\partial^3 u}{\partial t \partial x^2} =  \frac{1}{c_0^2} \frac{\partial^2 u}{\partial t^2}.
+  \label{eq:1dultra}
 \end{equation}
 where $u(x,t)$ represents the compressional or shear displacement. The usual interpretation of the damping coefficient, $\tau_d$ is that it is the ratio of viscosity and elasticity. For the one-dimensional problem, $\tau_d$ is the coefficient of the term that is the time rate of change of the curvature of $u(x,t)$. Such a term makes sense for modeling animal tissue because it is composed of both solid (elastic) and liquid (viscous) components.
 
